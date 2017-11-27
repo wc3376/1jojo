@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import net.board.db.*;
 
  public class BoardModifyAction implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) 
-	 	throws Exception{
+	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response)throws Exception{
+		 
 		 request.setCharacterEncoding("utf-8");
 		 ActionForward forward = new ActionForward();
-		 boolean result = false;
 		 
+		 boolean result = false;
 		 int num=Integer.parseInt(request.getParameter("BOARD_NUM"));
 		 String page = request.getParameter("page");
 		 String pass = request.getParameter("BOARD_PASS");
-		
+		 
 		 BoardDAOImpl boarddao=new BoardDAOImpl();
 //		 BoardDAO boarddao=new BoardDAO();
 		 BoardBean boarddata=new BoardBean();

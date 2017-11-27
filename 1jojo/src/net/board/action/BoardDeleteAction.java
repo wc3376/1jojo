@@ -10,6 +10,7 @@ import net.board.db.*;
 public class BoardDeleteAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) 
 	 	throws Exception{
+		 System.out.println("1");
 		 
 		response.setContentType("text/html;charset=utf-8");			
 		PrintWriter out=response.getWriter();//출력 스트림 객체생성
@@ -62,7 +63,7 @@ public class BoardDeleteAction implements Action {
 //	   	System.out.println("page="+page);
 	   	
 	   	forward.setRedirect(true);
-	   	forward.setPath("./BoardList.bo?page="+page);
+	   	forward.setPath("./BoardListAction.bo?page="+page);
 	   	return forward;	   	
 	   	
 	 }
