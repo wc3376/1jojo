@@ -11,12 +11,10 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class BoardAddAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		
 		BoardDAOImpl boarddao=new BoardDAOImpl();
 	   	BoardBean boarddata=new BoardBean();
 	   	
 	   	ActionForward forward=new ActionForward();
-	   	
 		String realFolder="";
    		String saveFolder="boardUpload";   		
    		int fileSize=5*1024*1024;   		
@@ -39,13 +37,13 @@ public class BoardAddAction implements Action {
 	   		boarddata.setBoard_subject(multi.getParameter("BOARD_SUBJECT").trim());
 	   		boarddata.setBoard_content(multi.getParameter("BOARD_CONTENT").trim());
 	   		boarddata.setBoard_file(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
-	   		
-System.out.println("name="+boarddata.getBoard_name());
-System.out.println("pass="+boarddata.getBoard_pass());
-System.out.println("subject="+boarddata.getBoard_subject());
-System.out.println("content="+boarddata.getBoard_content());
-System.out.println("file="+boarddata.getBoard_file());
- 		
+				   		
+			System.out.println("name="+boarddata.getBoard_name());
+			System.out.println("pass="+boarddata.getBoard_pass());
+			System.out.println("subject="+boarddata.getBoard_subject());
+			System.out.println("content="+boarddata.getBoard_content());
+			System.out.println("file="+boarddata.getBoard_file());
+			 		
 			boarddao.boardInsert(boarddata);
 //	   		result=boarddao.boardInsert(boarddata);
 	   		

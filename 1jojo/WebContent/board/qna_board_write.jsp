@@ -35,11 +35,11 @@
 </head>
 <body>
 
-<form action="./BoardAddAction.bo" method="post" 
+<form action="/1jojo/BoardAddAction.bo" method="post" 
 	enctype="multipart/form-data" name="boardform">
 <table cellpadding="0" cellspacing="0" align=center border=1>
 	<tr align="center" valign="middle">
-		<td colspan="5">MVC 게시판</td>
+		<td colspan="5">QnA 게시판</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
