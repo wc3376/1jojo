@@ -1,20 +1,17 @@
-package net.board.db;
+package net.crawl.db;
 
-import java.sql.Date;
-
-public class CrwlBean {	
-	private int search_com_no;
-	private String com_qual;
-	private String com_preex;
-	private String com_frequncy;
-	private String com_name;
-	private String com_link;
+public class search_re_com_list_Bean {	
+	private int search_com_No;//번호
+	private String com_qual;//업체 지원자격
+	private String com_preex;//업체 우대사항
+	private String com_name;//지원자격포함 기업명
+	private String com_link;//지원자격포함 기업링크
 	
-	public int getSearch_com_no() {
-		return search_com_no;
+	public int getSearch_com_No() {
+		return search_com_No;
 	}
-	public void setSearch_com_no(int search_com_no) {
-		this.search_com_no = search_com_no;
+	public void setSearch_com_No(int search_com_No) {
+		this.search_com_No = search_com_No;
 	}
 	public String getCom_qual() {
 		return com_qual;
@@ -28,12 +25,6 @@ public class CrwlBean {
 	public void setCom_preex(String com_preex) {
 		this.com_preex = com_preex;
 	}
-	public String getCom_frequncy() {
-		return com_frequncy;
-	}
-	public void setCom_frequncy(String com_frequncy) {
-		this.com_frequncy = com_frequncy;
-	}
 	public String getCom_name() {
 		return com_name;
 	}
@@ -46,5 +37,6 @@ public class CrwlBean {
 	public void setCom_link(String com_link) {
 		this.com_link = com_link;
 	}
+	
 	
 }
