@@ -6,7 +6,7 @@ public class search_re_com_list_Bean {
 	private String com_preex;//업체 우대사항
 	private String com_name;//지원자격포함 기업명
 	private String com_link;//지원자격포함 기업링크
-	
+	//재구축
 	public int getSearch_com_No() {
 		return search_com_No;
 	}
