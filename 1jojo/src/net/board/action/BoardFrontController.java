@@ -60,10 +60,13 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		} else if (command.equals("/BoardModifyAction.bo")) {
+			System.out.println("수1");
 			action = new BoardModifyAction();
 			try {
 				forward = action.execute(request, response);
+				System.out.println("수2");
 			} catch (Exception e) {
+				System.out.println("수3");
 				e.printStackTrace();
 			}
 		} else if (command.equals("/BoardDeleteAction.bo")) {

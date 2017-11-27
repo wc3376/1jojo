@@ -82,13 +82,14 @@
 			<a href="./BoardReplyView.bo?num=${boarddata.board_num}&page=${page}">
 			[답변]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardModify.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./BoardModifyAction.bo?num=${boarddata.board_num}&page=${page}">
 			[수정]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardDelete.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./BoardDeleteAction.bo?num=${boarddata.board_num}&page=${page}">
 			[삭제]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardList.bo?page=${page}">[목록]</a>&nbsp;&nbsp;			
+			<a href="./BoardListAction.bo?page=${page}">
+			[목록]</a>&nbsp;&nbsp;			
 			</font>
 		</td>
 	</tr>

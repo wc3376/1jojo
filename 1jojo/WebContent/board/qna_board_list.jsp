@@ -133,7 +133,7 @@
 				[이전]&nbsp;
 			</c:if>
 			<c:if test="${page > 1 }">			
-				 <a href="./BoardList.bo?page=${page-1}">[이전]</a>&nbsp;
+				 <a href="./BoardListAction.bo?page=${page-1}">[이전]</a>&nbsp;
 			</c:if>
 			
 			
@@ -151,7 +151,7 @@
 					[${a}]
 				</c:if>
 				<c:if test="${a != page }">
-					<a href="./BoardList.bo?page=${a}">[${a}]</a>&nbsp;
+					<a href="./BoardListAction.bo?page=${a}">[${a}]</a>&nbsp;
 				</c:if>
 			</c:forEach>
 			
@@ -167,7 +167,7 @@
 				[다음] 
 			</c:if>
 			<c:if test="${page < maxpage }">
-				<a href="./BoardList.bo?page=${page+1}">[다음]</a>
+				<a href="./BoardListAction.bo?page=${page+1}">[다음]</a>
 			</c:if>
 			
 			
