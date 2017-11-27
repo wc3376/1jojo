@@ -57,7 +57,7 @@ System.out.println("file="+boarddata.getBoard_file());
 	   		System.out.println("게시판 등록 완료");*/
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./BoardList.bo");
+	   		forward.setPath("./BoardListAction.bo");
 	   		return forward;
 	   		
   		}catch(Exception ex){

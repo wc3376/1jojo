@@ -48,7 +48,7 @@ import net.board.db.BoardDAOImpl;
 		
 		ActionForward forward= new ActionForward();
 	 	forward.setRedirect(false);
- 		forward.setPath("./board/qna_board_list.jsp");
+ 		forward.setPath("/board/qna_board_list.jsp");
  		return forward;
 	 }
  }
