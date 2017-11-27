@@ -1,5 +1,6 @@
 package net.crawl.action;
 
+
  
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +27,14 @@ public class saraminTest {
     String Title = null;
     String URL = null;
     String alertText = "";
- 
+
     public String show_detail_contents(String javascript_link) {
-//      javascript: show_detail_contents('32329495', '', 'suited_recruit_01', 2, 'none') ÀÌ·±°Ô ¸µÅ©·Î Àü´Þ.
-//      ¾Æ·¡ÀÇ ÇÔ¼ö¿¡ ÇØ´ç °ªµéÀÌ µé¾î°¡ ¸Ç ¾Æ·¡ ¸µÅ©¸¦ ÅëÇØ °¡°Ô µÈ´Ù.
+//      javascript: show_detail_contents('32329495', '', 'suited_recruit_01', 2, 'none') ï¿½Ì·ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+//      ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î°¡ ï¿½ï¿½ ï¿½Æ·ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½.
     	String link;
     	String temp = javascript_link.substring( javascript_link.indexOf("(")+1 ,  javascript_link.indexOf(")")-1);
-    	temp=temp.replace("'", "");// ÀÛÀº µû¿ÈÇ¥ Á¦°Å
-    	temp=temp.replace(" ", "");// ¶ç¿ö¾²±â Á¦°Å
+    	temp=temp.replace("'", "");// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
+    	temp=temp.replace(" ", "");// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     	System.out.println(temp);
     	
     	String[] params=temp.split(",", -1);
@@ -44,7 +45,7 @@ public class saraminTest {
     	}
     	link="/zf_user/jobs/relay/recruit-view?inner_source=saramin&inner_medium=pattern&inner_campaign=suited_list_"
     				+params[3]+"&inner_term="+params[2]+"&view_type=tailor&rec_idx="+params[0]+"&recommend_ids="+params[1]+"&t_ref=suited_list&t_ref_content="+params[2];
-// ÀÌÇÏ ¿øº» ÀÚ¹Ù½ºÅ©¸³Æ® ÄÚµå
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¹Ù½ï¿½Å©ï¿½ï¿½Æ® ï¿½Úµï¿½
 //			function show_detail_contents(rec_idx, recommend_ids, t_content, list_seq, last_param)
 //        {
 //            var openNewWindow = window.open();
@@ -55,35 +56,34 @@ public class saraminTest {
 //        }
 //    	http://www.saramin.co.kr/zf_user/jobs/relay/recruit-view?view_type=tailor&rec_idx=32346724&gz=1&recommend_ids=eJwzNjI2sjSxNAUAB1EBpg%3D%3D&inner_source=saramin&inner_medium=pattern&inner_campaign=suited_list_
 //    			1&inner_term=suited_recruit_01&t_ref=suited_list&t_ref_content=suited_recruit_01#seq=0
-//    	°¡ °á°ú¹°ÀÌ µÇ¾î¾ß ÇÑ´Ù.
+//    	ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½ ï¿½Ñ´ï¿½.
     	System.out.println(link);
     	return link;
     }
     
     @BeforeClass
     public static void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe"); //Å©·Ò µå¶óÀÌ¹ö ÆÄÀÏ °æ·Î¼³Á¤
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe"); //Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); //ÀÀ´ä½Ã°£ 5ÃÊ¼³Á¤
-        driver.get("https://www.saramin.co.kr/zf_user/auth?url=%2Fzf_user%2F");  //Á¢¼ÓÇÒ »çÀÌÆ®
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); //ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ 5ï¿½Ê¼ï¿½ï¿½ï¿½
+        driver.get("https://www.saramin.co.kr/zf_user/auth?url=%2Fzf_user%2F");  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
     }
- 
     @Test
-    public void Step_01_»ç¶÷ÀÎ_·Î±×ÀÎ_Test () throws Exception {
+    public void Step_01_login_Test () throws Exception {
     	driver.findElement(By.name("id")).sendKeys("chlgudrbdn");  //ID
-    	driver.findElement(By.name("password")).sendKeys("m6529194!"); //ºñ¹ø
-        driver.findElement(By.className("btn-login")).click(); //·Î±×ÀÎ ¹öÆ° Å¬¸¯
+    	driver.findElement(By.name("password")).sendKeys("m6529194!"); //ï¿½ï¿½ï¿½
+        driver.findElement(By.className("btn-login")).click(); //ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½
     }
     @Test
-    public void Step_02_Á¤º¸_±Ü¾î¿À±â() throws Exception {
-        driver.get("http://www.saramin.co.kr/zf_user/member/suited-recruit-mail/list");  //Á¢¼ÓÇÒ »çÀÌÆ®
-        WebElement tempList = driver.findElement(By.id("list_detail")); //Ã¤¿ë ¸ñ·Ï °¡Á®¿È
-        List<WebElement> list = tempList.findElements(By.className("inner"));      //¸ñ·ÏÀ» ¸®½ºÆ®¿¡ ³Ö¾îµÒ
+    public void Step_02_scraping() throws Exception {
+        driver.get("http://www.saramin.co.kr/zf_user/member/suited-recruit-mail/list");  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
+        WebElement tempList = driver.findElement(By.id("list_detail")); //Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        List<WebElement> list = tempList.findElements(By.className("inner"));      //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½
         List<String> listOfRecruitLink = new ArrayList(); 
         for(WebElement inner : list ) {
         	List<WebElement> companyInfo=inner.findElements(By.className("company_name"));
         	for(WebElement info  : companyInfo) {
-        		System.out.println("info.getText() È¸»çÀÌ¸§ : "+info.getText() );
+        		System.out.println("info.getText() È¸ï¿½ï¿½ï¿½Ì¸ï¿½ : "+info.getText() );
         		WebElement javascript_link= info.findElement(By.tagName("a"));
 //        		System.out.println("javascript_link : "+javascript_link.getAttribute("href"));
         		String Link= show_detail_contents( javascript_link.getAttribute("href"));
@@ -92,58 +92,58 @@ public class saraminTest {
         	}
         }
 
-        //º»°ÝÀûÀ¸·Î parsingÇÒ ºÎºÐ.
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ parsingï¿½ï¿½ ï¿½Îºï¿½.
         for(String link : listOfRecruitLink) {
 //        	System.out.println("lets parse"+"http://www.saramin.co.kr/"+link);
         	driver.get("http://www.saramin.co.kr"+link); 
         	WebElement table = driver.findElement(By.className("table_summary")); 
         	System.out.println("it doen");
     		WebElement recruit_guideline_preferred= table.findElement(By.tagName("recruit_guideline_preferred"));
-    		System.out.println("ÀÚ°Ý¿ä°Ç ¹× ¿ì´ë»çÇ× : "+ recruit_guideline_preferred.getText());
+    		System.out.println("ï¿½Ú°Ý¿ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : "+ recruit_guideline_preferred.getText());
         }
 
         	 
 //         
-//        for(String Handle : driver.getWindowHandles())  //»õÃ¢À¸·Î ½ºÀ§Äª
+//        for(String Handle : driver.getWindowHandles())  //ï¿½ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Äª
 //            driver.switchTo().window(Handle);
-//        driver.findElement(By.xpath("//*[@id='main_top_2']/div[1]/fieldset[1]/div/a/img")).click();//Áú¹®ÇÏ±â Å¬¸¯
+//        driver.findElement(By.xpath("//*[@id='main_top_2']/div[1]/fieldset[1]/div/a/img")).click();//ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ Å¬ï¿½ï¿½
 //         
-//        driver.switchTo().frame("editor");  //Áú¹®ÇÏ±â ÀÔ·ÂÃ¢ iframeÀ¸·Î ½ºÀ§Äª
+//        driver.switchTo().frame("editor");  //ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ô·ï¿½Ã¢ iframeï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Äª
 //         
-//        driver.findElement(By.xpath("//*[@id='title']")).sendKeys("¿øÅõ¾²¸®Æ÷"); //Á¦¸ñÀÔ·Â
-//        driver.switchTo().frame("SmartEditorIframe");                       //³»¿ëÀÔ·Â Ã¢ iframe ½ºÀ§Äª
-//        driver.findElement(By.cssSelector("body")).sendKeys("ÀÏÀÌ»ï»ç");        //³»¿ëÀÔ·Â
+//        driver.findElement(By.xpath("//*[@id='title']")).sendKeys("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"); //ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½
+//        driver.switchTo().frame("SmartEditorIframe");                       //ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ Ã¢ iframe ï¿½ï¿½ï¿½ï¿½Äª
+//        driver.findElement(By.cssSelector("body")).sendKeys("ï¿½ï¿½ï¿½Ì»ï¿½ï¿½");        //ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½
 //         
-//        driver.switchTo().defaultContent();                                 //½ºÀ§Äª ÃÊ±âÈ­
-//        //´Ù½Ã Áú¹®ÇÏ±â Ã¢ iframe ½ºÀ§Äª
+//        driver.switchTo().defaultContent();                                 //ï¿½ï¿½ï¿½ï¿½Äª ï¿½Ê±ï¿½È­
+//        //ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ Ã¢ iframe ï¿½ï¿½ï¿½ï¿½Äª
 //        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='editor']")));
 //         
 //         
 //         
-//        driver.findElement(By.xpath("//*[@id='au_submit_button']/div[2]/a[1]/img")).click();  //ÀÓ½ÃÀúÀå Å¬¸¯
+//        driver.findElement(By.xpath("//*[@id='au_submit_button']/div[2]/a[1]/img")).click();  //ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½
 //         
-//        String num = driver.findElement(By.id("temporary_save_count")).getText();   //ÇöÀç ÀÓ½ÃÀúÀå ±Û ¼ö Ä«¿îÆ® ÃßÃâ
+//        String num = driver.findElement(By.id("temporary_save_count")).getText();   //ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 //         
-//        Thread.sleep(1000);     //³Ê¹« »¡¶ó ¾ó·µ Ã¢ ³ëÃâÀÌ ¾ÈµÇ´Â °É ¹æÁöÇÏ±â À§ÇØ ½½¸³ Ãß°¡
+//        Thread.sleep(1000);     //ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ã¢ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇ´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 //         
-//        Alert alert = driver.switchTo().alert();            //¾ó·µ Ã¢À¸·Î ½ºÀ§Äª
-//        alertText = alert.getText();                        //¾ó·µ Ã¢ ¸Þ½ÃÁö ÃßÃâ
-//        alert.accept();                                     //¾ó·µ Ã¢ È®ÀÎ Å¬¸¯
-//        System.out.println(alertText);                      //¾ó¶ù Ã¢ ¸Þ½ÃÁö Ãâ·Â
+//        Alert alert = driver.switchTo().alert();            //ï¿½ï¿½ Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Äª
+//        alertText = alert.getText();                        //ï¿½ï¿½ Ã¢ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//        alert.accept();                                     //ï¿½ï¿½ Ã¢ È®ï¿½ï¿½ Å¬ï¿½ï¿½
+//        System.out.println(alertText);                      //ï¿½ï¿½ï¿½ Ã¢ ï¿½Þ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 //         
 //        Thread.sleep(1000);
 //         
-//        System.out.println("ÀÓ½ÃÀúÀå ±Û °³¼ö : "+num);
+//        System.out.println("ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : "+num);
 //         
-//        driver.findElement(By.xpath("//*[@id='title']")).clear();       //Áú¹® Á¦¸ñ »èÁ¦
-//        driver.findElement(By.xpath("//*[@id='title']")).sendKeys("ÆÄÀÌºê½Ä½º¼¼ºì¿¡ÀÕ"); //Áú¹® ´Ù½Ã ÀÔ·Â
+//        driver.findElement(By.xpath("//*[@id='title']")).clear();       //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//        driver.findElement(By.xpath("//*[@id='title']")).sendKeys("ï¿½ï¿½ï¿½Ìºï¿½Ä½ï¿½ï¿½ï¿½ï¿½ì¿¡ï¿½ï¿½"); //ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Ô·ï¿½
 //                 
 //         
 //         
-//        driver.switchTo().frame("SmartEditorIframe");                   //³»¿ë ÀÔ·Â Ã¢ iframe ½ºÀ§Äª
-//        driver.findElement(By.cssSelector("body")).sendKeys("¿ÀÀ°Ä¥ÆÈ");    //³»¿ëÀÔ·Â
-//        driver.switchTo().defaultContent();                             //Ã¢ ½ºÀ§Äª ÃÊ±âÈ­
-//        //´Ù½Ã Áú¹®ÇÏ±â Ã¢ iframe ½ºÀ§Äª
+//        driver.switchTo().frame("SmartEditorIframe");                   //ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ Ã¢ iframe ï¿½ï¿½ï¿½ï¿½Äª
+//        driver.findElement(By.cssSelector("body")).sendKeys("ï¿½ï¿½ï¿½ï¿½Ä¥ï¿½ï¿½");    //ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½
+//        driver.switchTo().defaultContent();                             //Ã¢ ï¿½ï¿½ï¿½ï¿½Äª ï¿½Ê±ï¿½È­
+//        //ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ Ã¢ iframe ï¿½ï¿½ï¿½ï¿½Äª
 //        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='editor']")));
 //         
 //        Thread.sleep(1000);
@@ -152,22 +152,22 @@ public class saraminTest {
     }
      
     @Test
-    public void Step_03_´ÙÀ½´Ü°è_Test () throws Exception {
+    public void Step_03_counting_Test () throws Exception {
     	
-//        driver.findElement(By.xpath("//img[@alt='´ÙÀ½´Ü°è']")).click(); //´ÙÀ½´Ü°è ¹öÆ° Å¬¸¯
+//        driver.findElement(By.xpath("//img[@alt='ï¿½ï¿½ï¿½ï¿½ï¿½Ü°ï¿½']")).click(); //ï¿½ï¿½ï¿½ï¿½ï¿½Ü°ï¿½ ï¿½ï¿½Æ° Å¬ï¿½ï¿½
 //         
-//        //Ä«Å×°í¸®
+//        //Ä«ï¿½×°ï¿½
 //        Thread.sleep(1000);
-//        driver.findElement(By.linkText("µð·ºÅä¸® Á÷Á¢ ¼±ÅÃ")).click();  //µð·ºÅä¸® Á÷Á¢¼±ÅÃ Å¬¸¯
+//        driver.findElement(By.linkText("ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")).click();  //ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½
 //         
 //         
-//        Select dropdown = new Select(driver.findElement(By.id("choose_dir_d1")));  //Ã¹¹øÂ° ¼¿·º ¹Ú½º¸¦ °¡Á®¿È
-//        dropdown.deselectAll();                 //¼±ÅÃ ¸ðµÎ ÃÊ±âÈ­
-//        dropdown.selectByValue("1");            //value 1ÀÎ °ªÀ» ¼±ÅÃ
+//        Select dropdown = new Select(driver.findElement(By.id("choose_dir_d1")));  //Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//        dropdown.deselectAll();                 //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+//        dropdown.selectByValue("1");            //value 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //         
 //         
-//        dropdown = new Select(driver.findElement(By.id("choose_dir_d2")));      //µÎ¹øÂ° ¼¿·º¹Ú½º °¡Á®¿È
-//        dropdown.deselectAll();                                                 //ÀÌÇÏ µ¿ÀÏ
+//        dropdown = new Select(driver.findElement(By.id("choose_dir_d2")));      //ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//        dropdown.deselectAll();                                                 //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //        dropdown.selectByValue("101");     
 //         
 //        dropdown = new Select(driver.findElement(By.id("choose_dir_d3")));
@@ -180,20 +180,20 @@ public class saraminTest {
 //         
 //        Thread.sleep(1000);
 //         
-//        driver.switchTo().defaultContent();             //Ã¢ ½ºÀ§Äª ÃÊ±âÈ­
-//        //Áú¹®ÇÏ±â Ã¢ iframe ½ºÀ§Äª
+//        driver.switchTo().defaultContent();             //Ã¢ ï¿½ï¿½ï¿½ï¿½Äª ï¿½Ê±ï¿½È­
+//        //ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ Ã¢ iframe ï¿½ï¿½ï¿½ï¿½Äª
 //        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='editor']")));
-//        driver.findElement(By.xpath("//*[@id='au_submit_button2']/div[2]/a[1]/img")).click();//ÀÓ½ÃÀúÀå Å¬¸¯
+//        driver.findElement(By.xpath("//*[@id='au_submit_button2']/div[2]/a[1]/img")).click();//ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½
 //         
 //        Thread.sleep(3000);
 //         
-//        Alert alert = driver.switchTo().alert();        //¾ó·µ Ã¢ ½ºÀ§Äª
+//        Alert alert = driver.switchTo().alert();        //ï¿½ï¿½ Ã¢ ï¿½ï¿½ï¿½ï¿½Äª
 //        alertText = alert.getText();
-//        alert.accept();                                 //¾ó·µ È®ÀÎ Å¬¸¯
-//        System.out.println("´Ù¸¥Á¦¸ñÀ¸·Î "+alertText);
+//        alert.accept();                                 //ï¿½ï¿½ È®ï¿½ï¿½ Å¬ï¿½ï¿½
+//        System.out.println("ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ "+alertText);
 //         
-//        String num = driver.findElement(By.id("temporary_save_count")).getText();  //ÀÓ½ÃÀúÀå Ä«¿îÆ® ÃßÃâ
-//        System.out.println("ÀÓ½ÃÀúÀå ±Û °³¼ö : "+num);
+//        String num = driver.findElement(By.id("temporary_save_count")).getText();  //ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+//        System.out.println("ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : "+num);
 //         
 //         
 //         
@@ -201,42 +201,42 @@ public class saraminTest {
     }
      
     @Test
-    public void Step_04_ÀÌÀü_±Û_ÀÓ½ÃÀúÀå_»èÁ¦_Test () throws Exception {
+    public void Step_04_analyze_Test () throws Exception {
 //         
-//        // ÀÓ½ÃÀúÀå Ã¢
-//        driver.findElement(By.className("_tempsave_open_close")).click();   //ÀÓ½ÃÀúÀå ±Û Å¬¸¯
+//        // ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¢
+//        driver.findElement(By.className("_tempsave_open_close")).click();   //ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å¬ï¿½ï¿½
 // 
-//        driver.switchTo().defaultContent();                                 //Ã¢ ÃÊ±âÈ­
-//        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='editor']"))); //Áú¹®ÇÏ±â iframe Ã¢ ½ºÀ§Äª
+//        driver.switchTo().defaultContent();                                 //Ã¢ ï¿½Ê±ï¿½È­
+//        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='editor']"))); //ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ iframe Ã¢ ï¿½ï¿½ï¿½ï¿½Äª
 // 
-//        String info = driver.findElement(By.className("info_tempsave")).getText(); //ÀÓ½ÃÀúÀå Ã¢ ¾È³» ±Û ÃßÃâ
-//        System.out.println("ÀÓ½ÃÀúÀå Ã¢ " + info);
+//        String info = driver.findElement(By.className("info_tempsave")).getText(); //ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¢ ï¿½È³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+//        System.out.println("ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¢ " + info);
 // 
-//        WebElement tempList = driver.findElement(By.className("tempsave_list")); //ÀÓ½ÃÀúÀå ±Û ¸ñ·Ï °¡Á®¿È
-//        List<WebElement> list = tempList.findElements(By.className("q_on"));      //¸ñ·ÏÀ» ¸®½ºÆ®¿¡ ³Ö¾îµÒ
+//        WebElement tempList = driver.findElement(By.className("tempsave_list")); //ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//        List<WebElement> list = tempList.findElements(By.className("q_on"));      //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½
 // 
-//        //ÀÌÀü ±ÛÀÌ´Ï±î 2¹øÂ°ÀÎ 1¹ø ¸ñ·Ï »èÁ¦ ¹öÆ°À» Å¬¸¯
+//        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´Ï±ï¿½ 2ï¿½ï¿½Â°ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°ï¿½ï¿½ Å¬ï¿½ï¿½
 //        list.get(1).findElement(By.tagName("img")).click();
 //        Thread.sleep(3000);
-//        Alert alert = driver.switchTo().alert();            //»èÁ¦ È®ÀÎ ¾ó·µ Ã¢
+//        Alert alert = driver.switchTo().alert();            //ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ ï¿½ï¿½ Ã¢
 //        alertText = alert.getText();
-//        alert.accept();                                     //È®ÀÎ Å¬¸¯
-//        System.out.println("ÀÌÀü" + alertText);
+//        alert.accept();                                     //È®ï¿½ï¿½ Å¬ï¿½ï¿½
+//        System.out.println("ï¿½ï¿½ï¿½ï¿½" + alertText);
 // 
          
          
     }
      
     @Test
-    public void Step_05_ÀÓ½ÃÀúÀå_»èÁ¦_Test () throws Exception {
-        /*******ÀÌÀü ±Û »èÁ¦¿Í µ¿ÀÏ*******/
+    public void Step_05_out_Test () throws Exception {
+        /*******ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*******/
 //        driver.switchTo().defaultContent();                            
 //        driver.switchTo().frame(driver.findElement(By.xpath("//*[@id='editor']")));
 // 
 //        WebElement tempList1 = driver.findElement(By.className("tempsave_list"));
 //        List<WebElement> list1 = tempList1.findElements(By.className("q_on"));
 // 
-//        //¿©±â¼­ ÇöÀç±Û »èÁ¦¸¦ À§ÇØ 1¹øÂ°ÀÎ 0¹øÂ° ¸ñ·Ï »èÁ¦¹öÆ° Å¬¸¯
+//        //ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½Â°ï¿½ï¿½ 0ï¿½ï¿½Â° ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ° Å¬ï¿½ï¿½
 //        list1.get(0).findElement(By.tagName("img")).click();   
 //        Thread.sleep(3000);
 //        Alert alert = driver.switchTo().alert();
@@ -247,7 +247,7 @@ public class saraminTest {
 //        Thread.sleep(1000);
 // 
 //        String num = driver.findElement(By.id("temporary_save_count")).getText();
-//        System.out.println("ÀÓ½ÃÀúÀå ±Û °³¼ö : " + num);
+//        System.out.println("ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + num);
 // 
 //        Thread.sleep(1000);
          
@@ -264,4 +264,4 @@ public class saraminTest {
 }
 
 
-//ÃâÃ³: http://yonoo88.tistory.com/603 [yonoo's]
+//ï¿½ï¿½Ã³: http://yonoo88.tistory.com/603 [yonoo's]
