@@ -27,6 +27,7 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/qna_board_write.jsp");
+			
 		} else if (command.equals("/BoardReplyAction.bo")) {
 			action = new BoardReplyAction();
 			try {
@@ -34,17 +35,28 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/BoardDeleteAction.bo")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/qna_board_delete.jsp");
-		} else if (command.equals("/BoardModifyAction.bo")) {
+			
+//		} else if (command.equals("/BoardDeleteAction.bo")) {
+//			action = new BoardDeleteAction();
+//			try {
+//				forward = action.execute(request, response);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}			
+			
+		} else if (command.equals("/BoardModifyView.bo")) {
 			action = new BoardModifyView();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/BoardAddAction.bo")) {
 			action = new BoardAddAction();
 			try {
@@ -52,6 +64,7 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/BoardReplyView.bo")) {
 			action = new BoardReplyView();
 			try {
@@ -59,23 +72,15 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/BoardModifyAction.bo")) {
-			System.out.println("수1");
 			action = new BoardModifyAction();
 			try {
 				forward = action.execute(request, response);
-				System.out.println("수2");
-			} catch (Exception e) {
-				System.out.println("수3");
-				e.printStackTrace();
-			}
-		} else if (command.equals("/BoardDeleteAction.bo")) {
-			action = new BoardDeleteAction();
-			try {
-				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/BoardListAction.bo")) {
 			action = new BoardListAction();
 			try {
@@ -83,7 +88,9 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
 		} else if (command.equals("/BoardDetailAction.bo")) {
+			 System.out.println("액션1");
 			action = new BoardDetailAction();
 			try {
 				forward = action.execute(request, response);

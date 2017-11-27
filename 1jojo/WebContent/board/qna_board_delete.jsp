@@ -5,7 +5,7 @@
 %>
 <html>
 <head>
-<title>MVC 게시판</title>
+<title>QnA 게시판</title>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
 	<script>

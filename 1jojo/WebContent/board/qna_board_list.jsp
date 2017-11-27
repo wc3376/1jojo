@@ -32,7 +32,7 @@
 <c:if test="${listcount > 0 }">
 
 	<tr align="center" valign="middle">
-		<td colspan="4">MVC 게시판</td>
+		<td colspan="4">QnA 게시판</td>
 		<td align=right>
 			<font size=2>글 개수 : ${listcount }</font>
 		</td>
@@ -182,7 +182,7 @@
 	<!-- 레코드가 없으면 -->
 	<c:if test="${listcount == 0 }">
 	<tr align="center" valign="middle">
-		<td colspan="4">MVC 게시판</td>
+		<td colspan="4">QnA게시판</td>
 		<td align=right>
 			<font size=2>등록된 글이 없습니다.</font>
 		</td>

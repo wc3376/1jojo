@@ -9,7 +9,7 @@
 
 <html>
 <head>
-	<title>MVC 게시판</title>
+	<title>QnA 게시판</title>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
 	<script>
@@ -42,7 +42,7 @@
 <input type="hidden" name=page value="${page}">
 <table cellpadding="0" cellspacing="0" align=center border=1>
 	<tr align="center" valign="middle">
-		<td colspan="5">MVC 게시판</td>
+		<td colspan="5">QnA 게시판</td>
 	</tr>
 	<tr>
 		<td height="16" style="font-family:돋음; font-size:12">
