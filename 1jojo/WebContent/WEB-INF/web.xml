@@ -6,9 +6,18 @@
 		<servlet-name>BoardFrontController</servlet-name>
 		<servlet-class>net.board.action.BoardFrontController</servlet-class>
 	</servlet>
+  	<servlet>
+		<servlet-name>CrawlFrontController</servlet-name>
+		<servlet-class>net.crawl.action.CrawlFrontController</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>BoardFrontController</servlet-name>
 		<url-pattern>*.bo</url-pattern>
+	</servlet-mapping>
+	
+		<servlet-mapping>
+		<servlet-name>CrawlFrontController</servlet-name>
+		<url-pattern>*.cr</url-pattern>
 	</servlet-mapping> 
 	
 	<welcome-file-list>
