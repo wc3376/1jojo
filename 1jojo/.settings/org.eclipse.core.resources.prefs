@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/net/board/action/BoardAddAction.java=UTF-8
+encoding//src/net/board/action/BoardDeleteAction.java=UTF-8
+encoding//src/net/board/action/BoardDetailAction.java=UTF-8
+encoding//src/net/board/action/BoardFrontController.java=UTF-8
+encoding//src/net/board/action/BoardListAction.java=UTF-8
+encoding//src/net/board/action/BoardModifyAction.java=UTF-8
+encoding//src/net/board/action/BoardModifyView.java=UTF-8

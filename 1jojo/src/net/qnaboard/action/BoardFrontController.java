@@ -1,4 +1,4 @@
-package net.board.action;
+package net.qnaboard.action;
 
 import java.io.IOException;
 
@@ -101,7 +101,7 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 		if (forward != null) {
 			if (forward.getRedirect()) { // true
 				response.sendRedirect(forward.getPath());
-			} else { // false 媛믪쟾�떖�씠 媛��뒫�븿
+			} else { // false 媛�?�쟾�떖�씠 媛��뒫�븿
 				RequestDispatcher dispatcher = request
 						.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);

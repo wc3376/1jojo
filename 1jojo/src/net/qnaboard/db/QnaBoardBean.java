@@ -1,4 +1,4 @@
-package net.board.db;
+package net.qnaboard.db;
 
 import java.sql.Date;
 

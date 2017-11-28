@@ -1,12 +1,11 @@
-package net.board.db;
+package net.forumboard.db;
 
 import java.sql.Date;
 
-public class QnaBoardBean {
+public class BoardBean {
 	private int board_num;
-	private int no;
-	private String id;
-	private String pw;
+	private String board_name;
+	private String board_pass;
 	private String board_subject;
 	private String board_content;
 	private String board_file;
@@ -22,23 +21,17 @@ public class QnaBoardBean {
 	public void setBoard_num(int board_num) {
 		this.board_num = board_num;
 	}
-	public int getNo() {
-		return no;
+	public String getBoard_name() {
+		return board_name;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setBoard_name(String board_name) {
+		this.board_name = board_name;
 	}
-	public String getId() {
-		return id;
+	public String getBoard_pass() {
+		return board_pass;
 	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getPw() {
-		return pw;
-	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setBoard_pass(String board_pass) {
+		this.board_pass = board_pass;
 	}
 	public String getBoard_subject() {
 		return board_subject;
@@ -87,5 +80,6 @@ public class QnaBoardBean {
 	}
 	public void setBoard_date(Date board_date) {
 		this.board_date = board_date;
-	}	
+	}
+
 }

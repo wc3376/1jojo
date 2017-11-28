@@ -1,8 +1,8 @@
-package net.board.db;
+package net.forumboard.db;
 
 import java.sql.Date;
 
-public class QnaBoardBean {
+public class ForumBoardBean {
 	private int board_num;
 	private int no;
 	private String id;
