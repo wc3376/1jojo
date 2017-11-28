@@ -36,18 +36,18 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/BoardDeleteAction.bo")) {
+		} else if (command.equals("/BoardDelete.bo")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/qna_board_delete.jsp");
 			
-//		} else if (command.equals("/BoardDeleteAction.bo")) {
-//			action = new BoardDeleteAction();
-//			try {
-//				forward = action.execute(request, response);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}			
+		} else if (command.equals("/BoardDeleteAction.bo")) {
+			action = new BoardDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 			
 		} else if (command.equals("/BoardModifyView.bo")) {
 			action = new BoardModifyView();
@@ -90,7 +90,6 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 			}
 			
 		} else if (command.equals("/BoardDetailAction.bo")) {
-			 System.out.println("액션1");
 			action = new BoardDetailAction();
 			try {
 				forward = action.execute(request, response);

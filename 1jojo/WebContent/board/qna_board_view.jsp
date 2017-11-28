@@ -85,7 +85,7 @@
 			<a href="./BoardModifyView.bo?num=${boarddata.board_num}&page=${page}">
 			[수정]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardDeleteAction.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./BoardDelete.bo?num=${boarddata.board_num}&page=${page}">
 			[삭제]</a>&nbsp;&nbsp;
 			
 			<a href="./BoardListAction.bo?page=${page}">
