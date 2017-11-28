@@ -17,7 +17,7 @@
 
 <html>
 <head>
-	<title>MVC 게시판</title>
+	<title>QnA 게시판</title>
 </head>
 
 <body>
