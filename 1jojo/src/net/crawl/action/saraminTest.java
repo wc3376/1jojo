@@ -1,11 +1,12 @@
 package net.crawl.action;
-
-
  
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
- 
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,15 +20,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import net.board.action.Action;
+import net.board.action.ActionForward;
  
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
  
-public class saraminTest {
+public class saraminTest implements Action{
     private static WebDriver driver;
     String Title = null;
     String URL = null;
     String alertText = "";
-
+    
     public String show_detail_contents(String javascript_link) {
 //      javascript: show_detail_contents('32329495', '', 'suited_recruit_01', 2, 'none') �̷��� ��ũ�� ����.
 //      �Ʒ��� �Լ��� �ش� ������ �� �� �Ʒ� ��ũ�� ���� ���� �ȴ�.
@@ -44,7 +48,7 @@ public class saraminTest {
     		params[1]="none";
     	}
     	link="/zf_user/jobs/relay/recruit-view?inner_source=saramin&inner_medium=pattern&inner_campaign=suited_list_"
-    				+params[3]+"&inner_term="+params[2]+"&view_type=tailor&rec_idx="+params[0]+"&recommend_ids="+params[1]+"&t_ref=suited_list&t_ref_content="+params[2];
+    			+params[3]+"&inner_term="+params[2]+"&view_type=tailor&rec_idx="+params[0]+"&recommend_ids="+params[1]+"&t_ref=suited_list&t_ref_content="+params[2];
 // ���� ���� �ڹٽ�ũ��Ʈ �ڵ�
 //			function show_detail_contents(rec_idx, recommend_ids, t_content, list_seq, last_param)
 //        {
@@ -60,6 +64,15 @@ public class saraminTest {
     	System.out.println(link);
     	return link;
     }
+    
+    @Override
+    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+    	
+    	
+    	return null;
+    }
+    
     
     @BeforeClass
     public static void setUp() throws Exception {
