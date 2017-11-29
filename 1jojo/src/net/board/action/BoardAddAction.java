@@ -19,7 +19,6 @@ public class BoardAddAction implements Action {
    		String saveFolder="boardUpload";   		
    		int fileSize=5*1024*1024;   		
    		realFolder=request.getRealPath(saveFolder);
-   		
    		boolean result=false;
    		
    		try{

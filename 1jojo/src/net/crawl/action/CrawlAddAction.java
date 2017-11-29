@@ -1,19 +1,17 @@
 package net.crawl.action;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -33,7 +31,7 @@ import net.crawl.db.search_re_com_qual_Bean;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-	@FixMethodOrder (MethodSorters.NAME_ASCENDING)
+//	@FixMethodOrder (MethodSorters.NAME_ASCENDING)
 public class CrawlAddAction implements Action {
 
 
@@ -157,60 +155,10 @@ public class CrawlAddAction implements Action {
 			}
 		}
 	}
-	 @BeforeClass
-	    public static void setUp() throws Exception {
-	        System.setProperty("webdriver.chrome.driver", "chromedriver.exe"); //ũ�� ����̹� ���� ��μ���
-	        driver = new ChromeDriver();
-	        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); //����ð� 5�ʼ���
-	        driver.get("https://www.saramin.co.kr/zf_user/auth?url=%2Fzf_user%2F");  //������ ����Ʈ
-	    }
-	    @Test
-	    public void Step_01_login_Test () throws Exception {
-	    	driver.findElement(By.name("id")).sendKeys("chlgudrbdn");  //ID
-	    	driver.findElement(By.name("password")).sendKeys("m6529194!"); //���
-	        driver.findElement(By.className("btn-login")).click(); //�α��� ��ư Ŭ��
-	    }
-	    @Test
-	    public void Step_02_scraping() throws Exception {
-	        driver.get("http://www.saramin.co.kr/zf_user/member/suited-recruit-mail/list");  //������ ����Ʈ
-	        WebElement tempList = driver.findElement(By.id("list_detail")); //ä�� ��� ������
-	        List<WebElement> list = tempList.findElements(By.className("inner"));      //����� ����Ʈ�� �־��
-	        List<String> listOfRecruitLink = new ArrayList(); 
-	        for(WebElement inner : list ) {
-	        	List<WebElement> companyInfo=inner.findElements(By.className("company_name"));
-	        	for(WebElement info  : companyInfo) {
-//	        		System.out.println("info.getText()  : "+info.getText() );
-	        		WebElement javascript_link= info.findElement(By.tagName("a"));
-//	        		System.out.println("javascript_link : "+javascript_link.getAttribute("href"));
-	        		String Link= show_detail_contents( javascript_link.getAttribute("href"));
-//	        		System.out.println("Link : "+Link);
-	        		listOfRecruitLink.add(Link);
-	        	}
-	        }
-	        
-//	        String[] noticeKeyword_preferred = {"우대", "자격", "조건"", 지원"지원", "우대", "자격", "조건"};
-//	        Arrays.sort(noticeKeyword_preferred);
-//	        System.out.println("noticeKeyword_preferred : "+Arrays.toString(noticeKeyword_preferred));
-	        //parsing
-	        int cnt = 0;
-	        for(String link : listOfRecruitLink) {
-	        	cnt++;
-	        	System.out.println("lets parse no"+cnt+". : \n"+"http://www.saramin.co.kr"+link);
-	        	driver.get("http://www.saramin.co.kr"+link);
-	        	WebElement table = driver.findElement(By.className("table_summary")); //일단 이것부터 찾는다. 대부분 근본이 이쪽을 따른다.
-	        	if(table.findElement(By.tagName("recruit_guideline_preferred")).getText()  != null) {//case1 'recruit_guideline_preferred' 태그가 있음.
-	        		String targetText = table.findElement(By.tagName("recruit_guideline_preferred")).getText();//이걸 찾는게 제일 빠르다.
-	        		//그냥 section에 detail_user_content란 클래스로 명명된 부분 하위 table> thead > th태그 중에 자격|우대 라는 단어가 있는 표 긁어오는 걸로 퉁치기로함 // 
-//	        		System.out.println("recruit_guideline_preferred : \n"+ targetText );
-
-	        		System.out.println("Parsing Test"); 
-	        		categorizer_with_recruit_guideline_preferred(targetText);
-	        		
-	        		
-	        	}else {
-	        		continue;
-	        	}
-	        }
+//	 @BeforeClass
+	    public void setUp() throws Exception {
+			//방법4. http://ohgyun.com/169
+			
 	    }
 //	    @AfterClass
 //	    public static void tearDown() throws Exception {
@@ -219,11 +167,98 @@ public class CrawlAddAction implements Action {
 	 
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("CrawlAddAction");
+//		방법1. http://mwultong.blogspot.com/2006/11/java-get-file-full-path-name.html
+//	    File f = new File("chromedriver.exe");
+//		try {
+//		      System.out.println("f.getCanonicalPath()"+f.getCanonicalPath());
+//		    } catch (IOException e) {
+//		      System.err.println(e);
+//		      System.exit(1);
+//		    }
+////		방법2. http://ggil.tistory.com/74
+//		  System.out.println("request.getContextPath()="+ request.getContextPath() ); // 출력문 '/MvcLogic' 나의 웹어플리케이션 프로젝트 명 
+//		  System.out.println( "request.getServletPath()="+ request.getServletPath()); // 출력문 '/Servlet/Controller' 앞에 웹플리케이션을 제외한 한 경로
+		  /*
+		   * 절대 경로를 구하는 메서드를 이용해서 request.getRealPath( "스트링" ); 메서드를 사용 했다
+		   * 나의 생각은 "스트링"이 파일명과 일치 해서 해당 파일이 있는 절대 경로를 뽑아 내는 줄로 잘못 알고있었다..
+		   * 하지만 실제로는 현제 웹어플리케이션 절대 경로 + 스트링 문자열 이다 !
+		   * 현재 나의  웹어플리케이션의 절대 경로를 알고 싶을 경우   request.getRealPath( "" )  빈값을 주면 된다. 
+		   */
+//
+//		saraminTest s = new saraminTest();
+//		saraminTest.setUp();
 		
-		System.out.println(System.IO.Directory.GetCurrentDirectory());
-		setUp();
-		Step_01_login_Test ();
-		Step_02_scraping();
+		HttpSession session = request.getSession();
+		String path = session.getServletContext().getRealPath("/");
+	    System.out.println("■path:::"+path);
+//		request.getSession().getServletContext().getRealPath("Chromewebdriver.exe");
+	    System.out.println(" CrawlAddAction.class.getResource().getPath() "+CrawlAddAction.class.getResource("").getPath());
+//		InputStream inStream = class.getClass().getClassLoader().getResourceAsStream("Web-INF/chromedriver.exe");		
+		
+		
+	    
+	    
+	    
+	    
+	    
+		
+		System.setProperty("webdriver.chrome.driver", path+"chromedriver.exe"); //ũ�� ����̹� ���� ��μ���
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); //����ð� 5�ʼ���
+        driver.get("https://www.saramin.co.kr/zf_user/auth?url=%2Fzf_user%2F");  //������ ����Ʈ
+//    }
+//    @Test
+//    public void Step_01_login_Test () throws Exception {
+    	driver.findElement(By.name("id")).sendKeys("chlgudrbdn");  //ID
+    	driver.findElement(By.name("password")).sendKeys("m6529194!"); //���
+        driver.findElement(By.className("btn-login")).click(); //�α��� ��ư Ŭ��
+//    }
+//    @Test
+//    public void Step_02_scraping() throws Exception {
+        driver.get("http://www.saramin.co.kr/zf_user/member/suited-recruit-mail/list");  //������ ����Ʈ
+        WebElement tempList = driver.findElement(By.id("list_detail")); //ä�� ��� ������
+        List<WebElement> list = tempList.findElements(By.className("inner"));      //����� ����Ʈ�� �־��
+        List<String> listOfRecruitLink = new ArrayList(); 
+        for(WebElement inner : list ) {
+        	List<WebElement> companyInfo=inner.findElements(By.className("company_name"));
+        	for(WebElement info  : companyInfo) {
+//        		System.out.println("info.getText()  : "+info.getText() );
+        		WebElement javascript_link= info.findElement(By.tagName("a"));
+//        		System.out.println("javascript_link : "+javascript_link.getAttribute("href"));
+        		String Link= show_detail_contents( javascript_link.getAttribute("href"));
+//        		System.out.println("Link : "+Link);
+        		listOfRecruitLink.add(Link);
+        	}
+        }
+        
+//        String[] noticeKeyword_preferred = {"우대", "자격", "조건"", 지원"지원", "우대", "자격", "조건"};
+//        Arrays.sort(noticeKeyword_preferred);
+//        System.out.println("noticeKeyword_preferred : "+Arrays.toString(noticeKeyword_preferred));
+        //parsing
+        int cnt = 0;
+        for(String link : listOfRecruitLink) {
+        	cnt++;
+        	System.out.println("lets parse no"+cnt+". : \n"+"http://www.saramin.co.kr"+link);
+        	driver.get("http://www.saramin.co.kr"+link);
+        	WebElement table = driver.findElement(By.className("table_summary")); //일단 이것부터 찾는다. 대부분 근본이 이쪽을 따른다.
+        	if(table.findElement(By.tagName("recruit_guideline_preferred")).getText()  != null) {//case1 'recruit_guideline_preferred' 태그가 있음.
+        		String targetText = table.findElement(By.tagName("recruit_guideline_preferred")).getText();//이걸 찾는게 제일 빠르다.
+        		//그냥 section에 detail_user_content란 클래스로 명명된 부분 하위 table> thead > th태그 중에 자격|우대 라는 단어가 있는 표 긁어오는 걸로 퉁치기로함 // 
+//        		System.out.println("recruit_guideline_preferred : \n"+ targetText );
+
+        		System.out.println("Parsing Test"); 
+        		categorizer_with_recruit_guideline_preferred(targetText);
+        		
+        		
+        	}else {
+        		continue;
+        	}
+        }
+        
+        
+        
+        
+//		setUp();
 		return null;
 		
 		

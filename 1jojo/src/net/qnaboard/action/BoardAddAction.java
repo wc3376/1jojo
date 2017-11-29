@@ -19,7 +19,6 @@ public class BoardAddAction implements Action {
    		String saveFolder="boardUpload";   		
    		int fileSize=5*1024*1024;   		
    		realFolder=request.getRealPath(saveFolder);
-   		
    		boolean result=false;
    		
    		try{
@@ -49,10 +48,10 @@ public class BoardAddAction implements Action {
 	   		
 	   		
 	   		/*if(result==false){
-	   			System.out.println("ê²Œì‹œ?Œ ?“±ë¡? ?‹¤?Œ¨");
+	   			System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½");
 	   			return null;
 	   		}
-	   		System.out.println("ê²Œì‹œ?Œ ?“±ë¡? ?™„ë£?");*/
+	   		System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ï¿½?");*/
 	   		
 	   		forward.setRedirect(true);
 	   		forward.setPath("./BoardListAction.bo");
