@@ -10,8 +10,7 @@
 <body>
 
 <h2>ID및 비밀번호</h2>
-<form action="/1jojo/CrawlAddAction.cr" method="post" 
-	enctype="multipart/form-data" name="boardform" >
+<form action="/1jojo/CrawlAddAction.cr" method="post"  name="boardform" >
 		아이디 : <input type="text" name="id" required="required" disabled="disabled" value="chlgudrbdn"><p> <%-- ${세션 데이터 SET된 것 가져와야함.} --%>
 		암호 : <input type="password" name="password" required="required" disabled="disabled" value="m6529194!"><p>
 	<p>해당 id가 실제로 사람인에서 사용하는 id와 비밀번호 입니까?</p>
