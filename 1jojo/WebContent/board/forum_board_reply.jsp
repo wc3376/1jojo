@@ -80,7 +80,7 @@
 			<div align="center">비밀번호</div>
 		</td>
 		<td>
-			<input name="BOARD_PASSWD" id="board_passwd" type="password">
+			<input name="BOARD_PASS" id="board_pass" type="password">
 		</td>
 	</tr>
 	

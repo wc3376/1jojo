@@ -9,7 +9,7 @@
 
 <html>
 <head>
-	<title>QnA 게시판</title>
+	<title>Forum게시판</title>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
 	<script>
@@ -37,12 +37,12 @@
 
 <body>
 <!-- 게시판 수정 -->
-<form action="/1jojo/BoardModifyAction.bo" method="post" name="modifyform">
+<form action="/1jojo/ForumBoardModifyAction.fo" method="post" name="modifyform">
 <input type="hidden" name="BOARD_NUM" value="${boarddata.board_num}">
 <input type="hidden" name=page value="${page}">
 <table cellpadding="0" cellspacing="0" align=center border=1>
 	<tr align="center" valign="middle">
-		<td colspan="5">QnA 게시판</td>
+		<td colspan="5">Forum 게시판</td>
 	</tr>
 	<tr>
 		<td height="16" style="font-family:돋음; font-size:12">

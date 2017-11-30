@@ -39,7 +39,7 @@ public class ForumBoardAddAction implements ForumAction {
    					new DefaultFileRenamePolicy());
    			
    			boarddata.setBoard_name(multi.getParameter("BOARD_NAME").trim());
-   			boarddata.setBoard_pass(multi.getParameter("BOARD_PASSWD").trim());
+   			boarddata.setBoard_pass(multi.getParameter("BOARD_PASS").trim());
 	   		boarddata.setBoard_subject(multi.getParameter("BOARD_SUBJECT").trim());
 	   		boarddata.setBoard_content(multi.getParameter("BOARD_CONTENT").trim());
 	   		boarddata.setBoard_file(multi.getFilesystemName((String)multi.getFileNames().nextElement()));

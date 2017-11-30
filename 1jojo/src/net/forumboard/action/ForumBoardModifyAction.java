@@ -51,7 +51,7 @@ import net.forumboard.db.ForumBoardDAOImpl;
 		   	 System.out.println("게시물 수정!");
 		   	 
 		   	 forward.setRedirect(true);
-		   	 forward.setPath("./ForumBoardDetailAction.bo?num="+boarddata.getBoard_num()+"&page="+page);
+		   	 forward.setPath("./ForumBoardDetailAction.fo?num="+boarddata.getBoard_num()+"&page="+page);
 		   	 return forward;
 	   	 }catch(Exception ex){
 	   			ex.printStackTrace();	 

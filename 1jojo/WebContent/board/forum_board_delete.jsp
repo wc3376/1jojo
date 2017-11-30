@@ -22,7 +22,7 @@
 
 </head>
 <body>
-<form name="deleteForm" action="./ForumBoardDeleteAction.bo?num=${param.num}" method="post">
+<form name="deleteForm" action="./ForumBoardDeleteAction.fo?num=${param.num}" method="post">
 <input type=hidden name=page value="${param.page}">
 <table border=1 align=center>
 <tr>
@@ -30,7 +30,7 @@
 		<font size=2>글 비밀번호 : </font>
 	</td>
 	<td>
-		<input name="BOARD_PASSWD" id="board_passwd" type="password">
+		<input name="BOARD_PASS" id="board_pass" type="password">
 	</td>
 </tr>
 <tr>

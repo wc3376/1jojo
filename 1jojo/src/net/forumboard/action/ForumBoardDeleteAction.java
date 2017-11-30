@@ -11,7 +11,6 @@ import net.forumboard.db.ForumBoardDAOImpl;
 public class ForumBoardDeleteAction implements ForumAction {
 	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) 
 	 	throws Exception{
-		 System.out.println("1");
 		 
 		response.setContentType("text/html;charset=utf-8");			
 		PrintWriter out=response.getWriter();//출력 ?��?���? 객체?��?��
@@ -43,7 +42,7 @@ public class ForumBoardDeleteAction implements ForumAction {
 	   	ForumBoardBean board = boarddao.forumgetBoardCont(num);
 	   	if(!board.getBoard_pass().equals(pass)){ //비번?�� ?��치하�? ?��?�� 경우
 	   		out.println("<script>");
-			out.println("alert('비번?�� ?��릅니?��!')");
+			out.println("alert('비버니다름다')");
 			out.println("history.go(-1)");
 			out.println("</script>");
 	   		out.close();
@@ -64,7 +63,7 @@ public class ForumBoardDeleteAction implements ForumAction {
 //	   	System.out.println("page="+page);
 	   	
 	   	forward.setRedirect(true);
-	   	forward.setPath("./ForumBoardListAction.bo?page="+page);
+	   	forward.setPath("./ForumBoardListAction.fo?page="+page);
 	   	return forward;	   	
 	   	
 	 }

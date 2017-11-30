@@ -29,8 +29,8 @@ public class ForumBoardReplyAction implements ForumAction {
 	   		boarddata.setBoard_re_seq(Integer.parseInt(request.getParameter("BOARD_RE_SEQ"))+1);
 	   		
 	   		boarddata.setBoard_num(Integer.parseInt(request.getParameter("BOARD_NUM")));
-	   		boarddata.setId(request.getParameter("BOARD_NAME"));
-	   		boarddata.setPw(request.getParameter("BOARD_PASS"));
+	   		boarddata.setBoard_name(request.getParameter("BOARD_NAME"));
+	   		boarddata.setBoard_pass(request.getParameter("BOARD_PASS"));
 	   		boarddata.setBoard_subject(request.getParameter("BOARD_SUBJECT"));
 	   		boarddata.setBoard_content(request.getParameter("BOARD_CONTENT"));	   		
 	   		
@@ -40,10 +40,10 @@ public class ForumBoardReplyAction implements ForumAction {
 //	   			System.out.println("?��?�� ?��?��");
 //	   			return null;
 //	   		}
-	   		System.out.println("?��?�� ?���?");
+	   		System.out.println("댓글부대!");
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./ForumBoardDetailAction.bo?num="+boarddata.getBoard_num()+"&page="+page);
+	   		forward.setPath("./ForumBoardDetailAction.fo?num="+boarddata.getBoard_num()+"&page="+page);
 //	   		forward.setPath("./BoardDetailAction.bo?num="+result+"&page="+page);
 	   		return forward;
 	}  	

@@ -8,8 +8,8 @@ import net.forumboard.db.ForumBoardBean;
 import net.forumboard.db.ForumBoardDAOImpl;
 
 public class ForumBoardReplyView implements ForumAction {
-	 public ForumActionForward excute(HttpServletRequest request,HttpServletResponse response) 
-	 	throws Exception{
+	public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) 
+			throws Exception{
 		 	ForumActionForward forward = new ForumActionForward();
 		 	
 //			BoardDAO1 boarddao=new BoardDAO1();
@@ -17,17 +17,16 @@ public class ForumBoardReplyView implements ForumAction {
 		 	ForumBoardBean boarddata=new ForumBoardBean();
 	   		
 	   		int num=Integer.parseInt(request.getParameter("num"));
-	   		System.out.println(num);
 	   		String page = request.getParameter("page");
 	   		
 //	   		boarddata=boarddao.getDetail(num);
 	   		boarddata=boarddao.forumgetBoardCont(num);
 	   		
 	   		if(boarddata==null){
-	   			System.out.println("수정페이지 진입 실패!");
+	   			System.out.println("리플 페이지 진입 실패!");
 	   			return null;
 	   		}
-	   		System.out.println("수정페이지 진입 성공!");
+	   		System.out.println("리플 페이지 진입 성공!");
 	   		
 	   		request.setAttribute("boarddata", boarddata);
 	   		request.setAttribute("page", page);
@@ -37,9 +36,4 @@ public class ForumBoardReplyView implements ForumAction {
 	   		return forward;
 	}
 
-	@Override
-	public ForumActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
