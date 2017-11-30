@@ -5,6 +5,7 @@
 
 	<typeAliases>
 		<typeAlias type="net.board.db.BoardBean" alias="board" />
+		<typeAlias type="m2member.m2memberDTO" alias="m2mem" />
 	</typeAliases>
 
 	<environments default="development">
@@ -21,6 +22,7 @@
 
 	<mappers>
 		<mapper resource="board.xml" />
+		<mapper resource="m2mem.xml" />
 	</mappers>
 
 </configuration>
