@@ -4,9 +4,12 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//@WebServlet("*.do") 
+@SuppressWarnings({ "unused", "serial" })
 public class BoardFrontController extends javax.servlet.http.HttpServlet
 		implements javax.servlet.Servlet {
 

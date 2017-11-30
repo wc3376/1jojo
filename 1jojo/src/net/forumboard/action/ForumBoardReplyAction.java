@@ -22,7 +22,7 @@ public class ForumBoardReplyAction implements ForumAction {
 	   		boarddata.setBoard_re_seq(Integer.parseInt(request.getParameter("BOARD_RE_SEQ")));
 	   		
 	   		//기존 ?���??�� board_re_seq값을 1증�? ?��?��
-	   		boarddao.refEdit(boarddata);
+	   		boarddao.forumrefEdit(boarddata);
 	   		
 	   		//?��로운 ?���??�� board_re_lev값과 board_re_seq값을 �?모보?�� 1증�??�� 값을 ?��?��?��?��
 	   		boarddata.setBoard_re_lev(Integer.parseInt(request.getParameter("BOARD_RE_LEV"))+1);
@@ -35,7 +35,7 @@ public class ForumBoardReplyAction implements ForumAction {
 	   		boarddata.setBoard_content(request.getParameter("BOARD_CONTENT"));	   		
 	   		
 //	   		result=boarddao.boardReply(boarddata);
-	   		boarddao.boardReplyOk(boarddata);
+	   		boarddao.forumboardReplyOk(boarddata);
 //	   		if(result==0){
 //	   			System.out.println("?��?�� ?��?��");
 //	   			return null;

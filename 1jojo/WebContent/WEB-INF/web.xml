@@ -30,12 +30,12 @@
 	
 	<servlet-mapping>
 		<servlet-name>ForumBoardFrontController</servlet-name>
-		<url-pattern>*.bo</url-pattern>
+		<url-pattern>*.fo</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
 		<servlet-name>QnaBoardFrontController</servlet-name>
-		<url-pattern>*.bo</url-pattern>
+		<url-pattern>*.qo</url-pattern>
 	</servlet-mapping>
 	
 		<servlet-mapping>

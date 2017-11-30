@@ -11,7 +11,8 @@ import net.forumboard.db.ForumBoardDAOImpl;
 
 public class ForumBoardAddAction implements ForumAction {
 	
-	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
+	 @SuppressWarnings("deprecation")
+	public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		
 		ForumBoardDAOImpl boarddao=new ForumBoardDAOImpl();
 		ForumBoardBean boarddata=new ForumBoardBean();	   	
@@ -24,7 +25,8 @@ public class ForumBoardAddAction implements ForumAction {
    		int fileSize=5*1024*1024;   		
    		realFolder=request.getRealPath(saveFolder);
    		
-   		boolean result=false;
+   		@SuppressWarnings("unused")
+		boolean result=false;
    		
    		try{
    			
@@ -37,7 +39,7 @@ public class ForumBoardAddAction implements ForumAction {
    					new DefaultFileRenamePolicy());
    			
    			boarddata.setBoard_name(multi.getParameter("BOARD_NAME").trim());
-   			boarddata.setBoard_pass(multi.getParameter("BOARD_PASS").trim());
+   			boarddata.setBoard_pass(multi.getParameter("BOARD_PASSWD").trim());
 	   		boarddata.setBoard_subject(multi.getParameter("BOARD_SUBJECT").trim());
 	   		boarddata.setBoard_content(multi.getParameter("BOARD_CONTENT").trim());
 	   		boarddata.setBoard_file(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
@@ -48,18 +50,18 @@ public class ForumBoardAddAction implements ForumAction {
 			System.out.println("content="+boarddata.getBoard_content());
 			System.out.println("file="+boarddata.getBoard_file());
 			 		
-			//boarddao.boardInsert(boarddata);
-			result=boarddao.forumboardInsert(boarddata);					
+			boarddao.forumboardInsert(boarddata);
+			//result=boarddao.forumboardInsert(boarddata);					
 			   		
 	   		
-	   		if(result==false){
+	   		/*if(result==false){
 	   			System.out.println("게시 등록 실패");
 	   			return null;
-	   		}
+	   		}*/
 	   		System.out.println("게시 등록 성공");
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./ForumBoardListAction.bo");
+	   		forward.setPath("./ForumBoardListAction.fo");
 	   		return forward;
 	   		
   		}catch(Exception ex){

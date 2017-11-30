@@ -1,18 +1,20 @@
 package net.forumboard.action;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 //import net.board.db.BoardDAO1;
-import net.board.db.BoardDAOImpl;
+import net.forumboard.db.ForumBoardDAOImpl;
 
  public class ForumBoardListAction implements ForumAction {
 	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
 //		BoardDAO boarddao=new BoardDAO();
-		BoardDAOImpl boarddao=new BoardDAOImpl();
+		ForumBoardDAOImpl boarddao=new ForumBoardDAOImpl();
+		@SuppressWarnings("rawtypes")
 		List boardlist=new ArrayList();
 		
 		int page=1; // ?��?�� ?��?���? 번호
@@ -22,9 +24,9 @@ import net.board.db.BoardDAOImpl;
 			page=Integer.parseInt(request.getParameter("page"));
 		}
 		
-		int listcount=boarddao.getListCount(); //�? 리스?�� ?���? 받아?��
+		int listcount=boarddao.forumgetListCount(); //�? 리스?�� ?���? 받아?��
 //		boardlist = boarddao.getBoardList(page,limit); //리스?���? 받아?��
-		boardlist = boarddao.getBoardList(page);
+		boardlist = boarddao.forumgetBoardList(page);
 		
 		//�? ?��?���? ?��
  		int maxpage=(int)((double)listcount/limit+0.95); //0.95�? ?��?��?�� ?���? 처리
@@ -37,7 +39,8 @@ import net.board.db.BoardDAOImpl;
 
  		if(endpage> maxpage) endpage= maxpage;
  		
- 		int number = listcount-(page-1)*10; 		
+ 		@SuppressWarnings("unused")
+		int number = listcount-(page-1)*10; 		
  		
  		request.setAttribute("page", page); //?��?�� ?��?���? ?��
  		request.setAttribute("maxpage", maxpage); //최�? ?��?���? ?��
@@ -48,7 +51,7 @@ import net.board.db.BoardDAOImpl;
 		
 		ForumActionForward forward= new ForumActionForward();
 	 	forward.setRedirect(false);
- 		forward.setPath("/board/Forum_board_list.jsp");
+ 		forward.setPath("/board/forum_board_list.jsp");
  		return forward;
 	 }
  }

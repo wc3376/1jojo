@@ -40,7 +40,7 @@ public class ForumBoardDAOImpl {
 			System.out.println("content1="+forumboard.getBoard_content());
 			System.out.println("file1="+forumboard.getBoard_file());			
 			
-			result=session.insert("board.board_insert", forumboard);
+			result=session.insert("forumboard.board_insert", forumboard);
 			System.out.println("result="+result);
 		}catch(Exception e){
 			System.out.println("result="+result);
@@ -54,7 +54,7 @@ public class ForumBoardDAOImpl {
 		int count = 0;
 		SqlSession session=null;
 		session = getSession();
-		count = ((Integer) session.selectOne("board.board_count")).intValue();	
+		count = ((Integer) session.selectOne("forumboard.board_count")).intValue();	
 		 
 		return count;
 	}
@@ -63,7 +63,8 @@ public class ForumBoardDAOImpl {
 	public List<ForumBoardBean> forumgetBoardList(int  page)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<ForumBoardBean>  list = session.selectList("board.board_list", page);
+		@SuppressWarnings("unchecked")
+		List<ForumBoardBean>  list = session.selectList("forumboard.board_list", page);
 	    return list;
 	}	
 
@@ -71,7 +72,7 @@ public class ForumBoardDAOImpl {
 	public void forumboardHit(int board_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.update("board.board_hit", board_num);
+		session.update("forumboard.board_hit", board_num);
 	}
 	
 	
@@ -79,35 +80,35 @@ public class ForumBoardDAOImpl {
 	public ForumBoardBean forumgetBoardCont(int board_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		return (ForumBoardBean) session.selectOne("board.board_cont", board_num);
+		return (ForumBoardBean) session.selectOne("forumboard.board_cont", board_num);
 	}	
 
 	/* Í≤åÏãúÎ¨? ?àò?†ï */
 	public void forumboardEdit(ForumBoardBean board) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.update("board.board_edit", board);
+		session.update("forumboard.board_edit", board);
 	}
 
 	/* Í≤åÏãúÎ¨? ?Ç≠?†ú */
 	public void forumboardDelete(int board_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.delete("board.board_del", board_num);
+		session.delete("forumboard.board_del", board_num);
 	}
 
 	/* ?ãµÎ≥?Í∏? ?†àÎ≤? Ï¶ùÍ? */
 	public void forumrefEdit(ForumBoardBean board) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.update("board.board_Level", board);
+		session.update("forumboard.board_Level", board);
 	}
 
 	/* ?ãµÎ≥?Í∏? ???û• */
 	public void forumboardReplyOk(ForumBoardBean board) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.insert("board_reply", board);
+		session.insert("forumboard.board_reply", board);
 	}
 	
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@ page import="net.board.db.*" %>
+<%@ page import="net.forumboard.db.*" %>
 <%
 //	BoardBean board=(BoardBean)request.getAttribute("boarddata");
 //	String nowpage = (String)request.getAttribute("page");
@@ -7,7 +7,7 @@
 
 <html>
 <head>
-	<title>QnA 게시판</title>
+	<title>Forum 게시판</title>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
 	<script>
@@ -39,7 +39,7 @@
 </head>
 <body>
 
-<form action="/1jojo/BoardReplyAction.bo" method="post" name="boardform">
+<form action="/1jojo/ForumBoardReplyAction.fo" method="post" name="boardform">
 <input type="hidden" name="BOARD_NUM" value="${boarddata.board_num}">
 <input type="hidden" name="BOARD_RE_REF" value="${boarddata.board_re_ref}">
 <input type="hidden" name="BOARD_RE_LEV" value="${boarddata.board_re_lev}">
@@ -48,7 +48,7 @@
 
 <table cellpadding="0" cellspacing="0" align=center border=1>
 	<tr align="center" valign="middle">
-		<td colspan="5">QnA 게시판</td>
+		<td colspan="5">Forum 게시판</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
@@ -80,7 +80,7 @@
 			<div align="center">비밀번호</div>
 		</td>
 		<td>
-			<input name="BOARD_PASS" id="board_pass" type="password">
+			<input name="BOARD_PASSWD" id="board_passwd" type="password">
 		</td>
 	</tr>
 	

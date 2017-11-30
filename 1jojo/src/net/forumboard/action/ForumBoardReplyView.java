@@ -17,22 +17,23 @@ public class ForumBoardReplyView implements ForumAction {
 		 	ForumBoardBean boarddata=new ForumBoardBean();
 	   		
 	   		int num=Integer.parseInt(request.getParameter("num"));
+	   		System.out.println(num);
 	   		String page = request.getParameter("page");
 	   		
 //	   		boarddata=boarddao.getDetail(num);
-	   		boarddata=boarddao.getBoardCont(num);
+	   		boarddata=boarddao.forumgetBoardCont(num);
 	   		
 	   		if(boarddata==null){
-	   			System.out.println("?��?�� ?��?���? ?��?�� ?��?��");
+	   			System.out.println("수정페이지 진입 실패!");
 	   			return null;
 	   		}
-	   		System.out.println("?��?�� ?��?���? ?��?�� ?���?");
+	   		System.out.println("수정페이지 진입 성공!");
 	   		
 	   		request.setAttribute("boarddata", boarddata);
 	   		request.setAttribute("page", page);
 	   		
 	   		forward.setRedirect(false);
-	   		forward.setPath("./board/Forum_board_reply.jsp");
+	   		forward.setPath("./board/forum_board_reply.jsp");
 	   		return forward;
 	}
 

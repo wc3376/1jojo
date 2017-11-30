@@ -5,7 +5,8 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.board.db.*;
+import net.forumboard.db.ForumBoardBean;
+import net.forumboard.db.ForumBoardDAOImpl;
 
 public class ForumBoardDeleteAction implements ForumAction {
 	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) 
@@ -24,7 +25,7 @@ public class ForumBoardDeleteAction implements ForumAction {
 	   	String page = request.getParameter("page");
 	   	String pass = request.getParameter("BOARD_PASS");
 	   	
-	   	BoardDAOImpl boarddao=new BoardDAOImpl();
+	   	ForumBoardDAOImpl boarddao=new ForumBoardDAOImpl();
 //	   	BoardDAO1 boarddao=new BoardDAO1();	   	
 //	   	usercheck=boarddao.isBoardWriter(num, pass);//	   	
 //	   	if(usercheck==false){
@@ -39,7 +40,7 @@ public class ForumBoardDeleteAction implements ForumAction {
 //	   		return null;
 //	   	}
 	   	
-	   	BoardBean board = boarddao.getBoardCont(num);
+	   	ForumBoardBean board = boarddao.forumgetBoardCont(num);
 	   	if(!board.getBoard_pass().equals(pass)){ //비번?�� ?��치하�? ?��?�� 경우
 	   		out.println("<script>");
 			out.println("alert('비번?�� ?��릅니?��!')");
@@ -51,7 +52,7 @@ public class ForumBoardDeleteAction implements ForumAction {
 	   	}else{   	
 	   	
 //	   	    result=boarddao.boardDelete(num);
-	   		boarddao.boardDelete(num);
+	   		boarddao.forumboardDelete(num);
 	   	}// else end
 	   	
 //	   	if(result==false){

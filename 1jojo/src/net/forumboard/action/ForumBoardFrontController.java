@@ -23,49 +23,12 @@ public class ForumBoardFrontController extends javax.servlet.http.HttpServlet
 		System.out.println("contextPath=" + contextPath);
 		System.out.println("command=" + command);
 
-		if (command.equals("/ForumBoardWrite.bo")) {
+		if (command.equals("/ForumBoardWrite.fo")) {
 			forward = new ForumActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/forum_board_write.jsp");
 			
-		} else if (command.equals("/ForumBoardReplyAction.bo")) {
-			action = new ForumBoardReplyAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		} else if (command.equals("/ForumBoardDelete.bo")) {
-			forward = new ForumActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./board/forum_board_delete.jsp");
-			
-		} else if (command.equals("/ForumBoardDeleteAction.bo")) {
-			action = new ForumBoardDeleteAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}			
-			
-		} else if (command.equals("/ForumBoardModifyView.bo")) {
-			action = new ForumBoardModifyView();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		} else if (command.equals("/ForumBoardAddAction.bo")) {
-			action = new ForumBoardAddAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		} else if (command.equals("/ForumBoardReplyView.bo")) {
+		} else if (command.equals("/ForumBoardReplyView.fo")) {
 			action = new ForumBoardReplyView();
 			try {
 				forward = action.execute(request, response);
@@ -73,7 +36,44 @@ public class ForumBoardFrontController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/ForumBoardModifyAction.bo")) {
+		} else if (command.equals("/ForumBoardReplyAction.fo")) {
+			action = new ForumBoardReplyAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if (command.equals("/ForumBoardDelete.fo")) {
+			forward = new ForumActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./board/forum_board_delete.jsp");
+			
+		} else if (command.equals("/ForumBoardDeleteAction.fo")) {
+			action = new ForumBoardDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+			
+		} else if (command.equals("/ForumBoardModifyView.fo")) {
+			action = new ForumBoardModifyView();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if (command.equals("/ForumBoardAddAction.fo")) {
+			action = new ForumBoardAddAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if (command.equals("/ForumBoardModifyAction.fo")) {
 			action = new ForumBoardModifyAction();
 			try {
 				forward = action.execute(request, response);
@@ -81,7 +81,7 @@ public class ForumBoardFrontController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/ForumBoardListAction.bo")) {
+		} else if (command.equals("/ForumBoardListAction.fo")) {
 			action = new ForumBoardListAction();
 			try {
 				forward = action.execute(request, response);
@@ -89,7 +89,7 @@ public class ForumBoardFrontController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/ForumBoardDetailAction.bo")) {
+		} else if (command.equals("/ForumBoardDetailAction.fo")) {
 			action = new ForumBoardDetailAction();
 			try {
 				forward = action.execute(request, response);

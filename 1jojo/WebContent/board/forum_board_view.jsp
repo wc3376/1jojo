@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@ page import="net.board.db.*" %>
+<%@ page import="net.forumboard.db.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -9,14 +9,14 @@
 
 <html>
 <head>
-	<title>QnA 게시판</title>
+	<title>Forum 게시판</title>
 </head>
 
 <body>
 <!-- 게시판 수정 -->
 <table cellpadding="0" cellspacing="0" align=center border=1>
 	<tr align="center" valign="middle">
-		<td colspan="5">QnA 게시판</td>
+		<td colspan="5">Forum 게시판</td>
 	</tr>
 	
 	<tr>
@@ -79,16 +79,16 @@
 	<tr align="center" valign="middle">
 		<td colspan="5">
 			<font size=2>
-			<a href="./BoardReplyView.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./ForumBoardReplyView.fo?num=${boarddata.board_num}&page=${page}">
 			[답변]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardModifyView.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./ForumBoardModifyView.fo?num=${boarddata.board_num}&page=${page}">
 			[수정]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardDelete.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./ForumBoardDelete.fo?num=${boarddata.board_num}&page=${page}">
 			[삭제]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardListAction.bo?page=${page}">
+			<a href="./ForumBoardListAction.fo?page=${page}">
 			[목록]</a>&nbsp;&nbsp;			
 			</font>
 		</td>

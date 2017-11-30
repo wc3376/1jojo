@@ -1,11 +1,10 @@
 package net.forumboard.action;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.board.db.*;
+import net.forumboard.db.ForumBoardBean;
+import net.forumboard.db.ForumBoardDAOImpl;
 
  public class ForumBoardModifyAction implements ForumAction {
 	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response)throws Exception{
@@ -13,14 +12,16 @@ import net.board.db.*;
 		 request.setCharacterEncoding("utf-8");
 		 ForumActionForward forward = new ForumActionForward();
 		 
-		 boolean result = false;
+		 @SuppressWarnings("unused")
+		boolean result = false;
 		 int num=Integer.parseInt(request.getParameter("BOARD_NUM"));
 		 String page = request.getParameter("page");
-		 String pass = request.getParameter("BOARD_PASS");
+		 @SuppressWarnings("unused")
+		String pass = request.getParameter("BOARD_PASS");
 		 
-		 BoardDAOImpl boarddao=new BoardDAOImpl();
+		 ForumBoardDAOImpl boarddao=new ForumBoardDAOImpl();
 //		 BoardDAO boarddao=new BoardDAO();
-		 BoardBean boarddata=new BoardBean();
+		 ForumBoardBean boarddata=new ForumBoardBean();
 		 
 		 // 비�?번호 ?���? ?���? ?���?
 		 /*boolean usercheck=boarddao.isBoardWriter(num, pass);
@@ -42,12 +43,12 @@ import net.board.db.*;
 			 boarddata.setBoard_content(request.getParameter("BOARD_CONTENT"));
 			 
 		//	 result = boarddao.boardModify(boarddata);
-			 boarddao.boardEdit(boarddata);
+			 boarddao.forumboardEdit(boarddata);
 			 /*if(result==false){
 		   		System.out.println("게시?�� ?��?�� ?��?��");
 		   		return null;
 		   	 }*/
-		   	 System.out.println("게시?�� ?��?�� ?���?");
+		   	 System.out.println("게시물 수정!");
 		   	 
 		   	 forward.setRedirect(true);
 		   	 forward.setPath("./ForumBoardDetailAction.bo?num="+boarddata.getBoard_num()+"&page="+page);
