@@ -5,6 +5,8 @@ import java.sql.Date;
 public class ForumBoardBean {
 	private int board_num;
 	private int no;
+	private String board_name;
+	private String board_pass;
 	private String id;
 	private String pw;
 	private String board_subject;
@@ -27,6 +29,18 @@ public class ForumBoardBean {
 	}
 	public void setNo(int no) {
 		this.no = no;
+	}
+	public String getBoard_name() {
+		return board_name;
+	}
+	public void setBoard_name(String board_name) {
+		this.board_name = board_name;
+	}
+	public String getBoard_pass() {
+		return board_pass;
+	}
+	public void setBoard_pass(String board_pass) {
+		this.board_pass = board_pass;
 	}
 	public String getId() {
 		return id;

@@ -40,7 +40,7 @@ public class saraminTest {
     	temp=temp.replace("'", "");
     	temp=temp.replace(" ", "");
 //    	System.out.println(temp);
-
+    	
     	String[] params=temp.split(",", -1);
     	// params[0]=rec_idx, params[1]=recommend_ids, params[2]=t_content, params[3]=list_seq, params[4]=last_param
 //    	for(String s : params) System.out.println(s);// for check
@@ -147,6 +147,8 @@ public class saraminTest {
     @BeforeClass
     public static void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe"); //ũ�� ����̹� ���� ��μ���
+        
+        System.out.println(System.getProperty("user.dir")); 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS); //����ð� 5�ʼ���
         driver.get("https://www.saramin.co.kr/zf_user/auth?url=%2Fzf_user%2F");  //������ ����Ʈ

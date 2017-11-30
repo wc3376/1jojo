@@ -3,18 +3,22 @@ package net.forumboard.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.board.db.BoardBean;
-import net.board.db.BoardDAOImpl;
-
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class BoardAddAction implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		BoardDAOImpl boarddao=new BoardDAOImpl();
-	   	BoardBean boarddata=new BoardBean();
+import net.forumboard.db.ForumBoardBean;
+import net.forumboard.db.ForumBoardDAOImpl;
+
+public class ForumBoardAddAction implements ForumAction {
+	
+	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		
+		ForumBoardDAOImpl boarddao=new ForumBoardDAOImpl();
+		ForumBoardBean boarddata=new ForumBoardBean();	   	
+	   	ForumActionForward forward=new ForumActionForward();
 	   	
-	   	ActionForward forward=new ActionForward();
+	   	System.out.println("Í∞ùÏ≤¥ÏÉùÏÑ±");
+	   	
 		String realFolder="";
    		String saveFolder="boardUpload";   		
    		int fileSize=5*1024*1024;   		
@@ -44,18 +48,18 @@ public class BoardAddAction implements Action {
 			System.out.println("content="+boarddata.getBoard_content());
 			System.out.println("file="+boarddata.getBoard_file());
 			 		
-			boarddao.boardInsert(boarddata);
-//	   		result=boarddao.boardInsert(boarddata);
+			//boarddao.boardInsert(boarddata);
+			result=boarddao.forumboardInsert(boarddata);					
+			   		
 	   		
-	   		
-	   		/*if(result==false){
-	   			System.out.println("Í≤åÏãú?åê ?ì±Î°? ?ã§?å®");
+	   		if(result==false){
+	   			System.out.println("Í≤åÏãú Îì±Î°ù Ïã§Ìå®");
 	   			return null;
 	   		}
-	   		System.out.println("Í≤åÏãú?åê ?ì±Î°? ?ôÑÎ£?");*/
+	   		System.out.println("Í≤åÏãú Îì±Î°ù ÏÑ±Í≥µ");
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./BoardListAction.bo");
+	   		forward.setPath("./ForumBoardListAction.bo");
 	   		return forward;
 	   		
   		}catch(Exception ex){
