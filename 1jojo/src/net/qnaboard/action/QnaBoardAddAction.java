@@ -3,23 +3,30 @@ package net.qnaboard.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.board.db.BoardBean;
-import net.board.db.BoardDAOImpl;
-
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class BoardAddAction implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		BoardDAOImpl boarddao=new BoardDAOImpl();
-	   	BoardBean boarddata=new BoardBean();
+import net.qnaboard.db.QnaBoardBean;
+import net.qnaboard.db.QnaBoardDAOImpl;
+
+public class QnaBoardAddAction implements QnaAction {
+	
+	 @SuppressWarnings("deprecation")
+	public QnaActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		
+		QnaBoardDAOImpl boarddao=new QnaBoardDAOImpl();
+		QnaBoardBean boarddata=new QnaBoardBean();	   	
+	   	QnaActionForward forward=new QnaActionForward();
 	   	
-	   	ActionForward forward=new ActionForward();
+	   	System.out.println("°´Ã¼»ý¼º");
+	   	
 		String realFolder="";
    		String saveFolder="boardUpload";   		
    		int fileSize=5*1024*1024;   		
    		realFolder=request.getRealPath(saveFolder);
-   		boolean result=false;
+   		
+   		@SuppressWarnings("unused")
+		boolean result=false;
    		
    		try{
    			
@@ -43,18 +50,18 @@ public class BoardAddAction implements Action {
 			System.out.println("content="+boarddata.getBoard_content());
 			System.out.println("file="+boarddata.getBoard_file());
 			 		
-			boarddao.boardInsert(boarddata);
-//	   		result=boarddao.boardInsert(boarddata);
-	   		
+			boarddao.qnaboardInsert(boarddata);
+			//result=boarddao.qnaboardInsert(boarddata);					
+			   		
 	   		
 	   		/*if(result==false){
-	   			System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½");
+	   			System.out.println("°Ô½Ã µî·Ï ½ÇÆÐ");
 	   			return null;
-	   		}
-	   		System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ï¿½?");*/
+	   		}*/
+	   		System.out.println("°Ô½Ã µî·Ï ¼º°ø");
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./BoardListAction.bo");
+	   		forward.setPath("./QnaBoardListAction.qo");
 	   		return forward;
 	   		
   		}catch(Exception ex){

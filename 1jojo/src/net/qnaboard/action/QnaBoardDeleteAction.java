@@ -5,17 +5,17 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.board.db.*;
+import net.qnaboard.db.QnaBoardBean;
+import net.qnaboard.db.QnaBoardDAOImpl;
 
-public class BoardDeleteAction implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) 
+public class QnaBoardDeleteAction implements QnaAction {
+	 public QnaActionForward execute(HttpServletRequest request,HttpServletResponse response) 
 	 	throws Exception{
-		 System.out.println("1");
 		 
 		response.setContentType("text/html;charset=utf-8");			
-		PrintWriter out=response.getWriter();//ì¶œë ¥ ?Š¤?Š¸ë¦? ê°ì²´?ƒ?„±
+		PrintWriter out=response.getWriter();//ì¶œë ¥ ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ê°ì²´?ï¿½ï¿½?ï¿½ï¿½
 		 
-		ActionForward forward = new ActionForward();
+		QnaActionForward forward = new QnaActionForward();
 		request.setCharacterEncoding("utf-8");
 		
 //	   	boolean result=false;
@@ -24,14 +24,14 @@ public class BoardDeleteAction implements Action {
 	   	String page = request.getParameter("page");
 	   	String pass = request.getParameter("BOARD_PASS");
 	   	
-	   	BoardDAOImpl boarddao=new BoardDAOImpl();
+	   	QnaBoardDAOImpl boarddao=new QnaBoardDAOImpl();
 //	   	BoardDAO1 boarddao=new BoardDAO1();	   	
 //	   	usercheck=boarddao.isBoardWriter(num, pass);//	   	
 //	   	if(usercheck==false){
 //	   		response.setContentType("text/html;charset=utf-8");
 //	   		PrintWriter out=response.getWriter();
 //	   		out.println("<script>");
-//	   		out.println("alert('?‚­? œ?•  ê¶Œí•œ?´ ?—†?Šµ?‹ˆ?‹¤.');");
+//	   		out.println("alert('?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ê¶Œí•œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.');");
 ////	   		out.println("location.href='./BoardList.bo';");
 //	   		out.println("history.go(-1)");
 //	   		out.println("</script>");
@@ -39,10 +39,10 @@ public class BoardDeleteAction implements Action {
 //	   		return null;
 //	   	}
 	   	
-	   	BoardBean board = boarddao.getBoardCont(num);
-	   	if(!board.getBoard_pass().equals(pass)){ //ë¹„ë²ˆ?´ ?¼ì¹˜í•˜ì§? ?•Š?Š” ê²½ìš°
+	   	QnaBoardBean board = boarddao.qnagetBoardCont(num);
+	   	if(!board.getBoard_pass().equals(pass)){ //ë¹„ë²ˆ?ï¿½ï¿½ ?ï¿½ï¿½ì¹˜í•˜ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ê²½ìš°
 	   		out.println("<script>");
-			out.println("alert('ë¹„ë²ˆ?´ ?‹¤ë¦…ë‹ˆ?‹¤!')");
+			out.println("alert('ë¹„ë²„ë‹ˆë‹¤ë¦„ë‹¤')");
 			out.println("history.go(-1)");
 			out.println("</script>");
 	   		out.close();
@@ -51,19 +51,19 @@ public class BoardDeleteAction implements Action {
 	   	}else{   	
 	   	
 //	   	    result=boarddao.boardDelete(num);
-	   		boarddao.boardDelete(num);
+	   		boarddao.qnaboardDelete(num);
 	   	}// else end
 	   	
 //	   	if(result==false){
-//	   		System.out.println("ê²Œì‹œ?Œ ?‚­? œ ?‹¤?Œ¨");
+//	   		System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½");
 //	   		return null;
 //	   	}
 	   	
-//	   	System.out.println("ê²Œì‹œ?Œ ?‚­? œ ?„±ê³?");
+//	   	System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ï¿½?");
 //	   	System.out.println("page="+page);
 	   	
 	   	forward.setRedirect(true);
-	   	forward.setPath("./BoardListAction.bo?page="+page);
+	   	forward.setPath("./QnaBoardListAction.qo?page="+page);
 	   	return forward;	   	
 	   	
 	 }

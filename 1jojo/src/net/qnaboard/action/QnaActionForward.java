@@ -1,10 +1,10 @@
 package net.qnaboard.action;
 
-public class ActionForward {
+public class QnaActionForward {
 	private boolean isRedirect=false;
 	private String path=null;
 	
-	public boolean getRedirect(){
+	public boolean isRedirect(){
 		return isRedirect;
 	}
 	

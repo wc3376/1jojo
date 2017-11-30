@@ -22,7 +22,7 @@
 
 </head>
 <body>
-<form name="deleteForm" action="./BoardDeleteAction.bo?num=${param.num}" method="post">
+<form name="deleteForm" action="./QnaBoardDeleteAction.qo?num=${param.num}" method="post">
 <input type=hidden name=page value="${param.page}">
 <table border=1 align=center>
 <tr>

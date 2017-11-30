@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@ page import="net.board.db.*" %>
+<%@ page import="net.qnaboard.db.*" %>
 <%
 //	BoardBean board=(BoardBean)request.getAttribute("boarddata");
 //	String nowpage = (String)request.getAttribute("page");
@@ -39,7 +39,7 @@
 </head>
 <body>
 
-<form action="/1jojo/BoardReplyAction.bo" method="post" name="boardform">
+<form action="/1jojo/QnaBoardReplyAction.qo" method="post" name="boardform">
 <input type="hidden" name="BOARD_NUM" value="${boarddata.board_num}">
 <input type="hidden" name="BOARD_RE_REF" value="${boarddata.board_re_ref}">
 <input type="hidden" name="BOARD_RE_LEV" value="${boarddata.board_re_lev}">

@@ -3,29 +3,28 @@ package net.qnaboard.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import net.board.db.BoardDAO1;
-import net.board.db.BoardBean;
-import net.board.db.BoardDAOImpl;
+import net.qnaboard.db.QnaBoardBean;
+import net.qnaboard.db.QnaBoardDAOImpl;
 
-public class BoardModifyView implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		 	ActionForward forward = new ActionForward();
+public class QnaBoardModifyView implements QnaAction {
+	 public QnaActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		 QnaActionForward forward = new QnaActionForward();
 		 	request.setCharacterEncoding("utf-8");
 	   		
-		 	BoardDAOImpl boarddao=new BoardDAOImpl();
+		 	QnaBoardDAOImpl boarddao=new QnaBoardDAOImpl();
 //			BoardDAO boarddao=new BoardDAO();
-		   	BoardBean boarddata=new BoardBean();
+		 	QnaBoardBean boarddata=new QnaBoardBean();
 		   	
 			int num=Integer.parseInt(request.getParameter("num"));
 			String page = request.getParameter("page");
 //		   	boarddata=boarddao.getDetail(num);
-			boarddata=boarddao.getBoardCont(num);//Í∏? ?Ç¥?ö© 
+			boarddata=boarddao.qnagetBoardCont(num);//ÔøΩ? ?ÔøΩÔøΩ?ÔøΩÔøΩ 
 			
 		   	if(boarddata==null){
-		   		System.out.println("(?àò?†ï)?ÉÅ?Ñ∏Î≥¥Í∏∞ ?ã§?å®");
+		   		System.out.println("ÏàòÏ†ï Î≥¥Í∏∞ Ïã§Ìå®");
 		   		return null;
 		   	}
-		   	System.out.println("(?àò?†ï)?ÉÅ?Ñ∏Î≥¥Í∏∞ ?Ñ±Í≥?");
+		   	System.out.println("ÏàòÏ†ï Î≥¥Í∏∞ ÏÑ±Í≥µ");
 		   	
 		   	request.setAttribute("boarddata", boarddata);
 		    request.setAttribute("page", page);

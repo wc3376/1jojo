@@ -26,7 +26,7 @@
 <div class="container-fluid">
 <div class="row content">
   <h2>Vertical (basic) form</h2>
-  <form method=post action="/171122m2/MemberInsert.do">
+  <form method=post action="/1jojo/MemberInsert.do">
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">

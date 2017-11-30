@@ -27,3 +27,17 @@ select * from seq;
 select * from board222;
 
 delete from board222;
+
+
+
+insert into	qna_board values(	qna_board_seq.nextval, NULL, NULL, NULL,'테스트',
+		'1234',
+		'제목',
+		'하하',
+		NULL,
+		qna_board_seq.nextval,
+		0,
+		0,
+		0,
+		sysdate
+		);	

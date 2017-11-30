@@ -1,34 +1,35 @@
 package net.qnaboard.action;
 
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.board.db.*;
+import net.qnaboard.db.QnaBoardBean;
+import net.qnaboard.db.QnaBoardDAOImpl;
 
- public class BoardModifyAction implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response)throws Exception{
+ public class QnaBoardModifyAction implements QnaAction {
+	 public QnaActionForward execute(HttpServletRequest request,HttpServletResponse response)throws Exception{
 		 
 		 request.setCharacterEncoding("utf-8");
-		 ActionForward forward = new ActionForward();
+		 QnaActionForward forward = new QnaActionForward();
 		 
-		 boolean result = false;
+		 @SuppressWarnings("unused")
+		boolean result = false;
 		 int num=Integer.parseInt(request.getParameter("BOARD_NUM"));
 		 String page = request.getParameter("page");
-		 String pass = request.getParameter("BOARD_PASS");
+		 @SuppressWarnings("unused")
+		String pass = request.getParameter("BOARD_PASS");
 		 
-		 BoardDAOImpl boarddao=new BoardDAOImpl();
+		 QnaBoardDAOImpl boarddao=new QnaBoardDAOImpl();
 //		 BoardDAO boarddao=new BoardDAO();
-		 BoardBean boarddata=new BoardBean();
+		 QnaBoardBean boarddata=new QnaBoardBean();
 		 
-		 // ë¹„ë?ë²ˆí˜¸ ?¼ì¹? ?—¬ë¶? ?Œë³?
+		 // ë¹„ï¿½?ë²ˆí˜¸ ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ï¿½?
 		 /*boolean usercheck=boarddao.isBoardWriter(num, pass);
-		 if(usercheck==false){ // ë¹„ë?ë²ˆí˜¸ê°? ?¼ì¹˜í•˜ì§? ?•Š?Š” ê²½ìš°
+		 if(usercheck==false){ // ë¹„ï¿½?ë²ˆí˜¸ï¿½? ?ï¿½ï¿½ì¹˜í•˜ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ê²½ìš°
 		   		response.setContentType("text/html;charset=utf-8");
 		   		PrintWriter out=response.getWriter();
 		   		out.println("<script>");
-		   		out.println("alert('?ˆ˜? •?•  ê¶Œí•œ?´ ?—†?Šµ?‹ˆ?‹¤.');");
+		   		out.println("alert('?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ê¶Œí•œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.');");
 		   	//	out.println("location.href='./BoardList.bo';");
 		   		out.println("history.go(-1)");
 		   		out.println("</script>");
@@ -42,15 +43,15 @@ import net.board.db.*;
 			 boarddata.setBoard_content(request.getParameter("BOARD_CONTENT"));
 			 
 		//	 result = boarddao.boardModify(boarddata);
-			 boarddao.boardEdit(boarddata);
+			 boarddao.qnaboardEdit(boarddata);
 			 /*if(result==false){
-		   		System.out.println("ê²Œì‹œ?Œ ?ˆ˜? • ?‹¤?Œ¨");
+		   		System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½");
 		   		return null;
 		   	 }*/
-		   	 System.out.println("ê²Œì‹œ?Œ ?ˆ˜? • ?™„ë£?");
+		   	 System.out.println("ê²Œì‹œë¬¼ ìˆ˜ì •!");
 		   	 
 		   	 forward.setRedirect(true);
-		   	 forward.setPath("./BoardDetailAction.bo?num="+boarddata.getBoard_num()+"&page="+page);
+		   	 forward.setPath("./QnaBoardDetailAction.qo?num="+boarddata.getBoard_num()+"&page="+page);
 		   	 return forward;
 	   	 }catch(Exception ex){
 	   			ex.printStackTrace();	 

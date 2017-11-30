@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@ page import="net.board.db.*" %>
+<%@ page import="net.qnaboard.db.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -79,16 +79,16 @@
 	<tr align="center" valign="middle">
 		<td colspan="5">
 			<font size=2>
-			<a href="./BoardReplyView.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./QnaBoardReplyView.qo?num=${boarddata.board_num}&page=${page}">
 			[답변]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardModifyView.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./QnaBoardModifyView.qo?num=${boarddata.board_num}&page=${page}">
 			[수정]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardDelete.bo?num=${boarddata.board_num}&page=${page}">
+			<a href="./QnaBoardDelete.qo?num=${boarddata.board_num}&page=${page}">
 			[삭제]</a>&nbsp;&nbsp;
 			
-			<a href="./BoardListAction.bo?page=${page}">
+			<a href="./QnaBoardListAction.qo?page=${page}">
 			[목록]</a>&nbsp;&nbsp;			
 			</font>
 		</td>

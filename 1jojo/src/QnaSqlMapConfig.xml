@@ -4,7 +4,7 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias type="net.board.db.BoardBean" alias="board" />
+		<typeAlias type="net.qnaboard.db.QnaBoardBean" alias="board" />
 	</typeAliases>
 
 	<environments default="development">
@@ -20,7 +20,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="board.xml" />
+		<mapper resource="qnaboard.xml" />
 	</mappers>
 
 </configuration>

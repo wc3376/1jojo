@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@ page import="net.board.db.*" %>
+<%@ page import="net.qnaboard.db.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -37,7 +37,7 @@
 
 <body>
 <!-- 게시판 수정 -->
-<form action="/1jojo/BoardModifyAction.bo" method="post" name="modifyform">
+<form action="/1jojo/QnaBoardModifyAction.qo" method="post" name="modifyform">
 <input type="hidden" name="BOARD_NUM" value="${boarddata.board_num}">
 <input type="hidden" name=page value="${page}">
 <table cellpadding="0" cellspacing="0" align=center border=1>
