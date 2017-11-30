@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.board.db.BoardBean;
 import net.board.db.BoardDAOImpl;
 
- public class BoardDetailAction implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{ 
+ public class ForumBoardDetailAction implements ForumAction {
+	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{ 
 		request.setCharacterEncoding("utf-8");
    		
 		BoardDAOImpl boarddao=new BoardDAOImpl();
@@ -19,21 +19,21 @@ import net.board.db.BoardDAOImpl;
 
 //		boarddao.setReadCountUpdate(num);		
 //	   	boarddata=boarddao.getDetail(num);
-		boarddao.boardHit(num); //ì¡°íšŒ?ˆ˜ ì¦ê?
-		boarddata=boarddao.getBoardCont(num);//?‚´?š©ë³´ê¸°
+		boarddao.boardHit(num); //ì¡°íšŒ?ï¿½ï¿½ ì¦ï¿½?
+		boarddata=boarddao.getBoardCont(num);//?ï¿½ï¿½?ï¿½ï¿½ë³´ê¸°
 	   	
 	   	if(boarddata==null){
-	   		System.out.println("?ƒ?„¸ë³´ê¸° ?‹¤?Œ¨");
+	   		System.out.println("?ï¿½ï¿½?ï¿½ï¿½ë³´ê¸° ?ï¿½ï¿½?ï¿½ï¿½");
 	   		return null;
 	   	}
-	   	System.out.println("?ƒ?„¸ë³´ê¸° ?„±ê³?");
+	   	System.out.println("?ï¿½ï¿½?ï¿½ï¿½ë³´ê¸° ?ï¿½ï¿½ï¿½?");
 	   	
 	   	request.setAttribute("boarddata", boarddata);
 	   	request.setAttribute("page", page);
 	   
-	   	ActionForward forward = new ActionForward();
+	   	ForumActionForward forward = new ForumActionForward();
 	   	forward.setRedirect(false);
-   		forward.setPath("./board/qna_board_view.jsp");
+   		forward.setPath("./board/Forum_board_view.jsp");
    		return forward;
 
 	 }

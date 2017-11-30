@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.board.db.*;
 
- public class BoardModifyAction implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response)throws Exception{
+ public class ForumBoardModifyAction implements ForumAction {
+	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response)throws Exception{
 		 
 		 request.setCharacterEncoding("utf-8");
-		 ActionForward forward = new ActionForward();
+		 ForumActionForward forward = new ForumActionForward();
 		 
 		 boolean result = false;
 		 int num=Integer.parseInt(request.getParameter("BOARD_NUM"));
@@ -22,13 +22,13 @@ import net.board.db.*;
 //		 BoardDAO boarddao=new BoardDAO();
 		 BoardBean boarddata=new BoardBean();
 		 
-		 // ë¹„ë?ë²ˆí˜¸ ?¼ì¹? ?—¬ë¶? ?Œë³?
+		 // ë¹„ï¿½?ë²ˆí˜¸ ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ï¿½?
 		 /*boolean usercheck=boarddao.isBoardWriter(num, pass);
-		 if(usercheck==false){ // ë¹„ë?ë²ˆí˜¸ê°? ?¼ì¹˜í•˜ì§? ?•Š?Š” ê²½ìš°
+		 if(usercheck==false){ // ë¹„ï¿½?ë²ˆí˜¸ï¿½? ?ï¿½ï¿½ì¹˜í•˜ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ê²½ìš°
 		   		response.setContentType("text/html;charset=utf-8");
 		   		PrintWriter out=response.getWriter();
 		   		out.println("<script>");
-		   		out.println("alert('?ˆ˜? •?•  ê¶Œí•œ?´ ?—†?Šµ?‹ˆ?‹¤.');");
+		   		out.println("alert('?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ê¶Œí•œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.');");
 		   	//	out.println("location.href='./BoardList.bo';");
 		   		out.println("history.go(-1)");
 		   		out.println("</script>");
@@ -44,13 +44,13 @@ import net.board.db.*;
 		//	 result = boarddao.boardModify(boarddata);
 			 boarddao.boardEdit(boarddata);
 			 /*if(result==false){
-		   		System.out.println("ê²Œì‹œ?Œ ?ˆ˜? • ?‹¤?Œ¨");
+		   		System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½");
 		   		return null;
 		   	 }*/
-		   	 System.out.println("ê²Œì‹œ?Œ ?ˆ˜? • ?™„ë£?");
+		   	 System.out.println("ê²Œì‹œ?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ï¿½?");
 		   	 
 		   	 forward.setRedirect(true);
-		   	 forward.setPath("./BoardDetailAction.bo?num="+boarddata.getBoard_num()+"&page="+page);
+		   	 forward.setPath("./ForumBoardDetailAction.bo?num="+boarddata.getBoard_num()+"&page="+page);
 		   	 return forward;
 	   	 }catch(Exception ex){
 	   			ex.printStackTrace();	 

@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class BoardFrontController extends javax.servlet.http.HttpServlet
+public class ForumBoardFrontController extends javax.servlet.http.HttpServlet
 		implements javax.servlet.Servlet {
 
 	protected void doProcess(HttpServletRequest request,
@@ -16,81 +16,81 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 		String RequestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
 		String command = RequestURI.substring(contextPath.length());
-		ActionForward forward = null;
-		Action action = null;
+		ForumActionForward forward = null;
+		ForumAction action = null;
 
 		System.out.println("RequestURI=" + RequestURI);
 		System.out.println("contextPath=" + contextPath);
 		System.out.println("command=" + command);
 
-		if (command.equals("/BoardWrite.bo")) {
-			forward = new ActionForward();
+		if (command.equals("/ForumBoardWrite.bo")) {
+			forward = new ForumActionForward();
 			forward.setRedirect(false);
-			forward.setPath("./board/qna_board_write.jsp");
+			forward.setPath("./board/forum_board_write.jsp");
 			
-		} else if (command.equals("/BoardReplyAction.bo")) {
-			action = new BoardReplyAction();
+		} else if (command.equals("/ForumBoardReplyAction.bo")) {
+			action = new ForumBoardReplyAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/BoardDelete.bo")) {
-			forward = new ActionForward();
+		} else if (command.equals("/ForumBoardDelete.bo")) {
+			forward = new ForumActionForward();
 			forward.setRedirect(false);
-			forward.setPath("./board/qna_board_delete.jsp");
+			forward.setPath("./board/forum_board_delete.jsp");
 			
-		} else if (command.equals("/BoardDeleteAction.bo")) {
-			action = new BoardDeleteAction();
+		} else if (command.equals("/ForumBoardDeleteAction.bo")) {
+			action = new ForumBoardDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
 			
-		} else if (command.equals("/BoardModifyView.bo")) {
-			action = new BoardModifyView();
+		} else if (command.equals("/ForumBoardModifyView.bo")) {
+			action = new ForumBoardModifyView();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/BoardAddAction.bo")) {
-			action = new BoardAddAction();
+		} else if (command.equals("/ForumBoardAddAction.bo")) {
+			action = new ForumBoardAddAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/BoardReplyView.bo")) {
-			action = new BoardReplyView();
+		} else if (command.equals("/ForumBoardReplyView.bo")) {
+			action = new ForumBoardReplyView();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/BoardModifyAction.bo")) {
-			action = new BoardModifyAction();
+		} else if (command.equals("/ForumBoardModifyAction.bo")) {
+			action = new ForumBoardModifyAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/BoardListAction.bo")) {
-			action = new BoardListAction();
+		} else if (command.equals("/ForumBoardListAction.bo")) {
+			action = new ForumBoardListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-		} else if (command.equals("/BoardDetailAction.bo")) {
-			action = new BoardDetailAction();
+		} else if (command.equals("/ForumBoardDetailAction.bo")) {
+			action = new ForumBoardDetailAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -99,9 +99,9 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet
 		}
 
 		if (forward != null) {
-			if (forward.getRedirect()) { // true
+			if (forward.isRedirect()) { // true
 				response.sendRedirect(forward.getPath());
-			} else { // false 媛�?�쟾�떖�씠 媛��뒫�븿
+			} else { // false 媛�?�쟾�떖�씠 媛��뒫�븿
 				RequestDispatcher dispatcher = request
 						.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);

@@ -10,13 +10,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class BoardDAOImpl {
+public class ForumBoardDAOImpl {
 	
 	private SqlSession getSession() {
 		SqlSession session=null;
 		Reader reader=null;
 		try {
-			reader = Resources.getResourceAsReader("./SqlMapConfig.xml");
+			reader = Resources.getResourceAsReader("./ForumSqlMapConfig.xml");
 			SqlSessionFactory sf = new SqlSessionFactoryBuilder().build(reader);
 			session = sf.openSession(true);
 		} catch (IOException e) {
@@ -27,29 +27,30 @@ public class BoardDAOImpl {
 	
 	
 	/* ê²Œì‹œ?Œ ???¥ */
-	public void boardInsert(BoardBean board) {
+	public boolean forumboardInsert(ForumBoardBean forumboard) {
 		SqlSession session=null;
 		int result = 0;		
 		try{
 			session = getSession(); 
 			System.out.println("insert1");
 			
-			System.out.println("name1="+board.getBoard_name());
-			System.out.println("pass1="+board.getBoard_pass());
-			System.out.println("subject1="+board.getBoard_subject());
-			System.out.println("content1="+board.getBoard_content());
-			System.out.println("file1="+board.getBoard_file());			
+			System.out.println("name1="+forumboard.getBoard_name());
+			System.out.println("pass1="+forumboard.getBoard_pass());
+			System.out.println("subject1="+forumboard.getBoard_subject());
+			System.out.println("content1="+forumboard.getBoard_content());
+			System.out.println("file1="+forumboard.getBoard_file());			
 			
-			result=session.insert("board.board_insert", board);
+			result=session.insert("board.board_insert", forumboard);
 			System.out.println("result="+result);
 		}catch(Exception e){
 			System.out.println("result="+result);
 			System.out.println(e.getMessage());
-		}		
+		}
+		return false;		
 	}	
 	
 	/* ê²Œì‹œ?Œ ì´? ê²Œì‹œë¬? ?ˆ˜ */
-	public int getListCount() throws SQLException {
+	public int forumgetListCount() throws SQLException {
 		int count = 0;
 		SqlSession session=null;
 		session = getSession();
@@ -59,15 +60,15 @@ public class BoardDAOImpl {
 	}
 	
 	/* ê²Œì‹œë¬? ëª©ë¡ */
-	public List<BoardBean> getBoardList(int  page)	throws SQLException {
+	public List<ForumBoardBean> forumgetBoardList(int  page)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<BoardBean>  list = session.selectList("board.board_list", page);
+		List<ForumBoardBean>  list = session.selectList("board.board_list", page);
 	    return list;
 	}	
 
 	/* ê²Œì‹œ?Œ ì¡°íšŒ?ˆ˜ ì¦ê? */
-	public void boardHit(int board_num) throws SQLException {
+	public void forumboardHit(int board_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		session.update("board.board_hit", board_num);
@@ -75,35 +76,35 @@ public class BoardDAOImpl {
 	
 	
 	/* ê²Œì‹œ?Œ ê¸??‚´?š©ë³´ê¸° */
-	public BoardBean getBoardCont(int board_num) throws SQLException {
+	public ForumBoardBean forumgetBoardCont(int board_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		return (BoardBean) session.selectOne("board.board_cont", board_num);
+		return (ForumBoardBean) session.selectOne("board.board_cont", board_num);
 	}	
 
 	/* ê²Œì‹œë¬? ?ˆ˜? • */
-	public void boardEdit(BoardBean board) throws SQLException {
+	public void forumboardEdit(ForumBoardBean board) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		session.update("board.board_edit", board);
 	}
 
 	/* ê²Œì‹œë¬? ?‚­? œ */
-	public void boardDelete(int board_num) throws SQLException {
+	public void forumboardDelete(int board_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		session.delete("board.board_del", board_num);
 	}
 
 	/* ?‹µë³?ê¸? ? ˆë²? ì¦ê? */
-	public void refEdit(BoardBean board) throws SQLException {
+	public void forumrefEdit(ForumBoardBean board) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		session.update("board.board_Level", board);
 	}
 
 	/* ?‹µë³?ê¸? ???¥ */
-	public void boardReplyOk(BoardBean board) throws SQLException {
+	public void forumboardReplyOk(ForumBoardBean board) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		session.insert("board_reply", board);

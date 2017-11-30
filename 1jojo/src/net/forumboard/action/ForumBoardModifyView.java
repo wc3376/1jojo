@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import net.board.db.BoardBean;
 import net.board.db.BoardDAOImpl;
 
-public class BoardModifyView implements Action {
-	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		 	ActionForward forward = new ActionForward();
+public class ForumBoardModifyView implements ForumAction {
+	 public ForumActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		 ForumActionForward forward = new ForumActionForward();
 		 	request.setCharacterEncoding("utf-8");
 	   		
 		 	BoardDAOImpl boarddao=new BoardDAOImpl();
@@ -19,18 +19,18 @@ public class BoardModifyView implements Action {
 			int num=Integer.parseInt(request.getParameter("num"));
 			String page = request.getParameter("page");
 //		   	boarddata=boarddao.getDetail(num);
-			boarddata=boarddao.getBoardCont(num);//ê¸? ?‚´?š© 
+			boarddata=boarddao.getBoardCont(num);//ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ 
 			
 		   	if(boarddata==null){
-		   		System.out.println("(?ˆ˜? •)?ƒ?„¸ë³´ê¸° ?‹¤?Œ¨");
+		   		System.out.println("(?ï¿½ï¿½?ï¿½ï¿½)?ï¿½ï¿½?ï¿½ï¿½ë³´ê¸° ?ï¿½ï¿½?ï¿½ï¿½");
 		   		return null;
 		   	}
-		   	System.out.println("(?ˆ˜? •)?ƒ?„¸ë³´ê¸° ?„±ê³?");
+		   	System.out.println("(?ï¿½ï¿½?ï¿½ï¿½)?ï¿½ï¿½?ï¿½ï¿½ë³´ê¸° ?ï¿½ï¿½ï¿½?");
 		   	
 		   	request.setAttribute("boarddata", boarddata);
 		    request.setAttribute("page", page);
 		   	forward.setRedirect(false);
-	   		forward.setPath("./board/qna_board_modify.jsp");
+	   		forward.setPath("./board/Forum_board_modify.jsp");
 	   		return forward;
 	 }
 }
