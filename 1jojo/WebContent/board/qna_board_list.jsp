@@ -19,7 +19,15 @@
 <head>
 	<title>MVC 게시판</title>
 </head>
-
+<div>
+<header>
+<c:import url="../member/header.jsp"></c:import>
+</header>
+<br>
+<br>
+<br>
+<br>
+</div>
 <body>
 <!-- 게시판 리스트 -->
 
@@ -195,7 +203,9 @@
 	
 	<tr align="right">
 		<td colspan="5">
+		<c:if test="${sessionScope.email }">
 	   		<a href="./QnaBoardWrite.qo">[글쓰기]</a>
+	   		</c:if>
 		</td>
 	</tr>
 </table>

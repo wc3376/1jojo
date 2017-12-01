@@ -18,9 +18,22 @@
 <html>
 <head>
 	<title>Forum 게시판</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+<div>
+<header>
+<c:import url="../member/header.jsp"></c:import>
+</header>
+<br>
+<br>
+<br>
+<br>
+</div>
 <!-- 게시판 리스트 -->
 
 <table align=center width=600 border="1" cellpadding="0" cellspacing="0">
@@ -121,7 +134,7 @@
 	<%//}// for end %>
 	
 	
-	<tr align=center height=20>
+	<tr class = "pager" align=center height=20>
 		<td colspan=7 style=font-family:Tahoma;font-size:10pt;>
 			<%--if(nowpage<=1){ --%>
 					<!-- [이전]&nbsp; -->			
@@ -195,7 +208,10 @@
 	
 	<tr align="right">
 		<td colspan="5">
-	   		<a href="./ForumBoardWrite.fo">[글쓰기]</a>
+	   		<c:if test="${sessionScope.email != null }">
+				<a href="./ForumBoardWrite.fo">[글쓰기]</a>
+			</c:if>
+	   	
 		</td>
 	</tr>
 </table>

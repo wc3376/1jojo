@@ -21,7 +21,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <a class="navbar-brand" href="/1jojo/member/main.jsp">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -38,16 +38,17 @@
         </li>  --%>
        
         	<c:if test="${sessionScope.email == null}">
-        		 <li> <a href="./loginForm.jsp">Log-in</a></li>
-        		  <li><a href="./regForm.jsp">Sign up</a></li>
+        		 <li> <a href="/1jojo/member/loginForm.jsp">Log-in</a></li>
+        		  <li><a href="/1jojo/member/regForm.jsp">Sign up</a></li>
     		</c:if>
     		
 			<c:if test="${sessionScope.email != null}">
-				<li><a href="./Logout.do">Log-out</a></li>
-				<li><a href="./myPage.jsp">MyPage</a></li>
+				<li><a href="/1jojo/Logout.do">Log-out</a></li>
+				<li><a href="/1jo	jo/member/myPage.jsp">MyPage</a></li>
 			</c:if>
 		
-        <li><a href="#portfolio">PORTFOLIO</a></li>
+        <li><a href="/1jojo/ForumBoardListAction.fo">Forum</a></li>
+        <li><a href="/1jojo/QnaBoardListAction.qo">Q & A</a></li>
         
       </ul>
     </div>

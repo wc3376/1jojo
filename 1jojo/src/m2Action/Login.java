@@ -30,6 +30,7 @@ public class Login implements Action{
 		int result = dao.chk(member);
 		
 		if(result == 1) {
+			session.setAttribute("no", member.getNo());
 			session.setAttribute("email", member.getId());
 			
 		}else {
@@ -44,7 +45,7 @@ public class Login implements Action{
 		
 		ActionForward forward = new ActionForward();
 				forward.setRedirect(false);
-				forward.setPath("./member/main.jsp");
+				forward.setPath("./crawl/cwl_ready.jsp");
 				
 		return forward;
 	}

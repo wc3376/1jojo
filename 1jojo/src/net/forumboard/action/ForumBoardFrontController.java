@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,7 +27,7 @@ public class ForumBoardFrontController extends javax.servlet.http.HttpServlet
 			forward = new ForumActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./board/forum_board_write.jsp");
-			
+					
 		} else if (command.equals("/ForumBoardReplyView.fo")) {
 			action = new ForumBoardReplyView();
 			try {

@@ -36,6 +36,15 @@
 </head>
 
 <body>
+<div>
+<header>
+<c:import url="../member/header.jsp"></c:import>
+</header>
+<br>
+<br>
+<br>
+<br>
+</div>
 <!-- 게시판 수정 -->
 <form action="/1jojo/QnaBoardModifyAction.qo" method="post" name="modifyform">
 <input type="hidden" name="BOARD_NUM" value="${boarddata.board_num}">

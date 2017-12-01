@@ -38,7 +38,15 @@
 	</script>
 </head>
 <body>
-
+<div>
+<header>
+<c:import url="../member/header.jsp"></c:import>
+</header>
+<br>
+<br>
+<br>
+<br>
+</div>
 <form action="/1jojo/QnaBoardReplyAction.qo" method="post" name="boardform">
 <input type="hidden" name="BOARD_NUM" value="${boarddata.board_num}">
 <input type="hidden" name="BOARD_RE_REF" value="${boarddata.board_re_ref}">
