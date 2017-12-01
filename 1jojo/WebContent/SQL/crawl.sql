@@ -1,7 +1,7 @@
 select * from tab;
 
-CREATE TABLE search_re_com_list(
-	search_com_No NUMBER not null,
+CREATE TABLE search_list(
+	search_com_No NUMBER,
 	com_qual VARCHAR2(1000),
 	com_preex VARCHAR2(1000),
 	com_name VARCHAR2(100),
@@ -9,10 +9,14 @@ CREATE TABLE search_re_com_list(
 	PRIMARY KEY(search_com_No)
 );
 
+create sequence search_list_seq
+start with 1
+increment by 1
+nocache;
 
-drop table search_re_com_list purge;
+drop table search_list purge;
 select * from tab;
-select * from search_re_com_list;
+select * from search_list;
 
 
 
@@ -20,17 +24,17 @@ select * from search_re_com_list;
 
 select * from tab;
 
-CREATE TABLE search_re_com_qual(
-	search_com_No NUMBER not null,
+CREATE TABLE search_qual(
+	search_com_No NUMBER,
+	No NUMBER,
 	com_qual VARCHAR2(1000),
 	com_preex VARCHAR2(1000),
 	com_frequency NUMBER,
-	No NUMBER,
 	PRIMARY KEY(search_com_No)
 );
 
 
-drop table search_re_com_qual purge;
+drop table search_qual purge;
 select * from tab;
-select * from search_re_com_qual;
+select * from search_qual;
 

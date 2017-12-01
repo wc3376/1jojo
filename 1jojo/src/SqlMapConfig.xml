@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="net.board.db.BoardBean" alias="board" />
 		<typeAlias type="m2member.m2memberDTO" alias="m2mem" />
+		<typeAlias type="net.crawl.db.search_list_Bean" alias="crawl" />
 	</typeAliases>
 
 	<environments default="development">
@@ -23,6 +24,7 @@
 	<mappers>
 		<mapper resource="board.xml" />
 		<mapper resource="m2mem.xml" />
+		<mapper resource="crawl.xml" />
 	</mappers>
 
 </configuration>

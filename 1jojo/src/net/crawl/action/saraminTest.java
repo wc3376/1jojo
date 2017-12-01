@@ -21,7 +21,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import net.crawl.db.CrawlDAOImpl;
-import net.crawl.db.search_re_com_list_Bean;
+import net.crawl.db.search_list_Bean;
  
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
 
@@ -32,7 +32,7 @@ public class saraminTest {
     String alertText = "";
 
 	CrawlDAOImpl boarddao=new CrawlDAOImpl();
-	search_re_com_list_Bean crawlData=new search_re_com_list_Bean();
+	search_list_Bean crawlData=new search_list_Bean();
    	
     public String show_detail_contents(String javascript_link) {
     	String link;

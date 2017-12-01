@@ -26,21 +26,26 @@ public class CrawlDAOImpl {
 	}	
 	
 	
-	/* 게시판 저장 */
-	public void boardInsert(BoardBean board) {
+	/* 검색결과 일단 저장 */
+	public void search_list_Insert(search_list_Bean search_list) {
 		SqlSession session=null;
 		int result = 0;		
 		try{
 			session = getSession(); 
-			System.out.println("insert1");
+			System.out.println("insert 1");
 			
-			System.out.println("name1="+board.getBoard_name());
-			System.out.println("pass1="+board.getBoard_pass());
-			System.out.println("subject1="+board.getBoard_subject());
-			System.out.println("content1="+board.getBoard_content());
-			System.out.println("file1="+board.getBoard_file());			
+			System.out.println("search_com_No="+search_list.getSearch_com_No());//나올리가 없다.
+			System.out.println("com_qual="+search_list.getCom_qual());
+			System.out.println("com_preex="+search_list.getCom_preex());
+			System.out.println("com_name="+search_list.getCom_name());
+			System.out.println("com_link="+search_list.getCom_link());			
+//			private int search_com_No;//번호
+//			private String com_qual;//업체 지원자격
+//			private String com_preex;//업체 우대사항
+//			private String com_name;//지원자격포함 기업명
+//			private String com_link;//지원자격포함 기업링크
 			
-			result=session.insert("board.board_insert", board);
+			result=session.insert("crawl.crawl_insert", search_list);
 			System.out.println("result="+result);
 		}catch(Exception e){
 			System.out.println("result="+result);
@@ -53,60 +58,60 @@ public class CrawlDAOImpl {
 		int count = 0;
 		SqlSession session=null;
 		session = getSession();
-		count = ((Integer) session.selectOne("board.board_count")).intValue();	
+		count = ((Integer) session.selectOne("board.search_list_count")).intValue();	
 		 
 		return count;
 	}
 	
-	/* 게시물 목록 */
-	public List<BoardBean> getBoardList(int  page)	throws SQLException {
+	/* 검색된 데이터 목록 */
+	public List<search_list_Bean> getSearch_list(int search_com_No)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<BoardBean>  list = session.selectList("board.board_list", page);
+		List<search_list_Bean>  list = session.selectList("crawl.crawl_list", search_com_No);
 	    return list;
 	}	
 
 	/* 게시판 조회수 증가 */
-	public void boardHit(int board_num) throws SQLException {
+	public void search_listHit(int search_list_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.update("board.board_hit", board_num);
+		session.update("search_list.search_list_hit", search_list_num);
 	}
 	
 	
 	/* 게시판 글내용보기 */
-	public BoardBean getBoardCont(int board_num) throws SQLException {
+	public search_list_Bean getsearch_listCont(int search_list_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		return (BoardBean) session.selectOne("board.board_cont", board_num);
+		return (search_list_Bean) session.selectOne("search_list.search_list_cont", search_list_num);
 	}	
 
 	/* 게시물 수정 */
-	public void boardEdit(BoardBean board) throws SQLException {
+	public void search_listEdit(search_list_Bean search_list) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.update("board.board_edit", board);
+		session.update("search_list.search_list_edit", search_list);
 	}
 
 	/* 게시물 삭제 */
-	public void boardDelete(int board_num) throws SQLException {
+	public void search_listDelete(int search_list_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.delete("board.board_del", board_num);
+		session.delete("search_list.search_list_del", search_list_num);
 	}
 
 	/* 답변글 레벨 증가 */
-	public void refEdit(BoardBean board) throws SQLException {
+	public void refEdit(search_list_Bean search_list) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.update("board.board_Level", board);
+		session.update("search_list.search_list_Level", search_list);
 	}
 
 	/* 답변글 저장 */
-	public void boardReplyOk(BoardBean board) throws SQLException {
+	public void search_listReplyOk(search_list_Bean search_list) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		session.insert("board_reply", board);
+		session.insert("search_list_reply", search_list);
 	}
 	
 }

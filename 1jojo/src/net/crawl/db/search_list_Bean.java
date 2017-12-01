@@ -1,6 +1,6 @@
 package net.crawl.db;
 
-public class search_re_com_list_Bean {	
+public class search_list_Bean {	
 	private int search_com_No;//번호
 	private String com_qual;//업체 지원자격
 	private String com_preex;//업체 우대사항

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="crawl">
+
+	<!-- 검색결과 저장 -->
+	<insert id="crawl_insert" parameterType="net.crawl.db.search_list_Bean">
+		insert into search_list(search_com_No,com_qual,com_preex,com_name,com_link)
+		values(search_list_seq.nextval,#{com_qual},#{com_preex},#{com_name},#{com_link})	
+	</insert>
+<!-- 	분석 전 검색결과 출력-->
+	<select id="crawl_list"  parameterType="int"  resultType="crawl">
+	    <![CDATA[
+		select * from search_list
+	   	where search_com_No == #{search_com_No}
+		]]>
+	</select>
+	
+</mapper>
+
+
+	

@@ -12,8 +12,6 @@ import net.board.db.BoardDAOImpl;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import dao.MemberDAO;
-import dto.MemberDTO;
 import m2member.m2memberDAO;
 import m2member.m2memberDTO;
 
@@ -27,7 +25,7 @@ public class Crawlready implements Action {
 			String id =(String) session.getAttribute("id");
 	
 			m2memberDAO dao = m2memberDAO.getInstance();
-			m2memberDTO member = dao.getMember(id);
+			m2memberDTO member = dao.select(id);
 			
 			String identify=member.getId();
 			String password=member.getPass();

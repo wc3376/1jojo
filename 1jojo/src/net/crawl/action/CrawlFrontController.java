@@ -26,8 +26,24 @@ public class CrawlFrontController extends javax.servlet.http.HttpServlet
 		System.out.println("RequestURI=" + RequestURI);
 		System.out.println("contextPath=" + contextPath);
 		System.out.println("command=" + command);
+//		crwl_ready.java (상단의 탭에 크롤링(임시 명칭)을 클릭)
+//		>>
+//		crwl_ready.jsp (사용자에게 실제로 할지 묻는다)
+//		>>
+//		CrawlAddAction.java (크롤링을 통해 자료를 추가시킴.)
+//		>>
+//		cwl_result(최초에는 날것의 크롤링 결과를 볼 수 있도록 한다.)
+//		>>
+//		CrawlAnalysisAction.java(파싱 한다.) - 이 시점까진 일단 
+//		>>
+//		CrawlSaveAction.java(개인 계정에 해당 정보들을 귀속시킨다.) -버튼
+//
+//		cwl_qual_analysis_result.jsp(분석결과) - 서로 다른 결과 탭
+//		cwl_preex_analysis_result.jsp - 서로 다른 결과 탭
+//		cwl_qual_list.jsp(해당 업체 리스트. get 방식으로 지원자격 넘긴다.) - 서로 다른 결과 탭
+//		cwl_preex_list.jsp(해당 업체 리스트. get 방식으로 우대사항 넘긴다.) - 서로 다른 결과 탭
 		
-		if (command.equals("/CrawlReady.cr")) { // 맨 처음 크롤링 할 때 들어갈 페이지로 들어가도록 유도하는 command
+		if (command.equals("/cwl_ready.cr")) { // 맨 처음 크롤링 할 때 들어갈 페이지로 들어가도록 유도하는 command
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./crawl/cwl_ready.jsp");			
@@ -40,6 +56,47 @@ public class CrawlFrontController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
+		else if (command.equals("/cwl_result.cr")) { // 맨 처음 크롤링 할 때 들어갈 페이지로 들어가도록 유도하는 command
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./crawl/cwl_result.jsp");			
+		}
+		else if (command.equals("/CrawlAnalysisAction.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
+			System.out.println("Stop!");
+//			action = new CrawlSaveAction();//미완.
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
