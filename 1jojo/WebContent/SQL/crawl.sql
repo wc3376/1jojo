@@ -1,12 +1,12 @@
 select * from tab;
 
 CREATE TABLE search_list(
-	search_com_No NUMBER,
+	search_com_No VARCHAR2(12),
 	com_qual VARCHAR2(1000),
 	com_preex VARCHAR2(1000),
 	com_name VARCHAR2(100),
 	com_link VARCHAR2(500),
-	PRIMARY KEY(search_com_No)
+	PRIMARY KEY(com_link)
 );
 
 create sequence search_list_seq

@@ -22,7 +22,8 @@
 
 <body>
 <!-- 게시판 리스트 -->
-
+<p>counting : ${search_list_count}</p>
+<p>com_No : ${search_com_No}</p>
 <table align=center width=600 border="1" cellpadding="0" cellspacing="0">
 <%
 //if(listcount > 0){
@@ -64,7 +65,7 @@
 	<!-- 화면 출력 번호 -->		
 <%-- 	<c:set var="num" value="${listcount-(page-1)*10}"/> 	 --%>
 	
-	<c:forEach var="b" items="${search_ist}">	
+	<c:forEach var="b" items="${search_list}">	
 	
 	<tr align="center" valign="middle" bordercolor="#333333"
 		onmouseover="this.style.backgroundColor='F8F8F8'"

@@ -8,11 +8,17 @@
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
+<div>
+<header>
+	<c:import url="../member/header.jsp"/>
+</header></div>
 
+<br>
+<br>
 <h2>ID및 비밀번호</h2>
 <form action="/1jojo/CrawlAddAction.cr" method="post"  name="boardform" ><%-- ${세션 데이터 SET된 것 가져와야함.} --%>
-		아이디 : <input type="text" name="id" required="required" disabled="disabled" value="chlgudrbdn"><p> <%-- ${id} --%>
-		암호 : <input type="password" name="password" required="required" disabled="disabled" value="m6529194!"><p><%-- ${password} --%>
+		아이디 : <input type="text" name="id" required="required" disabled="disabled" value="chlgudrbdn"><p> <%-- ${email} --%>
+		암호 : <input type="password" name="password" required="required" disabled="disabled" value="m6529194!"><p><%-- ${pass} --%>
 	<p>해당 id가 실제로 사람인에서 사용하는 id와 비밀번호 입니까?</p>
 	<p>(아니라면 사람인 회원가입 이후 다시 해당 ID와 비밀번호로 해당 서비스에 가입한 뒤 이 페이지로 접속이 요구됩니다.)</p>
 	<p>회원정보 변경은 상단의 탭에 위치해 있습니다.</p>
@@ -27,5 +33,9 @@
 	<input type="submit" value="예(스크래핑 시작)">
 	<button type="button" onclick="window.open('https://www.saramin.co.kr/zf_user/member/registration/join')">아니오(사람인 회원가입)</button>
 </form>
+
+
+
+
 </body>
 </html>

@@ -161,45 +161,40 @@ public class CrawlAddAction implements Action {
 		return listData;
 	}
 
-	private search_list_Bean categorizer_only_String(search_list_Bean listData, String tableText) {//이미 자격요건들이 포함된 해당 열의 문자열. 아마도 테이블인 주제에 칸이 하나뿐인 경우에도 유효할 것으로 보임.
+	public search_list_Bean categorizer_only_String(search_list_Bean listData, String tableText) {//이미 자격요건들이 포함된 해당 열의 문자열. 아마도 테이블인 주제에 칸이 하나뿐인 경우에도 유효할 것으로 보임.
 		System.out.println("정형화되지 못한 테이블에서 주어진 문구를 카테고리화");
 		System.out.println("------tableText start : ------\n" + tableText + "\n------table Text end------");
 		String preex = "";
 		String qual = "";
 
 		String[] tempText = tableText.split("\n", -1); // 일단 문자열을 줄 별로 나눈다. 빈곳도 일단은 나타낸다.
-		// String regex1 = "^[가-힣]*$"; // check category //일단 아무 표시도 없이 쓰는 경우도 있고 하다.
+		 String regex1 = "^[가-힣]*$"; // check category //일단 아무 표시도 없이 쓰는 경우도 있고 하다.
 		String regex2 = "^- .*$"; // 보통 - 뒤에 무슨무슨 요건을 적는게 보통이다. 그외의 특수문자는 신경쓰지 말자.
 
 		for (int i = 0; i < tempText.length; i++) {//한줄씩 분석.
 			String s = tempText[i];
-			// System.out.println("itme : " + s);
+			 System.out.println("itme : " + s);
 			// if (s.matches(regex1)) {
-			if (s.contains("우대")) {
+			 if (s.contains("자격") || s.contains("필수")) {
+				 System.out.println("자격이하 파트를 읽는다! =");
 				i++;
+				if(i== tempText.length) {//더 없는데 자꾸 읽으려 들 경우 에러를 예방히기 위해 중지. 자격증 같은 문장이 포함될 경우
+					break;
+				}
+				System.out.println("string : " + s);
 				s = tempText[i];
-//				System.out.println("우대이하 파트를 읽는다! ="+s);
-				while (s.matches(regex2) ) {// - 형식을 가진 동시에 우대사항, 자격 같은 요상한게 붙지 않은 케이스.
-//					 System.out.println("string : " + s);
-					preex += s;
-					i++;
-					if (i < tempText.length) {
-						s = tempText[i];
-					} else {
+				if(s.matches(regex1.trim()) || s.contains("우대")) {// - 형식이 아닌게 또 이어지는 예외 처리.
+					i--;
+					continue;
+				}else if(s.isEmpty()) {
+					continue;
+				}
+				while (s.matches(regex2) ) {
+					if(s.contains("우대")) {
+						i--;
 						break;
 					}
-				}
-				System.out.println("우대사항: " + preex);
-				if(listData.getCom_preex() ==null) {
-					listData.setCom_preex("");
-				}
-				listData.setCom_preex(listData.getCom_preex() + preex);
-			}else if (s.contains("자격") || s.contains("필수")) {
-				// System.out.print("자격이다! \n");
-				i++;
-				s = tempText[i];
-				while (s.matches(regex2)  && !isContainQualOrPreex(s) ) {
-					// System.out.println("string : " + s);
+					 System.out.println("string : " + s);
 					qual += s;
 					i++;
 					if (i < tempText.length) {
@@ -213,7 +208,41 @@ public class CrawlAddAction implements Action {
 				}
 				System.out.println("자격요건 또는 필수요건: " + listData.getCom_qual()+qual);
 				listData.setCom_qual(listData.getCom_qual()+qual);
+			}else if (s.contains("우대")) {
+				i++;
+				if(i== tempText.length) {//더 없는데 자꾸 읽으려 들 경우 에러를 예방히기 위해 중지.
+					break;
+				}
+				s = tempText[i];
+				System.out.println("string : " + s);
+				if(s.matches(regex1.trim()) ||s.contains("자격") || s.contains("필수")) {// - 형식이 아닌게 또 이어지는 예외 처리.
+					i--;
+					continue;
+				}else if(s.isEmpty()) {
+					continue;
+				}
+				System.out.println("우대이하 파트를 읽는다! =");
+				while (s.matches(regex2) ) {// - 형식을 가진 동시에 우대사항, 자격 같은 요상한게 붙지 않은 케이스.
+					if(s.contains("자격") || s.contains("필수")) {
+						i--;
+						break;
+					}
+					 System.out.println("string : " + s);
+					preex += s;
+					i++;
+					if (i < tempText.length) {
+						s = tempText[i];
+					} else {
+						break;
+					}
+				}
+				System.out.println("우대사항: " + preex);
+				if(listData.getCom_preex() ==null) {
+					listData.setCom_preex("");
+				}
+				listData.setCom_preex(listData.getCom_preex() + preex);
 			} else {//어지간해선 저 둘중 하나에 걸리면 끝까지 갈 것이다. 아마 빈칸 같은 경우를 얘기할 듯.
+				System.out.println("그외의 예외들");
 				continue;
 			}
 		}
@@ -222,8 +251,21 @@ public class CrawlAddAction implements Action {
 		return listData;
 	}
 
-	private search_list_Bean categorizer_only_table(WebElement table, search_list_Bean listData) {
-		System.out.println("------tableText start : ------\n" + table.getText() + "\n------table Text end------");
+	public HashMap readTableHead(ArrayList<WebElement> head_list) {
+		HashMap<Integer, String> category = new HashMap<Integer, String>();//속성, 값
+		int colNo = 0;
+		
+		for (WebElement head : head_list) {
+			 if(isContainQualOrPreex( head.getText())) {
+				 category.put(colNo, head.getText());// 속성의 열번호, 속성에 위치한 자격요건이나 우대조건과 같은 글자
+			 }
+			 colNo++;
+		}
+		return category;
+	}
+	
+	public search_list_Bean categorizer_only_table(WebElement table, search_list_Bean listData) {
+//		System.out.println("------tableText start : ------\n" + table.getText() + "\n------table Text end------");
 //		if (isContainQualOrPreex(table.findElement(By.tagName("tr")).getText()) ) {// 행에 자격 또는 요건이란 단어가 있는 tr을 찾는다.
 			ArrayList<WebElement> tr_list = (ArrayList<WebElement>) table.findElements(By.tagName("tr"));
 			int colNo = 0; // 현재 읽고 있는 열의 숫자. 행의 숫자는 필요 없음.
@@ -231,32 +273,35 @@ public class CrawlAddAction implements Action {
 			ArrayList<Integer> colNo_with_qual = new ArrayList<Integer>(); // 자격 요건이란 정보가 담긴 열의 숫자 리스트. 보통 하나지만 우대사항과 나눠진 경우까지 감안.
 			boolean isThead = true;//당연히 첫줄은 th인 항목이 들어 있을 것이다.
 			HashMap<Integer, String> category = new HashMap<Integer, String>();//속성, 값
+			
 			for (WebElement tr : tr_list) {//행
-				ArrayList<WebElement> td_list = (ArrayList<WebElement>)tr.findElements(By.tagName("td"));//열
-				colNo = 0; // 초기화
-				for (WebElement td : td_list) {
-					System.out.println("colNo=" + colNo + "/"+td_list.size()+ ", colNo_with_qual=" + colNo_with_qual + ", td.getText()" + td.getText());//check
-					if (isThead == true) {
-						if ( isContainQualOrPreex(td.getText()) ) { //자격요건과 같은 문자열이 존재.
-							colNo_with_qual.add(colNo);//하는 열의 번호 추가.
-							category.put(colNo, td.getText());//임시로 속성에 위치한 자격요건이나 우대조건과 같은 글자를 담을 변수
-						}
-						++colNo;
-					}else {//
-						if (colNo_with_qual.contains(colNo) ) {
+				colNo=0;
+				if(isThead==true) {//첫줄에 한해.
+					if( !tr.findElements(By.tagName("th")).isEmpty() ){//th가 있는 경우
+						ArrayList<WebElement> th_list = (ArrayList<WebElement>)tr.findElements(By.tagName("th"));//열을 구한다.
+						category=readTableHead(th_list);
+					}else {
+						ArrayList<WebElement> td_list = (ArrayList<WebElement>)tr.findElements(By.tagName("td"));//열을 구한다.
+						category=readTableHead(td_list);
+					}
+					isThead = false;//더이상 속성은 없을 것이다. 유의미한건 첫번째 tr 때 뿐.
+				}else {
+					ArrayList<WebElement> td_list = (ArrayList<WebElement>)tr.findElements(By.tagName("td"));//열
+					for (WebElement td : td_list) {
+						System.out.println("colNo=" + colNo + "/"+(td_list.size()-1)+ ", category=" + category + ", td.getText()" + td.getText());//check
+						if (category.get(colNo) !=null) {
 							String headAndContent=category.get(colNo)+"\n"+td.getText();
 							listData = categorizer_only_String(listData, headAndContent );
 						}
 						++colNo;
 					}
-					isThead = false;//더이상 속성은 없을 것이다. 유의미한건 첫번째 tr 때 뿐.
 				}
+				
 			}
 			return listData;
 	}
 
 	private search_list_Bean categorizer_only_detail_meta(search_list_Bean listData, WebElement detail_meta) {
-		System.out.println("detail_meta만 있는 경우-속성이 옆에 있는 경우");
 		// System.out.println("tableText : "+tableText);
 //		if(!detail_meta.findElement(By.className("tbl_meta")).isDisplayed()) {
 //			driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -293,13 +338,13 @@ public class CrawlAddAction implements Action {
 	}
 
 	@Test
-	public List<search_list_Bean> Step_02_scraping() throws Exception {
+	public ArrayList<search_list_Bean> Step_02_scraping() throws Exception {
 		driver.get("http://www.saramin.co.kr/zf_user/member/suited-recruit-mail/list"); // ������ ����Ʈ
 		WebElement tempList = driver.findElement(By.id("list_detail"));
 		List<WebElement> list = tempList.findElements(By.className("inner")); // 채용공고 element 리스트팅.
 		List<String> listOfRecruitLink = new ArrayList(); // 채용공고 링크 리스트 모음.
 		ArrayList<String> listOfRecruitcom = new ArrayList(); // 채용공고 링크 회사명모음.
-		List<search_list_Bean> listOfResult= new ArrayList(); // 채용공고 링크 리스트 모음.
+		ArrayList<search_list_Bean> listOfResult= new ArrayList(); // 채용공고 링크 리스트 모음.
 		
 		for (WebElement inner : list) {
 			List<WebElement> companyInfo = inner.findElements(By.className("company_name"));
@@ -313,6 +358,9 @@ public class CrawlAddAction implements Action {
 		// parsing
 		int cnt = 0;
 		int cntNotDone = 0;
+		Date from = new Date();
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyMMddHHmmss");
+		String to = transFormat.format(from);
 		
 		for (String link : listOfRecruitLink) {
 			search_list_Bean listData = new search_list_Bean(); //최초 raw 데이터가 나올 화면에 나올 항목들이자, 분석에 쓰일 최소 단위 기본 객체.
@@ -321,7 +369,8 @@ public class CrawlAddAction implements Action {
 //			com_preex;//업체 우대사항
 //			com_name;//지원자격포함 기업명
 //			com_link;//지원자격포함 기업링크
-//			listData.setSearch_com_No(  );//일단 사용자당 하나만 부여할까 생각중이다. 생각 같아선 DB연동해서 다른건 싹다 지워버릴 생각이지만 //걍DB에서 알아서 serial 부여하도록 함. 
+			
+			listData.setSearch_com_No(to);//일단 사용자당 하나만 부여할까 생각중이다. 생각 같아선 DB연동해서 다른건 싹다 지워버릴 생각이지만 귀찮다. 시간 연동해서 고유번호 지정. 설마 초단위로 동시에 할리는 없다고 생각한다.
 			listData.setCom_name( listOfRecruitcom.get(cnt) );//위에서 링크 읽어둘 때 미리 킵해둔 회사명도 여기에서 입력해둔다.
 			listData.setCom_link(link);
 //			com_qual; com_preex;은 아래 과정을 거치면서 입력될 것이다.
@@ -353,6 +402,7 @@ public class CrawlAddAction implements Action {
 					cntNotDone++;// parsing 실패했으므로.
 					System.out.println("예외 : 이미지는 현재 거의 parsing이 불가능." + cntNotDone);
 				} else if (detail_user_content.findElements(By.tagName("table")).isEmpty()) {// 이미지도 쓸만한 태그도 테이블도 없는 경우
+					System.out.println("detail_meta만 있는 경우-속성이 옆에 있는 경우");
 					WebElement view_content__shadow_section_relay__first = driver.findElement(By.cssSelector("div.first"));
 					ArrayList<WebElement> detail_meta_list = (ArrayList<WebElement>) view_content__shadow_section_relay__first.findElements(By.className("detail_meta"));// detail_meta클래스 중에 관련 정보 찾는다.
 					for (WebElement detail_meta : detail_meta_list) {
@@ -392,28 +442,27 @@ public class CrawlAddAction implements Action {
 			setUp();
 			Step_01_login_Test();
 			
-			List<search_list_Bean> listOfResult= new ArrayList();
-			List<search_list_Bean> listOfResult_at_DB= new ArrayList();
+			ArrayList<search_list_Bean> listOfResult= new ArrayList<search_list_Bean>();
+//			List<search_list_Bean> listOfResult_at_DB= new ArrayList(); //DB에 보내는건 나중에.
 			listOfResult=Step_02_scraping();
 			tearDown();
 			System.out.println("OK. done.");
-			// CrawlDAOImpl.(boarddata);
 			for(search_list_Bean listData : listOfResult) {
-				crawldao.search_list_Insert(listData);
+//				crawldao.search_list_Insert(listData);
+				System.out.println(listData.getCom_name());
 			}
 			/* if(result==false){ System.out.println("게시?�� ?���? ?��?��"); return null; }
 			 * System.out.println("게시?�� ?���? ?���?");*/
-			int search_com_No = listOfResult.get(0).getSearch_com_No();
+			
 			request.setAttribute("search_list_count", listOfResult.size()); //검색 결과 수
-			listOfResult_at_DB = crawldao.getSearch_list( search_com_No );//DB에 놓음 검색결과 읽어온다.
-			request.setAttribute("search_list", listOfResult_at_DB); //검색결과 리스트를 세션으로 전송
+//			listOfResult_at_DB = crawldao.getSearch_list( search_com_No );//DB에 놓음 검색결과 읽어온다.
+			request.setAttribute("search_list", listOfResult); //검색결과 리스트를 세션으로 전송
+			String search_com_No = listOfResult.get(0).getSearch_com_No(); // 검색번호는 일단 reques단에 넘긴다.
 			request.setAttribute("search_com_No", search_com_No ); //search_com_No을 세션으로 전송
-			
-
-			
+			System.out.println("session updated");
 
 			forward.setRedirect(true);
-			forward.setPath("/cwl_result.cr");
+			forward.setPath("./cwl_result.cr");
 			return forward;
 		} catch (Exception ex) {
 			ex.printStackTrace();

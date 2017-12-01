@@ -1,16 +1,16 @@
 package net.crawl.db;
 
 public class search_list_Bean {	
-	private int search_com_No;//번호
+	private String search_com_No;//번호
 	private String com_qual;//업체 지원자격
 	private String com_preex;//업체 우대사항
 	private String com_name;//지원자격포함 기업명
 	private String com_link;//지원자격포함 기업링크
 	//재구축
-	public int getSearch_com_No() {
+	public String getSearch_com_No() {
 		return search_com_No;
 	}
-	public void setSearch_com_No(int search_com_No) {
+	public void setSearch_com_No(String search_com_No) {
 		this.search_com_No = search_com_No;
 	}
 	public String getCom_qual() {

@@ -64,7 +64,7 @@ public class CrawlDAOImpl {
 	}
 	
 	/* 검색된 데이터 목록 */
-	public List<search_list_Bean> getSearch_list(int search_com_No)	throws SQLException {
+	public List<search_list_Bean> getSearch_list(String search_com_No)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		List<search_list_Bean>  list = session.selectList("crawl.crawl_list", search_com_No);

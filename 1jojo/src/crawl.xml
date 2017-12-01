@@ -8,7 +8,7 @@
 	<!-- 검색결과 저장 -->
 	<insert id="crawl_insert" parameterType="net.crawl.db.search_list_Bean">
 		insert into search_list(search_com_No,com_qual,com_preex,com_name,com_link)
-		values(search_list_seq.nextval,#{com_qual},#{com_preex},#{com_name},#{com_link})	
+		values(#{search_com_No},#{com_qual},#{com_preex},#{com_name},#{com_link})	
 	</insert>
 <!-- 	분석 전 검색결과 출력-->
 	<select id="crawl_list"  parameterType="int"  resultType="crawl">
