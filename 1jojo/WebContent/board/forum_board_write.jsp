@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
+<%@ page import="net.forumboard.db.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -8,16 +10,6 @@
 	<script>
 		$(document).ready(function(){
 			$("form").submit(function(){
-				if($("#board_name").val()==""){
-					alert("이름을 입력 하세요?");
-					$("#board_name").focus();
-					return false;
-				}
-				if($("#board_pass").val()==""){
-					alert("비밀번호를 입력 하세요?");
-					$("#board_pass").focus();
-					return false;
-				}
 				if($("#board_subject").val()==""){
 					alert("제목을 입력 하세요?");
 					$("#board_subject").focus();
@@ -43,20 +35,10 @@
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">글쓴이</div>
+			<div align="center">작성자</div>
 		</td>
 		<td>
-			<input name="BOARD_NAME" id="board_name" type="text" size="10" maxlength="10" 
-				value=""/>
-		</td>
-	</tr>
-	<tr>
-		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">비밀번호</div>
-		</td>
-		<td>
-			<input name="BOARD_PASS" id="board_pass" type="password" size="10" maxlength="10" 
-				value=""/>
+			${boarddata.Id}
 		</td>
 	</tr>
 	<tr>

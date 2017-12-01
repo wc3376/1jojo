@@ -14,7 +14,7 @@
 	</select>
 	
 	<insert id="insert" parameterType="m2mem">
-		insert into useraccount values (#{id}, #{pass})
+		insert into useraccount values (ua_seq.nextval, #{id}, #{pass})
 	</insert>
 	
 	<update id="update" parameterType="Map">

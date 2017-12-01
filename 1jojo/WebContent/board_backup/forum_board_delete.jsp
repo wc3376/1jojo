@@ -5,7 +5,7 @@
 %>
 <html>
 <head>
-<title>QnA 게시판</title>
+<title>Forum 게시판</title>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
 	<script>
@@ -22,7 +22,7 @@
 
 </head>
 <body>
-<form name="deleteForm" action="./BoardDeleteAction.bo?num=${param.num}" method="post">
+<form name="deleteForm" action="./ForumBoardDeleteAction.fo?num=${param.num}" method="post">
 <input type=hidden name=page value="${param.page}">
 <table border=1 align=center>
 <tr>

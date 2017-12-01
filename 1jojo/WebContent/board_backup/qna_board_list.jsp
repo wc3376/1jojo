@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="net.board.db.*" %>
+<%@ page import="net.qnaboard.db.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
@@ -17,7 +17,7 @@
 
 <html>
 <head>
-	<title>QnA 게시판</title>
+	<title>MVC 게시판</title>
 </head>
 
 <body>
@@ -95,7 +95,7 @@
 			</c:if> 			
 			
 			
-			<a href="./BoardDetailAction.bo?num=${b.board_num}&page=${page}">
+			<a href="./QnaBoardDetailAction.qo?num=${b.board_num}&page=${page}">
 				<%--bl.getBOARD_SUBJECT()--%>
 				${b.board_subject}
 			</a>
@@ -133,7 +133,7 @@
 				[이전]&nbsp;
 			</c:if>
 			<c:if test="${page > 1 }">			
-				 <a href="./BoardListAction.bo?page=${page-1}">[이전]</a>&nbsp;
+				 <a href="./QnaBoardListAction.qo?page=${page-1}">[이전]</a>&nbsp;
 			</c:if>
 			
 			
@@ -151,7 +151,7 @@
 					[${a}]
 				</c:if>
 				<c:if test="${a != page }">
-					<a href="./BoardListAction.bo?page=${a}">[${a}]</a>&nbsp;
+					<a href="./QnaBoardListAction.qo?page=${a}">[${a}]</a>&nbsp;
 				</c:if>
 			</c:forEach>
 			
@@ -167,7 +167,7 @@
 				[다음] 
 			</c:if>
 			<c:if test="${page < maxpage }">
-				<a href="./BoardListAction.bo?page=${page+1}">[다음]</a>
+				<a href="./QnaBoardListAction.qo?page=${page+1}">[다음]</a>
 			</c:if>
 			
 			
@@ -195,7 +195,7 @@
 	
 	<tr align="right">
 		<td colspan="5">
-	   		<a href="./BoardWrite.bo">[글쓰기]</a>
+	   		<a href="./QnaBoardWrite.qo">[글쓰기]</a>
 		</td>
 	</tr>
 </table>

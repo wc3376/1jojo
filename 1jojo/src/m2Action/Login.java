@@ -34,7 +34,7 @@ public class Login implements Action{
 			
 		}else {
 			out.println("<script>");
-			out.println("alert('ID나 비밀번호가 틀렸습니다')");
+			out.println("alert('계정정보가 다릅니다')");
 			out.println("history.go(-1)");
 			out.print("</script>");
 			out.close();
@@ -44,7 +44,7 @@ public class Login implements Action{
 		
 		ActionForward forward = new ActionForward();
 				forward.setRedirect(false);
-				forward.setPath("./mainLi.jsp");
+				forward.setPath("./member/main.jsp");
 				
 		return forward;
 	}

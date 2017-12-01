@@ -8,5 +8,5 @@ session.invalidate();
 %>
 <script>
 alert("로그아웃");
-location.href = "./main.jsp";
+location.href = "./member/main.jsp";
 </script>

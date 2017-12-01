@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import m2Action.Action;
 import m2Action.ActionForward;
 import m2Action.MemberInsert;
+import m2Action.UpdateForm;
+import m2Action.IdCheck;
+import m2Action.Delete;
+import m2Action.Update;
 import m2Action.Login;
 
 /**
@@ -34,7 +38,7 @@ public class Controller extends HttpServlet {
 		System.out.println("RequestURI=" + RequestURI);
 		System.out.println("contextPath=" + contextPath);
 		System.out.println("command=" + command);
-		 //검색
+		 //寃��깋
 		if(command.equals("/SearchAction")) {
           try {
 	
@@ -42,7 +46,16 @@ public class Controller extends HttpServlet {
           catch(Exception e){
         	  e.printStackTrace();	
           }
-          //회원 가입
+          //ID 以묐났 寃��궗
+		}else if(command.equals("/IdCheck.do")) {
+			try {
+				action = new IdCheck();
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		
+		//회원가입
 		}else if(command.equals("/MemberInsert.do")) {
 			try {
 				action = new MemberInsert();
@@ -50,7 +63,7 @@ public class Controller extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-		//로그인	
+		//濡쒓렇�씤	
 		}else if(command.equals("/Login.do")) {
 			try {
 				action = new Login();
@@ -59,20 +72,51 @@ public class Controller extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		//로그아웃	
+		//濡쒓렇�븘�썐	
 		}else if(command.equals("/Logout.do")) {
 			
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("./logOut.jsp");
+			forward.setPath("./member/logOut.jsp");
 	
-		//정보수정 폼
-		}
+		//�젙蹂댁닔�젙 �뤌
+		}else if(command.equals("/UpdateForm.do")) {
+			try {
+				action = new UpdateForm();
+				forward = action.execute(request, response);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			//�쉶�썝�젙蹂댁닔�젙
+		}else if(command.equals("/Update.do")) {
+		    try {
+			action = new Update();
+			forward = action.execute(request, response);
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
+		    //�쉶�썝�깉�눜�뤌
+		}else if(command.equals("/DeleteMember.do")) {
+	    	forward = new ActionForward();
+	    	forward.setRedirect(false);
+	    	forward.setPath("./member/deleteMember.jsp");
+	    	
+	    //�쉶�썝 �깉�눜	
+		}else if(command.equals("/Delete.do")) {
+	    	try {
+	    		action = new Delete();
+	    		forward = action.execute(request, response);
+	    	}
+	    	catch(Exception e) {
+	    		e.printStackTrace();
+	    	}
+	    }
 			
 		if (forward != null) {
 			if (forward.getRedirect()) { // true
 				response.sendRedirect(forward.getPath());
-			} else { // false 값전달이 가능함
+			} else { // false 媛믪쟾�떖�씠 媛��뒫�븿
 				RequestDispatcher dispatcher = request
 						.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);

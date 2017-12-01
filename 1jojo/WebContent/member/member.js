@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	 // ID중복검사
+/*	 // ID중복검사
 	 $("#idcheck").click(function(){
 		 if($("#email").val()==""){
 			 alert("ID를 입력하세요");
@@ -10,7 +10,7 @@ $(document).ready(function(){
 			 window.open(ref,"idcheck","width=200,height=100");
 		 } 	
 	 });
-
+*/
 	// 유효성 검사
 	$("form").submit(function(){	
 		if($("#email").val()==""){

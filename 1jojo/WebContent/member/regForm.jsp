@@ -11,6 +11,23 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="/1jojo/member/member.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	 // ID중복검사
+	 $("#idcheck").click(function(){
+		 if($("#email").val()==""){
+			 alert("ID를 입력하세요");
+			 $("#email").focus();
+		 }else{
+			 var ref="/1jojo/IdCheck.do?email="+$("#email").val();
+			 window.open(ref,"idcheck","width=200,height=100");
+		 } 	
+	 });
+	 });
+	 </script>
 </head>
 
 <body>
@@ -30,6 +47,7 @@
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <input type="button" id="idcheck" value="ID Check">
     </div>
     <div class="form-group">
       <label for="pass">Password:</label>

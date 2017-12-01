@@ -30,7 +30,7 @@ public class MemberInsert implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath("./loginForm.jsp");		
+		forward.setPath("./member/loginForm.jsp");		
 		
 		return forward;
 	}

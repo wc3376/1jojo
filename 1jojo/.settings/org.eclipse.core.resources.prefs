@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/m2Action/Controller.java=UTF-8
+encoding//src/m2Action/Login.java=UTF-8
+encoding//src/m2member/m2memberDAO.java=UTF-8
 encoding//src/net/board/action/BoardAddAction.java=UTF-8
 encoding//src/net/board/action/BoardDeleteAction.java=UTF-8
 encoding//src/net/board/action/BoardDetailAction.java=UTF-8

@@ -10,7 +10,16 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import m2member.m2memberDAO;
+import m2member.m2memberDTO;
+
 public class ForumBoardDAOImpl {
+	
+	private static ForumBoardDAOImpl instance = new ForumBoardDAOImpl();
+	
+	public static ForumBoardDAOImpl getInstance() {
+		return instance;
+	}
 	
 	private SqlSession getSession() {
 		SqlSession session=null;
@@ -25,6 +34,23 @@ public class ForumBoardDAOImpl {
 		return session;
 	}	
 	
+	public int forumchk(ForumBoardBean member) {
+		int result = 0;
+		SqlSession session = null;
+		try {
+			session = getSession();
+			ForumBoardBean mem = (ForumBoardBean) session.selectOne("select", member.getId());
+			if (mem.getId().equals(member.getId())) {
+				result = -1;
+				if (mem.getPw().equals(member.getPw())) {
+					result = 1;
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return result;
+	}
 	
 	/* Í≤åÏãú?åê ???û• */
 	public boolean forumboardInsert(ForumBoardBean forumboard) {

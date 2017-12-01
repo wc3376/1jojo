@@ -39,9 +39,11 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="/171122m2/UpdateForm.do">정보 수정</a></p>
-      <p><a href="./searchRecord.jsp">검색 기록</a></p>
-      <p><a href="/171122m2/DeleteMember.do">회원 탈퇴</a></p>
+    	<ul class = "list-group">
+      	<li class ="list-group-item" ><a href="/171122m2/UpdateForm.do">정보 수정</a></li>
+      	<li class ="list-group-item"><a href="./searchRecord.jsp">검색 기록</a></li>
+      	<li class ="list-group-item active"><a href="/171122m2/DeleteMember.do">회원 탈퇴</a></li>
+    	</ul>
     </div>
     <div class="col-sm-8 text-left"> 
       <center><h1>회원 탈퇴</h1></center>

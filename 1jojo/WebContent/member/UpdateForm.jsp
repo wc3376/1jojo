@@ -69,7 +69,7 @@
 					return false;
 			}
 			if($("#chpass").val()==""){
-				alert("새 비밀번호를 입력하세요");
+				alert("새 비밀번호를 확인하세요");
 				$("#chpass").focus();
 				return false;
 			}
@@ -107,21 +107,26 @@
     <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="/171122m2/UpdateForm.do">정보 수정</a></p>
-      <p><a href="./searchRecord.jsp">검색 기록</a></p>
-      <p><a href="./delete.jsp">회원 탈퇴</a></p>
+    	<ul class = "list-group">
+      	<li class ="list-group-item active" ><a href="/1jojo/UpdateForm.do">정보 수정</a></li>
+      	<li class ="list-group-item"><a href="./searchRecord.jsp">검색 기록</a></li>
+      	<li class ="list-group-item"><a href="/1jojo/DeleteMember.do">회원 탈퇴</a></li>
+    	</ul>
     </div>
     <div class="col-sm-8 text-left"> 
       
-      <form id="myform"  method=post action="/171122m2/Update.do">
+      <form id="myform"  method=post action="/1jojo/Update.do">
 		<input type=hidden name="email" value="${member.id}">
 		
 		
-		<table border=1 align=center>
+		<table class="table table-bordered" align=center>
 		<caption><h3> 회원 정보 수정</h3></caption>
+			<thead>
 			<tr><td>ID</td>
 		 		  <td>${member.id}</td>
 	 		</tr>
+	 		</thead>
+	 		<tbody>
 	 		<tr><td>기존 비밀번호</td>
 	 			  <td><input type="password" id="pass" name="pass"></td>
 	 		<tr><td>새 비밀번호</td>
@@ -134,6 +139,7 @@
 					<input type=reset value="취소">
 		    </td>
 			</tr>
+			</tbody>
         </table>
       </form>
             

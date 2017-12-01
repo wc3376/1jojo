@@ -24,7 +24,7 @@
 <div class="jumbotron text-center">
   <h1>Company</h1> 
   <p>We specialize in blablabla</p> 
-  <form action="/1jojo/SearchAction.do" method="post" 
+  <form action="/171122m2/SearchAction.do" method="post" 
 	enctype="multipart/form-data" name="homeform">
     <div class="input-group">
       <input type="text" class="form-control" size="50" placeholder="text" required>

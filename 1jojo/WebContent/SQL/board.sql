@@ -21,6 +21,12 @@ start with 1
 increment by 1
 nocache;
 
+
+create sequence ua_seq
+start with 1
+increment by 1
+nocache;
+
 drop table board222 purge;
 select * from tab;
 select * from seq;
