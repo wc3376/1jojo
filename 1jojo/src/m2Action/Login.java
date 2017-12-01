@@ -30,6 +30,7 @@ public class Login implements Action{
 		int result = dao.chk(member);
 		
 		if(result == 1) {
+			session.setAttribute("no", member.getNo());
 			session.setAttribute("email", member.getId());
 			
 		}else {

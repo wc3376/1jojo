@@ -21,9 +21,10 @@
 </header>
 </div>
 
-<div class="jumbotron text-center">
+<div class="jumbotron text-center" style="background-color:#ff8080 !important;">
   <h1>Company</h1> 
   <p>We specialize in blablabla</p> 
+  
   <form method=post action="/1jojo/Login.do">
  
     <div class="form-group ">
