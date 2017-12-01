@@ -3,6 +3,7 @@ package net.crawl.action;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -203,9 +204,6 @@ public class CrawlAddAction implements Action {
 						break;
 					}
 				}
-				if(listData.getCom_qual() ==null) {
-					listData.setCom_qual("");
-				}
 				System.out.println("자격요건 또는 필수요건: " + listData.getCom_qual()+qual);
 				listData.setCom_qual(listData.getCom_qual()+qual);
 			}else if (s.contains("우대")) {
@@ -237,9 +235,6 @@ public class CrawlAddAction implements Action {
 					}
 				}
 				System.out.println("우대사항: " + preex);
-				if(listData.getCom_preex() ==null) {
-					listData.setCom_preex("");
-				}
 				listData.setCom_preex(listData.getCom_preex() + preex);
 			} else {//어지간해선 저 둘중 하나에 걸리면 끝까지 갈 것이다. 아마 빈칸 같은 경우를 얘기할 듯.
 				System.out.println("그외의 예외들");
@@ -270,7 +265,6 @@ public class CrawlAddAction implements Action {
 			ArrayList<WebElement> tr_list = (ArrayList<WebElement>) table.findElements(By.tagName("tr"));
 			int colNo = 0; // 현재 읽고 있는 열의 숫자. 행의 숫자는 필요 없음.
 			
-			ArrayList<Integer> colNo_with_qual = new ArrayList<Integer>(); // 자격 요건이란 정보가 담긴 열의 숫자 리스트. 보통 하나지만 우대사항과 나눠진 경우까지 감안.
 			boolean isThead = true;//당연히 첫줄은 th인 항목이 들어 있을 것이다.
 			HashMap<Integer, String> category = new HashMap<Integer, String>();//속성, 값
 			
@@ -373,7 +367,8 @@ public class CrawlAddAction implements Action {
 			listData.setSearch_com_No(to);//일단 사용자당 하나만 부여할까 생각중이다. 생각 같아선 DB연동해서 다른건 싹다 지워버릴 생각이지만 귀찮다. 시간 연동해서 고유번호 지정. 설마 초단위로 동시에 할리는 없다고 생각한다.
 			listData.setCom_name( listOfRecruitcom.get(cnt) );//위에서 링크 읽어둘 때 미리 킵해둔 회사명도 여기에서 입력해둔다.
 			listData.setCom_link(link);
-//			com_qual; com_preex;은 아래 과정을 거치면서 입력될 것이다.
+			listData.setCom_qual("");//초기화
+			listData.setCom_preex("");//초기화
 			
 			cnt++;
 			System.out.println("lets parse no" + cnt + ". : \n" + "http://www.saramin.co.kr" + link);
@@ -434,7 +429,8 @@ public class CrawlAddAction implements Action {
 		System.out.println("CrawlAddAction");
 		ActionForward forward = new ActionForward();
 		CrawlDAOImpl crawldao=new CrawlDAOImpl();
-
+		response.setContentType("text/html; charset=utf-8");//출
+		request.setCharacterEncoding("utf-8");//입
 		try {
 			HttpSession session = request.getSession();
 			path = session.getServletContext().getRealPath("/");
@@ -448,7 +444,6 @@ public class CrawlAddAction implements Action {
 			tearDown();
 			System.out.println("OK. done.");
 			for(search_list_Bean listData : listOfResult) {
-//				crawldao.search_list_Insert(listData);
 				System.out.println(listData.getCom_name());
 			}
 			/* if(result==false){ System.out.println("게시?�� ?���? ?��?��"); return null; }
@@ -461,12 +456,18 @@ public class CrawlAddAction implements Action {
 			request.setAttribute("search_com_No", search_com_No ); //search_com_No을 세션으로 전송
 			System.out.println("session updated");
 
-			forward.setRedirect(true);
-			forward.setPath("./cwl_result.cr");
+			forward.setRedirect(false);
+			forward.setPath("./crawl/cwl_result.jsp");
 			return forward;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("문제가 생겼다. alert!");
+			PrintWriter out =response.getWriter();
+			out.println("<script>");
+			out.println("alert('크롤링 과정에서 문제가 생겼습니다. 에러 내용 : \n"+ex+"');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
 		}
 		return null;
 	}

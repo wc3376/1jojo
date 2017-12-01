@@ -1,10 +1,11 @@
 create table useraccount (
-id varchar2(30) primary key,
-pass varchar2(30)
+No NUMBER,
+id varchar2(30),
+pass varchar2(30),
+primary key(No)
 );
 
-
-create sequence useraccount
+create sequence useraccount_seq
 start with 1
 increment by 1
 nocache;
@@ -15,3 +16,6 @@ insert into USERACCOUNT values ("sss", "1111");
 select * from tab;
 select * from USERACCOUNT;
 drop table useraccount purge;
+select * from user_sequences;
+
+drop sequence useraccount_seq purge;

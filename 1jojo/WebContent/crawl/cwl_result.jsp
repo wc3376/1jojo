@@ -18,13 +18,23 @@
 <html>
 <head>
 	<title>크롤링 결과</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+<div>
+<header>
+	<c:import url="../member/header.jsp"/>
+</header>
+</div>
+<br>
+<br>
+<br>
 <!-- 게시판 리스트 -->
-<p>counting : ${search_list_count}</p>
-<p>com_No : ${search_com_No}</p>
-<table align=center width=600 border="1" cellpadding="0" cellspacing="0">
+<table align=center width="80%" class="table table-striped">
 <%
 //if(listcount > 0){
 %>
@@ -34,16 +44,17 @@
 
 	<tr align="center" valign="middle">
 		<td colspan="4">검색 결과</td>
-		<td align=right>
-			<font size=2>검색 결과 개수 : ${search_list_count }</font>
-		</td>
+<!-- 		<td align=right> -->
+			<span align=left><font size=2 >검색 결과 개수 : ${search_list_count }</font> </span>
+<!-- 		</td> -->
+			<button type="button" class="btn btn-default" onclick="location.href='./CrawlAnalysisAction.cr'">검색결과 분석</button>
 	</tr>
 	
-	<tr align="center" valign="middle" bordercolor="#333333">
-		<td style="font-family:Tahoma;font-size:8pt;" width="8%" height="26">
+	<tr align="center" valign="middle">
+		<td style="font-family:Tahoma;font-size:8pt;" height="26">
 			<div align="center">검색 번호</div>
 		</td>
-		<td style="font-family:Tahoma;font-size:8pt;" width="50%">
+		<td style="font-family:Tahoma;font-size:8pt;">
 			<div align="center">회사명</div>
 		</td>
 		<td style="font-family:Tahoma;font-size:8pt;" width="14%">
@@ -52,9 +63,9 @@
 		<td style="font-family:Tahoma;font-size:8pt;" width="17%">
 			<div align="center">지원자격 모음</div>
 		</td>
-		<td style="font-family:Tahoma;font-size:8pt;" width="11%">
-			<div align="center">링크</div>
-		</td>
+<!-- 		<td style="font-family:Tahoma;font-size:8pt;" width="11%"> -->
+<!-- 			<div align="center">링크</div> -->
+<!-- 		</td> -->
 	</tr>
 	
 	<%//int number = listcount-(nowpage-1)*10;
@@ -67,9 +78,7 @@
 	
 	<c:forEach var="b" items="${search_list}">	
 	
-	<tr align="center" valign="middle" bordercolor="#333333"
-		onmouseover="this.style.backgroundColor='F8F8F8'"
-		onmouseout="this.style.backgroundColor=''">
+	<tr align="center" valign="middle">
 		<td height="23" style="font-family:Tahoma;font-size:10pt;">
 			<!-- 번호 출력 부분 -->
 			<c:out value="${search_com_No}"/>				
@@ -78,7 +87,7 @@
 		<td style="font-family:Tahoma;font-size:10pt;">
 			<div align="left">
 			
-			<a href="${b.com_link}">
+			<a href="https://www.saramin.co.kr/${b.com_link}">
 				<%--bl.getBOARD_SUBJECT()--%>
 				${b.com_name}
 			</a>
@@ -109,13 +118,11 @@
 		</tr>
 	</c:if>
 	
-	<%
-//	}
-	%>
-	
 	<tr align="right">
-		<td colspan="5">
-	   		<a href="./CrawlSaveAction.cr">[검색결과 저장]</a>
+		<td colspan="4">
+			<span align=left>검색 결과 번호 : ${search_com_No}</span>
+			검색 갯수 : ${search_list_count}
+			<button type="button" class="btn btn-default" onclick="location.href='./CrawlAnalysisAction.cr'">검색결과 분석</button>
 		</td>
 	</tr>
 </table>

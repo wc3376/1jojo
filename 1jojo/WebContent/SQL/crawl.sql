@@ -25,7 +25,7 @@ select * from search_list;
 select * from tab;
 
 CREATE TABLE search_qual(
-	search_com_No NUMBER,
+	search_com_No VARCHAR2(12),
 	No NUMBER,
 	com_qual VARCHAR2(1000),
 	com_preex VARCHAR2(1000),

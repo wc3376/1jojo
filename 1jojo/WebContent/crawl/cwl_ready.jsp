@@ -11,8 +11,8 @@
 <div>
 <header>
 	<c:import url="../member/header.jsp"/>
-</header></div>
-
+</header>
+</div>
 <br>
 <br>
 <h2>ID및 비밀번호</h2>

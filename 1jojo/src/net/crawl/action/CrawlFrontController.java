@@ -61,16 +61,48 @@ public class CrawlFrontController extends javax.servlet.http.HttpServlet
 			forward.setRedirect(false);
 			forward.setPath("./crawl/cwl_result.jsp");			
 		}
-		else if (command.equals("/CrawlSaveAction.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
-			System.out.println("Stop!");
-//			action = new CrawlSaveAction();//미완.
+		else if (command.equals("/CrawlAnalysisAction.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
+			action = new CrawlAnalysisAction();//미완.
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		else if (command.equals("/cwl_qual_analysis_result.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./crawl/cwl_qual_analysis_result.jsp");			
+		}
+		else if (command.equals("/cwl_preex_analysis_result.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./crawl/cwl_preex_analysis_result.jsp");			
+		}
+		else if (command.equals("/cwl_preex_analysis_result.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./crawl/cwl_preex_analysis_result.jsp");			
+		}		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		else if (command.equals("/CrawlSaveAction.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
+			System.out.println("Stop!");
+			action = new CrawlSaveAction();//미완.
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		
