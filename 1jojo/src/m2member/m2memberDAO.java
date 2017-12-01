@@ -84,6 +84,19 @@ private static m2memberDAO instance = new m2memberDAO();
 		return result;
 	}
 
+	public int chk_write(m2memberDTO member) {
+		int result = 0;
+		SqlSession session = null;
+		try {session = getSession();
+		m2memberDTO mem = (m2memberDTO) session.selectOne("select", member.getId());
+		if(mem.getId().equals(member.getId())) {
+		result = 1;	
+		}		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return result;
+	}
+	
 	public m2memberDTO select(String id) throws SQLException {
 		m2memberDTO mem = null;
 		SqlSession session = null;

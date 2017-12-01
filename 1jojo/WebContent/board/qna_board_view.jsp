@@ -13,6 +13,15 @@
 </head>
 
 <body>
+<div>
+<header>
+<c:import url="../member/header.jsp"></c:import>
+</header>
+<br>
+<br>
+<br>
+<br>
+</div>
 <!-- 게시판 수정 -->
 <table cellpadding="0" cellspacing="0" align=center border=1>
 	<tr align="center" valign="middle">

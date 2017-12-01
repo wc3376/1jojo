@@ -119,7 +119,7 @@
 		<input type=hidden name="email" value="${member.id}">
 		
 		
-		<table class="table table-bordered" align=center>
+		<table class="table table-bordered" align=center  >
 		<caption><h3> 회원 정보 수정</h3></caption>
 			<thead>
 			<tr><td>ID</td>

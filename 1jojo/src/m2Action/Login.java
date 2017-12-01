@@ -44,7 +44,7 @@ public class Login implements Action{
 		
 		ActionForward forward = new ActionForward();
 				forward.setRedirect(false);
-				forward.setPath("./member/main.jsp");
+				forward.setPath("./crawl/cwl_ready.jsp");
 				
 		return forward;
 	}

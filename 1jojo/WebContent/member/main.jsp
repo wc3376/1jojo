@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>홈페이지 이름</title>
-<script src = "http://code.jquery.com/jquery-latest.js"></script>
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,7 +24,26 @@
 <div class="jumbotron text-center">
   <h1>Company</h1> 
   <p>We specialize in blablabla</p> 
-  <form action="/171122m2/SearchAction.do" method="post" 
+  <form method=post action="/1jojo/Login.do">
+ 
+    <div class="form-group ">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    
+    <div class="form-group ">
+      <label for="pass">Password:</label>
+      <input type="password" class="form-control" id="pass" placeholder="Enter password" name="pass">
+    </div>
+     
+    <div class="checkbox ">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+     
+    <button type="submit" class="btn btn-default ">Submit</button>
+  </form>
+  
+  <!-- <form action="/171122m2/SearchAction.do" method="post" 
 	enctype="multipart/form-data" name="homeform">
     <div class="input-group">
       <input type="text" class="form-control" size="50" placeholder="text" required>
@@ -32,7 +51,7 @@
         <button type="button" class="btn btn-danger">Subscribe</button>
       </div>
     </div>
-  </form>
+  </form> -->
 </div>
 
 

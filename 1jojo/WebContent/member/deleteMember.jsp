@@ -40,9 +40,9 @@
   <div class="row content">
     <div class="col-sm-2 sidenav">
     	<ul class = "list-group">
-      	<li class ="list-group-item" ><a href="/171122m2/UpdateForm.do">정보 수정</a></li>
+      	<li class ="list-group-item" ><a href="/1jojo/UpdateForm.do">정보 수정</a></li>
       	<li class ="list-group-item"><a href="./searchRecord.jsp">검색 기록</a></li>
-      	<li class ="list-group-item active"><a href="/171122m2/DeleteMember.do">회원 탈퇴</a></li>
+      	<li class ="list-group-item active"><a href="/1jojo/DeleteMember.do">회원 탈퇴</a></li>
     	</ul>
     </div>
     <div class="col-sm-8 text-left"> 

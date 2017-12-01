@@ -34,7 +34,15 @@
 	
 </head>
 <body>
-
+<div>
+<header>
+<c:import url="../member/header.jsp"></c:import>
+</header>
+<br>
+<br>
+<br>
+<br>
+</div>
 <form action="/1jojo/QnaBoardAddAction.qo" method="post" 
 	enctype="multipart/form-data" name="boardform">
 <table cellpadding="0" cellspacing="0" align=center border=1>

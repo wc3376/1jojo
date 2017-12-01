@@ -22,6 +22,15 @@
 
 </head>
 <body>
+<div>
+<header>
+<c:import url="../member/header.jsp"></c:import>
+</header>
+<br>
+<br>
+<br>
+<br>
+</div>
 <form name="deleteForm" action="./QnaBoardDeleteAction.qo?num=${param.num}" method="post">
 <input type=hidden name=page value="${param.page}">
 <table border=1 align=center>
