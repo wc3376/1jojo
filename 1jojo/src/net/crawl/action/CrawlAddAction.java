@@ -457,7 +457,7 @@ public class CrawlAddAction implements Action {
 			System.out.println("session updated");
 
 			forward.setRedirect(false);
-			forward.setPath("./crawl/cwl_result.jsp");
+			forward.setPath("/cwl_result.cr");
 			return forward;
 		} catch (Exception ex) {
 			ex.printStackTrace();

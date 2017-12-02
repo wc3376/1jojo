@@ -50,7 +50,7 @@ public class CrawlAnalysisAction implements Action {
 			String s = tempText[i];
 			// System.out.println("itme : " + s);
 			if(s.contains(":")) {
-				listOfToken.add(s.substring(s.indexOf(":")).trim());
+				listOfToken.add(s.substring(s.indexOf(":")+1).trim());
 			}
 			String tokens[]=null;
 			if(s.contains(",")) {
@@ -74,9 +74,9 @@ public class CrawlAnalysisAction implements Action {
 			request.setCharacterEncoding("utf-8");//입
 			ArrayList<search_list_Bean> listOfsearch_list= new ArrayList<search_list_Bean>();
 //			**************load test**************
-//			System.out.println( request.getAttribute("search_list")) ;//request.setAttribute로 하면 request가 살아 있는 동안만 먹힌다. session.setAttribute로 해야 다른 페이지에서도 써먹을 수 있다.
+			System.out.println( request.getAttribute("search_list")) ;//request.setAttribute로 하면 request가 살아 있는 동안만 먹힌다. session.setAttribute로 해야 다른 페이지에서도 써먹을 수 있다.
 //			System.out.println("search_list_count = "+  request.getSession().getAttribute("search_list_count")) ;
-//			System.out.println(request.getSession().getAttribute("search_list"));
+			System.out.println(request.getSession().getAttribute("search_list"));
 			HttpSession session = request.getSession();
 			listOfsearch_list= (ArrayList<search_list_Bean>) session.getAttribute("search_list");
 //			**************load test**************
@@ -120,12 +120,12 @@ public class CrawlAnalysisAction implements Action {
 			String search_com_No = listOfsearch_list.get(0).getSearch_com_No();
 		    Iterator<String> iterator1 = countPerWord_Qual.keySet().iterator();
 			ArrayList<search_qual_Bean> listOfsearch_qual_Bean= new ArrayList<search_qual_Bean>();
-			int no=(int) session.getAttribute("No");
+//			int no=(int) session.getAttribute("No");
 		    while (iterator1.hasNext()) {
 		    	String key = (String) iterator1.next();
 		    	search_qual_Bean qual = new search_qual_Bean();
 				qual.setSearch_com_No(search_com_No);
-				qual.setNo(no);
+//				qual.setNo(no);
 				qual.setCom_qual(key);
 				qual.setCom_frequncy(countPerWord_Qual.get(key));
 				listOfsearch_qual_Bean.add(qual);
@@ -135,16 +135,19 @@ public class CrawlAnalysisAction implements Action {
 		    	String key = (String) iterator2.next();
 		    	search_qual_Bean preex = new search_qual_Bean();
 		    	preex.setSearch_com_No(search_com_No);
-		    	preex.setNo(no);
+//		    	preex.setNo(no);
+		    	preex.setCom_preex(key);
 		    	preex.setCom_frequncy(countPerWord_Preex.get(key));
 		    	listOfsearch_qual_Bean.add(preex);
 		    }
 		    
 			session.setAttribute("cwl_qualAndpreex_analysis_result", listOfsearch_qual_Bean); //검색결과 리스트를 세션으로 전송
+			session.setAttribute("search_qual_preex_count", countPerWord_Preex.size()); //검색결과 리스트를 세션으로 전송
+			session.setAttribute("search_qual_qual_count", countPerWord_Qual.size() ); //검색결과 리스트를 세션으로 전송
 			System.out.println("session updated");
 
 			forward.setRedirect(false);
-			forward.setPath("./cwl_qual_analysis_result.cr");
+			forward.setPath("/cwl_qual_analysis_result.cr");
 			return forward;
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -41,7 +41,6 @@
 
 <!-- 레코드가 있으면 -->
 <c:if test="${search_list_count > 0 }">
-
 	<tr align="center" valign="middle">
 		<td colspan="4">검색 결과</td>
 <!-- 		<td align=right> -->

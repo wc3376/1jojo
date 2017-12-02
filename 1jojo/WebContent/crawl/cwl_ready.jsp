@@ -21,8 +21,7 @@
 <br>
 <div>
 <Content>
-</Content>
-</div>
+
 <h2>ID및 비밀번호</h2>
 <form action="/1jojo/CrawlAddAction.cr" method="post"  name="boardform" ><%-- ${세션 데이터 SET된 것 가져와야함.} --%>
 		아이디 : <input type="text" name="id" required="required" disabled="disabled" value="chlgudrbdn"><p> <%-- ${email} --%>
@@ -43,8 +42,8 @@
 
 </form>
 
-
-
+</Content>
+</div>
 
 </body>
 </html>

@@ -58,10 +58,10 @@
 			<div align="center">회사명</div>
 		</td>
 		<td style="font-family:Tahoma;font-size:8pt;" width="14%">
-			<div align="center">우대사항 모음</div>
+			<div align="center">지원자격 모음</div>
 		</td>
 		<td style="font-family:Tahoma;font-size:8pt;" width="17%">
-			<div align="center">지원자격 모음</div>
+			<div align="center">우대사항 모음</div>
 		</td>
 <!-- 		<td style="font-family:Tahoma;font-size:8pt;" width="11%"> -->
 <!-- 			<div align="center">링크</div> -->
@@ -86,20 +86,16 @@
 		
 		<td style="font-family:Tahoma;font-size:10pt;">
 			<div align="left">
-			
 			<a href="https://www.saramin.co.kr/${b.com_link}">
-				<%--bl.getBOARD_SUBJECT()--%>
 				${b.com_name}
 			</a>
 			</div>
 		</td>
 		
 		<td style="font-family:Tahoma;font-size:10pt;">
-			<div align="center"></div>
 					${b.com_qual}
 		</td>
 		<td style="font-family:Tahoma;font-size:10pt;">
-			<div align="center"></div>
 					${b.com_preex}
 		</td>	
 	</tr>
