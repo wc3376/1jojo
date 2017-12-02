@@ -72,19 +72,16 @@ public class CrawlAnalysisAction implements Action {
 		try {
 			response.setContentType("text/html; charset=utf-8");//출
 			request.setCharacterEncoding("utf-8");//입
-			List<search_list_Bean> listOfsearch_list= new ArrayList<search_list_Bean>();
-//			HttpSession session = request.getSession();
-
-//			load test
-			System.out.println( request.getAttribute("search_list")) ;
-			System.out.println("search_list_count"+  request.getSession().getAttribute("search_list_count")) ;
-			System.out.println(request.getSession().getAttribute("search_list"));
-//			if(request.getAttribute("search_list") == null)
-//				System.out.println("비었다.");
+			ArrayList<search_list_Bean> listOfsearch_list= new ArrayList<search_list_Bean>();
+//			**************load test**************
+//			System.out.println( request.getAttribute("search_list")) ;//request.setAttribute로 하면 request가 살아 있는 동안만 먹힌다. session.setAttribute로 해야 다른 페이지에서도 써먹을 수 있다.
+//			System.out.println("search_list_count = "+  request.getSession().getAttribute("search_list_count")) ;
+//			System.out.println(request.getSession().getAttribute("search_list"));
+			HttpSession session = request.getSession();
+			listOfsearch_list= (ArrayList<search_list_Bean>) session.getAttribute("search_list");
+//			**************load test**************
 			
-			listOfsearch_list= (ArrayList<search_list_Bean>) request.getAttribute("search_list");
-//			load test
-			
+			/**************단어추출 및 빈도 세기*************/
 			String totalQual="";
 			String totalPreex="";
 			for(search_list_Bean listData : listOfsearch_list) {
@@ -103,7 +100,7 @@ public class CrawlAnalysisAction implements Action {
 				}				
 			}
 			
-			listOfToken = removeCategory(totalPreex);//유의미한 단어만 별도 추출
+			listOfToken = removeCategory(totalPreex);//유의미한 단어만 별도 추출. listOfToken은 재활용 해서 문제있는지 확인 바람. 얕은 복사니까 문제는 없어보이지만 혹시 모른다.
 			System.out.println(listOfToken);
 			HashMap<String, Integer> countPerWord_Preex = new HashMap<String, Integer>();//단어, 빈도
 			for (String word : listOfToken) {
@@ -113,26 +110,37 @@ public class CrawlAnalysisAction implements Action {
 					countPerWord_Preex.put(word, countPerWord_Preex.get(word)+1);
 				}				
 			}
+			/**************단어추출 및 빈도 세기**************/
+
 //			search_com_No NUMBER,
 //			No NUMBER, //일단 연동이 어느정도 마무리되면 한다.
 //			com_qual VARCHAR2(1000),
 //			com_preex VARCHAR2(1000),
 //			com_frequency NUMBER,
+			String search_com_No = listOfsearch_list.get(0).getSearch_com_No();
 		    Iterator<String> iterator1 = countPerWord_Qual.keySet().iterator();
+			ArrayList<search_qual_Bean> listOfsearch_qual_Bean= new ArrayList<search_qual_Bean>();
+			int no=(int) session.getAttribute("No");
 		    while (iterator1.hasNext()) {
 		    	String key = (String) iterator1.next();
 		    	search_qual_Bean qual = new search_qual_Bean();
-				qual.setSearch_com_No(listOfsearch_list.get(0).getSearch_com_No() );
+				qual.setSearch_com_No(search_com_No);
+				qual.setNo(no);
+				qual.setCom_qual(key);
 				qual.setCom_frequncy(countPerWord_Qual.get(key));
+				listOfsearch_qual_Bean.add(qual);
 		    }
-		    Iterator<String> iterator2 = countPerWord_Qual.keySet().iterator();
+		    Iterator<String> iterator2 = countPerWord_Preex.keySet().iterator();
 		    while (iterator2.hasNext()) {
 		    	String key = (String) iterator2.next();
-		    	search_qual_Bean qual = new search_qual_Bean();
-				qual.setSearch_com_No(listOfsearch_list.get(0).getSearch_com_No() );
-				qual.setCom_frequncy(countPerWord_Qual.get(key));
+		    	search_qual_Bean preex = new search_qual_Bean();
+		    	preex.setSearch_com_No(search_com_No);
+		    	preex.setNo(no);
+		    	preex.setCom_frequncy(countPerWord_Preex.get(key));
+		    	listOfsearch_qual_Bean.add(preex);
 		    }
-			request.setAttribute("search_list", listOfsearch_list); //검색결과 리스트를 세션으로 전송
+		    
+			session.setAttribute("cwl_qualAndpreex_analysis_result", listOfsearch_qual_Bean); //검색결과 리스트를 세션으로 전송
 			System.out.println("session updated");
 
 			forward.setRedirect(false);

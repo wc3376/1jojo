@@ -449,11 +449,11 @@ public class CrawlAddAction implements Action {
 			/* if(result==false){ System.out.println("게시?�� ?���? ?��?��"); return null; }
 			 * System.out.println("게시?�� ?���? ?���?");*/
 			
-			request.setAttribute("search_list_count", listOfResult.size()); //검색 결과 수
+			session.setAttribute("search_list_count", listOfResult.size()); //검색 결과 수
 //			listOfResult_at_DB = crawldao.getSearch_list( search_com_No );//DB에 놓음 검색결과 읽어온다.
-			request.setAttribute("search_list", listOfResult); //검색결과 리스트를 세션으로 전송
+			session.setAttribute("search_list", listOfResult); //검색결과 리스트를 세션으로 전송
 			String search_com_No = listOfResult.get(0).getSearch_com_No(); // 검색번호는 일단 reques단에 넘긴다.
-			request.setAttribute("search_com_No", search_com_No ); //search_com_No을 세션으로 전송
+			session.setAttribute("search_com_No", search_com_No ); //search_com_No을 세션으로 전송
 			System.out.println("session updated");
 
 			forward.setRedirect(false);

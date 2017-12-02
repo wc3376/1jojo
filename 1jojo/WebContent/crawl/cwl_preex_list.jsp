@@ -1,99 +1,131 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
-<%@ page import="net.board.db.*" %>
+<%@ page import="java.util.*"%>
+<%-- <%@ page import="java.text.SimpleDateFormat" %> --%>
+<%@ page import="net.crawl.db.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-//	BoardBean board = (BoardBean)request.getAttribute("boarddata");
-//	String nowpage = (String)request.getAttribute("page");
+//	List boardList=(List)request.getAttribute("boardlist");
+//	int listcount=((Integer)request.getAttribute("listcount")).intValue();
+//	int nowpage=((Integer)request.getAttribute("page")).intValue();
+//	int maxpage=((Integer)request.getAttribute("maxpage")).intValue();
+//	int startpage=((Integer)request.getAttribute("startpage")).intValue();
+//	int endpage=((Integer)request.getAttribute("endpage")).intValue();
+
+//	int number = listcount-(nowpage-1)*10;
 %>
 
 <html>
 <head>
-	<title>QnA 게시판</title>
+	<title>크롤링 결과</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-<!-- 게시판 수정 -->
-<table cellpadding="0" cellspacing="0" align=center border=1>
+<div>
+<header>
+	<c:import url="../member/header.jsp"/>
+</header>
+</div>
+<br>
+<br>
+<br>
+<!-- 게시판 리스트 -->
+<table align=center width="80%" class="table table-striped">
+<%
+//if(listcount > 0){
+%>
+
+<!-- 레코드가 있으면 -->
+<c:if test="${search_list_count > 0 }">
+
 	<tr align="center" valign="middle">
-		<td colspan="5">QnA 게시판</td>
+		<td colspan="4">검색 결과</td>
+<!-- 		<td align=right> -->
+			<span align=left><font size=2 >검색 결과 개수 : ${search_list_count }</font> </span>
+<!-- 		</td> -->
+			<button type="button" class="btn btn-default" onclick="location.href='./CrawlAnalysisAction.cr'">검색결과 분석</button>
 	</tr>
-	
-	<tr>
-		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">제 목&nbsp;&nbsp;</div>
-		</td>
-		
-		<td style="font-family:돋음; font-size:12">
-		<%--board.getBOARD_SUBJECT()--%>
-		${boarddata.board_subject}		
-		</td>
-	</tr>
-	
-	<tr bgcolor="cccccc">
-		<td colspan="2" style="height:1px;">
-		</td>
-	</tr>
-	
-	<tr>
-		<td style="font-family:돋음; font-size:12">
-			<div align="center">내 용</div>
-		</td>
-		<td style="font-family:돋음; font-size:12">
-			<table border=1 width=490 height=250 style="table-layout:fixed">
-				<tr>
-					<td valign=top style="font-family:돋음; font-size:12">
-					<%-- <pre><%=board.getBOARD_CONTENT() %></pre> --%>
-					<pre>${boarddata.board_content}</pre>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<tr>
-		<td style="font-family:돋음; font-size:12">
-			<div align="center">첨부파일</div>
-		</td>
-		<td style="font-family:돋음; font-size:12">
-		
-		<%--if(!(board.getBOARD_FILE()==null)){ --%>		
-		<%-- <a href="/Model2_Board11/board/file_down.jsp?file_name=<%=board.getBOARD_FILE()%>">
-			<%=board.getBOARD_FILE()%></a> --%>	
-		<%--} --%>
-		
-		
-		<!-- 첨부 파일이 있으면 출력하는 부분 -->		
-		<c:if test="${!empty boarddata.board_file}">
-			<a href="/1jojo/board/file_down.jsp?file_name=${boarddata.board_file}">
-				${boarddata.board_file}</a>
-		</c:if>		
-		
-		</td>
-	</tr>
-	
-	<tr bgcolor="cccccc">
-		<td colspan="2" style="height:1px;"></td>
-	</tr>
-	<tr><td colspan="2">&nbsp;</td></tr>
 	
 	<tr align="center" valign="middle">
-		<td colspan="5">
-			<font size=2>
-			<a href="./BoardReplyView.bo?num=${boarddata.board_num}&page=${page}">
-			[답변]</a>&nbsp;&nbsp;
+		<td style="font-family:Tahoma;font-size:8pt;" height="26">
+			<div align="center">검색 번호</div>
+		</td>
+		<td style="font-family:Tahoma;font-size:8pt;">
+			<div align="center">회사명</div>
+		</td>
+		<td style="font-family:Tahoma;font-size:8pt;" width="14%">
+			<div align="center">우대사항 모음</div>
+		</td>
+		<td style="font-family:Tahoma;font-size:8pt;" width="17%">
+			<div align="center">지원자격 모음</div>
+		</td>
+<!-- 		<td style="font-family:Tahoma;font-size:8pt;" width="11%"> -->
+<!-- 			<div align="center">링크</div> -->
+<!-- 		</td> -->
+	</tr>
+	
+	<%//int number = listcount-(nowpage-1)*10;
+//		for(int i=0;i<boardList.size();i++){
+//			BoardBean bl=(BoardBean)boardList.get(i);
+	%>	 
+	 
+	<!-- 화면 출력 번호 -->		
+<%-- 	<c:set var="num" value="${listcount-(page-1)*10}"/> 	 --%>
+	
+	<c:forEach var="b" items="${search_list}">	
+	
+	<tr align="center" valign="middle">
+		<td height="23" style="font-family:Tahoma;font-size:10pt;">
+			<!-- 번호 출력 부분 -->
+			<c:out value="${search_com_No}"/>				
+		</td>
+		
+		<td style="font-family:Tahoma;font-size:10pt;">
+			<div align="left">
 			
-			<a href="./BoardModifyView.bo?num=${boarddata.board_num}&page=${page}">
-			[수정]</a>&nbsp;&nbsp;
-			
-			<a href="./BoardDeleteAction.bo?num=${boarddata.board_num}&page=${page}">
-			[삭제]</a>&nbsp;&nbsp;
-			
-			<a href="./BoardListAction.bo?page=${page}">
-			[목록]</a>&nbsp;&nbsp;			
-			</font>
+			<a href="https://www.saramin.co.kr/${b.com_link}">
+				<%--bl.getBOARD_SUBJECT()--%>
+				${b.com_name}
+			</a>
+			</div>
+		</td>
+		
+		<td style="font-family:Tahoma;font-size:10pt;">
+			<div align="center"></div>
+					${b.com_qual}
+		</td>
+		<td style="font-family:Tahoma;font-size:10pt;">
+			<div align="center"></div>
+					${b.com_preex}
+		</td>	
+	</tr>
+	
+	</c:forEach>
+	
+	</c:if>
+	
+	<!-- 레코드가 없으면 -->
+	<c:if test="${search_list_count == 0 }">
+		<tr align="center" valign="middle">
+			<td colspan="4">검색 결과</td>
+			<td align=right>
+				<font size=2>검색 결과가 없습니다.</font>
+			</td>
+		</tr>
+	</c:if>
+	
+	<tr align="right">
+		<td colspan="4">
+			<span align=left>검색 결과 번호 : ${search_com_No}</span>
+			검색 갯수 : ${search_list_count}
+			<button type="button" class="btn btn-default" onclick="location.href='./CrawlAnalysisAction.cr'">검색결과 분석</button>
 		</td>
 	</tr>
 </table>
-<!-- 게시판 수정 -->
+
 </body>
 </html>
