@@ -6,12 +6,28 @@
 <mapper namespace="crawl">
 
 	<!-- 검색결과 저장 -->
-	<insert id="crawl_insert" parameterType="net.crawl.db.search_list_Bean">
+	<insert id="crawl_search_list_insert" parameterType="net.crawl.db.search_list_Bean">
 		insert into search_list(search_com_No,com_qual,com_preex,com_name,com_link)
 		values(#{search_com_No},#{com_qual},#{com_preex},#{com_name},#{com_link})	
 	</insert>
-<!-- 	분석 전 검색결과 출력-->
-	<select id="crawl_list"  parameterType="int"  resultType="crawl">
+	<!-- 분석결과 저장 -->
+	<insert id="crawl_search_qual_insert" parameterType="net.crawl.db.search_qual_Bean">
+		insert into search_qual(search_com_No,
+									No,
+									com_qual,
+									com_preex,
+									com_frequency)
+		values(#{search_com_No},
+				#{No},
+				#{com_qual},
+				#{com_preex},
+				#{com_frequency})	
+	</insert>
+	
+<!-- 	추정1. 오타. -->
+	
+<!-- 	검색결과 출력-->
+	<select id="crawl_search_list_select"  parameterType="int"  resultType="net.crawl.db.search_list_Bean">
 	    <![CDATA[
 		select * from search_list
 	   	where search_com_No == #{search_com_No}

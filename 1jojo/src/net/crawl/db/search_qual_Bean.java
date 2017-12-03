@@ -5,7 +5,7 @@ public class search_qual_Bean {
 	private int No;//사용자번호
 	private String com_qual;//업체지원자격
 	private String com_preex;//업체우대사항
-	private int com_frequncy;//빈도수
+	private int com_frequency;//빈도수
 	
 	public String getSearch_com_No() {
 		return search_com_No;
@@ -25,11 +25,11 @@ public class search_qual_Bean {
 	public void setCom_preex(String com_preex) {
 		this.com_preex = com_preex;
 	}
-	public int getCom_frequncy() {
-		return com_frequncy;
+	public int getCom_frequency() {
+		return com_frequency;
 	}
-	public void setCom_frequncy(int com_frequncy) {
-		this.com_frequncy = com_frequncy;
+	public void setCom_frequency(int com_frequency) {
+		this.com_frequency = com_frequency;
 	}
 	public int getNo() {
 		return No;

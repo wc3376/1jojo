@@ -39,7 +39,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class CrawlAnalysisAction implements Action {
-	CrawlDAOImpl crawldao = new CrawlDAOImpl();
+//	CrawlDAOImpl crawldao = new CrawlDAOImpl();
 
 	public ArrayList<String> removeCategory(String targetText) {
 		String[] tempText = targetText.split("-"); // 일단 문자열을 -기준으로 나눈다. 빈곳은 고려 않는다.
@@ -49,16 +49,22 @@ public class CrawlAnalysisAction implements Action {
 		for (int i = 0; i < tempText.length; i++) {
 			String s = tempText[i];
 			// System.out.println("itme : " + s);
-			if(s.contains(":")) {
-				listOfToken.add(s.substring(s.indexOf(":")+1).trim());
-			}
+//			if(s.contains(":")) {
+//				listOfToken.add(s.substring(s.indexOf(":")+1).trim());
+//				continue;
+//			}
 			String tokens[]=null;
 			if(s.contains(",")) {
 				tokens = s.split(",");
 				for(String token: tokens) {
-					listOfToken.add(token.trim());
+					listOfToken.add(s.substring(0, s.indexOf(": "))+token.trim());
+					continue;
 				}
 			}
+			if(s.equals("")) {//빈 것이 가끔 들어온다. -로 나눴을 때 앞부분의 공백을 의미하는 것 같다.
+				continue;
+			}
+			listOfToken.add(s.trim());
 		}
 		return listOfToken;
 	}
@@ -67,16 +73,16 @@ public class CrawlAnalysisAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("CrawlAnalysisAction");
 		ActionForward forward = new ActionForward();
-		CrawlDAOImpl crawldao=new CrawlDAOImpl();
+//		CrawlDAOImpl crawldao=new CrawlDAOImpl();
 
 		try {
 			response.setContentType("text/html; charset=utf-8");//출
 			request.setCharacterEncoding("utf-8");//입
 			ArrayList<search_list_Bean> listOfsearch_list= new ArrayList<search_list_Bean>();
 //			**************load test**************
-			System.out.println( request.getAttribute("search_list")) ;//request.setAttribute로 하면 request가 살아 있는 동안만 먹힌다. session.setAttribute로 해야 다른 페이지에서도 써먹을 수 있다.
+//			System.out.println( request.getAttribute("search_list")) ;//request.setAttribute로 하면 request가 살아 있는 동안만 먹힌다. session.setAttribute로 해야 다른 페이지에서도 써먹을 수 있다.
 //			System.out.println("search_list_count = "+  request.getSession().getAttribute("search_list_count")) ;
-			System.out.println(request.getSession().getAttribute("search_list"));
+			System.out.println(request.getSession().getAttribute("search_list"));//객체가 담겨 있는지 여부 확인.
 			HttpSession session = request.getSession();
 			listOfsearch_list= (ArrayList<search_list_Bean>) session.getAttribute("search_list");
 //			**************load test**************
@@ -90,7 +96,7 @@ public class CrawlAnalysisAction implements Action {
 			}
 			ArrayList<String> listOfToken= new ArrayList<String>();
 			listOfToken = removeCategory(totalQual);//유의미한 단어만 별도 추출
-			System.out.println(listOfToken);
+//			System.out.println(listOfToken);
 			HashMap<String, Integer> countPerWord_Qual = new HashMap<String, Integer>();//단어, 빈도
 			for (String word : listOfToken) {
 				if(countPerWord_Qual.get(word)==null) {
@@ -99,9 +105,8 @@ public class CrawlAnalysisAction implements Action {
 					countPerWord_Qual.put(word, countPerWord_Qual.get(word)+1);
 				}				
 			}
-			
 			listOfToken = removeCategory(totalPreex);//유의미한 단어만 별도 추출. listOfToken은 재활용 해서 문제있는지 확인 바람. 얕은 복사니까 문제는 없어보이지만 혹시 모른다.
-			System.out.println(listOfToken);
+//			System.out.println(listOfToken);
 			HashMap<String, Integer> countPerWord_Preex = new HashMap<String, Integer>();//단어, 빈도
 			for (String word : listOfToken) {
 				if(countPerWord_Preex.get(word)==null) {
@@ -121,15 +126,18 @@ public class CrawlAnalysisAction implements Action {
 		    Iterator<String> iterator1 = countPerWord_Qual.keySet().iterator();
 			ArrayList<search_qual_Bean> listOfsearch_qual_Bean= new ArrayList<search_qual_Bean>();
 //			int no=(int) session.getAttribute("No");
+			System.out.println(countPerWord_Qual);
 		    while (iterator1.hasNext()) {
 		    	String key = (String) iterator1.next();
 		    	search_qual_Bean qual = new search_qual_Bean();
 				qual.setSearch_com_No(search_com_No);
 //				qual.setNo(no);
+				qual.setCom_preex("");
 				qual.setCom_qual(key);
-				qual.setCom_frequncy(countPerWord_Qual.get(key));
+				qual.setCom_frequency(countPerWord_Qual.get(key));
 				listOfsearch_qual_Bean.add(qual);
 		    }
+		    System.out.println(countPerWord_Preex);
 		    Iterator<String> iterator2 = countPerWord_Preex.keySet().iterator();
 		    while (iterator2.hasNext()) {
 		    	String key = (String) iterator2.next();
@@ -137,17 +145,23 @@ public class CrawlAnalysisAction implements Action {
 		    	preex.setSearch_com_No(search_com_No);
 //		    	preex.setNo(no);
 		    	preex.setCom_preex(key);
-		    	preex.setCom_frequncy(countPerWord_Preex.get(key));
+		    	preex.setCom_qual("");
+		    	preex.setCom_frequency(countPerWord_Preex.get(key));
 		    	listOfsearch_qual_Bean.add(preex);
 		    }
 		    
+//		    for(search_qual_Bean test : listOfsearch_qual_Bean) {
+//		    	System.out.println(test.getCom_preex());
+//		    	System.out.println(test.getCom_qual());
+//		    }
+		    
 			session.setAttribute("cwl_qualAndpreex_analysis_result", listOfsearch_qual_Bean); //검색결과 리스트를 세션으로 전송
-			session.setAttribute("search_qual_preex_count", countPerWord_Preex.size()); //검색결과 리스트를 세션으로 전송
-			session.setAttribute("search_qual_qual_count", countPerWord_Qual.size() ); //검색결과 리스트를 세션으로 전송
+//			session.setAttribute("search_qual_preex_count", countPerWord_Preex.size()); //검색결과 크기를 세션으로 전송
+//			session.setAttribute("search_qual_qual_count", countPerWord_Qual.size() ); //검색결과 크기를 세션으로 전송
 			System.out.println("session updated");
 
 			forward.setRedirect(false);
-			forward.setPath("/cwl_qual_analysis_result.cr");
+			forward.setPath("/cwl_qualAndpreex_analysis_result.cr");
 			return forward;
 		} catch (Exception ex) {
 			ex.printStackTrace();

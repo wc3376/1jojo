@@ -5,10 +5,12 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.board.action.Action;
+import net.board.action.ActionForward;
 //import net.board.db.BoardDAO1;
 import net.board.db.BoardDAOImpl;
 
- public class CrawlListAction implements Action {
+ public class CrawlGetSavedDataAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 
 //		BoardDAO boarddao=new BoardDAO();

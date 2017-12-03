@@ -33,7 +33,6 @@ CREATE TABLE search_qual(
 	PRIMARY KEY(search_com_No)
 );
 
-
 drop table search_qual purge;
 select * from tab;
 select * from search_qual;

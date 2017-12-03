@@ -246,7 +246,7 @@ public class CrawlAddAction implements Action {
 		return listData;
 	}
 
-	public HashMap readTableHead(ArrayList<WebElement> head_list) {
+	public HashMap<Integer, String> readTableHead(ArrayList<WebElement> head_list) {
 		HashMap<Integer, String> category = new HashMap<Integer, String>();//속성, 값
 		int colNo = 0;
 		
@@ -443,9 +443,9 @@ public class CrawlAddAction implements Action {
 			listOfResult=Step_02_scraping();
 			tearDown();
 			System.out.println("OK. done.");
-			for(search_list_Bean listData : listOfResult) {
-				System.out.println(listData.getCom_name());
-			}
+//			for(search_list_Bean listData : listOfResult) {//제대로 들어갔는지 확인.
+//				System.out.println(listData.getCom_name());
+//			}
 			/* if(result==false){ System.out.println("게시?�� ?���? ?��?��"); return null; }
 			 * System.out.println("게시?�� ?���? ?���?");*/
 			
