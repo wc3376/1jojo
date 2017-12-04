@@ -4,53 +4,39 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.board.action.Action;
 import net.board.action.ActionForward;
 //import net.board.db.BoardDAO1;
 import net.board.db.BoardDAOImpl;
+import net.crawl.db.CrawlDAOImpl;
+import net.crawl.db.search_list_Bean;
+import net.crawl.db.search_qual_Bean;
 
  public class CrawlGetSavedDataAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		HttpSession session = request.getSession();
+		System.out.println("CrawlGetSavedDataAction");
+		ArrayList<search_list_Bean> listOfResult= new ArrayList<search_list_Bean>();
+		ArrayList<search_qual_Bean> listOfsearch_qual_Bean= new ArrayList<search_qual_Bean>();
 
-//		BoardDAO boarddao=new BoardDAO();
-		BoardDAOImpl boarddao=new BoardDAOImpl();
-		List boardlist=new ArrayList();
+		CrawlDAOImpl crawldao=new CrawlDAOImpl();
+		System.out.println(session.getAttribute("no"));
+		int no=(int)session.getAttribute("no");
+		String No = Integer.toString(no);
+		String search_com_No=crawldao.getSearch_com_No(No);
+		listOfResult=crawldao.getSearch_list(search_com_No);
+		listOfsearch_qual_Bean=crawldao.getSearch_qual(search_com_No);
 		
-		int page=1; // 현재 페이지 번호
-		int limit=10; // 한 화면에 출력할 레코드 갯수
-		
-		if(request.getParameter("page") != null){
-			page=Integer.parseInt(request.getParameter("page"));
-		}
-		
-		int listcount=boarddao.getListCount(); //총 리스트 수를 받아옴
-//		boardlist = boarddao.getBoardList(page,limit); //리스트를 받아옴
-		boardlist = boarddao.getBoardList(page);
-		
-		//총 페이지 수
- 		int maxpage=(int)((double)listcount/limit+0.95); //0.95를 더해서 올림 처리
+ 		session.setAttribute("search_list", listOfResult); //현재 페이지 수
+ 		session.setAttribute("cwl_qualAndpreex_analysis_result", listOfsearch_qual_Bean); //최대 페이지 수
+ 		session.setAttribute("search_com_No", search_com_No ); 
+ 		session.setAttribute("search_list_count", listOfResult.size());
  		
- 		//현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)
- 		int startpage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
- 		
- 		//현재 페이지에 보여줄 마지막 페이지 수(10, 20, 30 등...)
-		int endpage = startpage+10-1;
-
- 		if(endpage> maxpage) endpage= maxpage;
- 		
- 		int number = listcount-(page-1)*10; 		
- 		
- 		request.setAttribute("page", page); //현재 페이지 수
- 		request.setAttribute("maxpage", maxpage); //최대 페이지 수
- 		request.setAttribute("startpage", startpage); //현재 페이지에 표시할 첫 페이지 수
- 		request.setAttribute("endpage", endpage); //현재 페이지에 표시할 끝 페이지 수
-		request.setAttribute("listcount",listcount); //글 수
-		request.setAttribute("boardlist", boardlist);		
-		
 		ActionForward forward= new ActionForward();
 	 	forward.setRedirect(false);
- 		forward.setPath("/board/qna_board_list.jsp");
+ 		forward.setPath("/cwl_result.cr");
  		return forward;
 	 }
  }

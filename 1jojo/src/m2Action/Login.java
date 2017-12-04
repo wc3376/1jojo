@@ -32,7 +32,7 @@ public class Login implements Action{
 		if(result == 1) {
 			session.setAttribute("no", member.getNo());
 			session.setAttribute("id", member.getId());
-			
+			session.setAttribute("pass", member.getPass());
 		}else {
 			out.println("<script>");
 			out.println("alert('계정정보가 다릅니다')");
@@ -45,7 +45,7 @@ public class Login implements Action{
 		
 		ActionForward forward = new ActionForward();
 				forward.setRedirect(false);
-				forward.setPath("./crawl/cwl_ready.jsp");
+				forward.setPath("/cwl_ready.cr");
 				
 		return forward;
 	}

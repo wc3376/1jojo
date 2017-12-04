@@ -24,13 +24,25 @@
 				#{com_frequency})	
 	</insert>
 	
-<!-- 	추정1. 오타. -->
-	
 <!-- 	검색결과 출력-->
-	<select id="crawl_search_list_select"  parameterType="int"  resultType="net.crawl.db.search_list_Bean">
+	<select id="crawl_search_list_select"  parameterType="String"  resultType="net.crawl.db.search_list_Bean">
 	    <![CDATA[
 		select * from search_list
-	   	where search_com_No == #{search_com_No}
+	   	where search_com_No = #{search_com_No}
+		]]>
+	</select>
+	<!-- 	분석결과 출력-->
+	<select id="crawl_search_qual_select"  parameterType="String"  resultType="net.crawl.db.search_qual_Bean">
+	    <![CDATA[
+		select * from search_qual
+	   	where search_com_No = #{search_com_No}
+		]]>
+	</select>
+	
+	<select id="crawl_com_No_select"  parameterType="String"  resultType="String">
+	    <![CDATA[
+		select search_com_No from search_qual
+	   	where No = #{No}
 		]]>
 	</select>
 	

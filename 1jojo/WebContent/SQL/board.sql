@@ -16,11 +16,14 @@ CREATE TABLE BOARD222(
 	PRIMARY KEY(BOARD_NUM)
 );
 
-create sequence board222_seq
+create sequence QNA_BOARD_SEQ
 start with 1
 increment by 1
 nocache;
-
+create sequence FORUM_BOARD_SEQ
+start with 1
+increment by 1
+nocache;
 
 create sequence ua_seq
 start with 1

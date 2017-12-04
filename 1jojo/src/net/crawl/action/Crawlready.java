@@ -1,5 +1,7 @@
 package net.crawl.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,14 +24,14 @@ public class Crawlready implements Action {//딱히 필요는 없어보인다. �
 			request.setCharacterEncoding("utf-8");
 
 			HttpSession session = request.getSession();
-			String email =(String) session.getAttribute("email");
+			String id =(String) session.getAttribute("id");
 	
 			m2memberDAO dao = m2memberDAO.getInstance();
-			m2memberDTO member = dao.select(email);
+			m2memberDTO member = dao.select(id);
 			
-			String password=member.getPass();
-			
-			request.setAttribute("password", password);
+			String pass=member.getPass();
+//			System.out.println("getPass : "+pass);
+			session.setAttribute("pass", pass);
 	
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);//request로 구해야하므로 dispatcher방식 가능.
@@ -39,6 +41,13 @@ public class Crawlready implements Action {//딱히 필요는 없어보인다. �
 			
   		}catch(Exception ex){
    			ex.printStackTrace();
+			System.out.println("문제가 생겼다. alert!");
+			PrintWriter out =response.getWriter();
+			out.println("<script>");
+			out.println("alert('회원정보를 받아오는 과정에서 문제가 생겼습니다. 에러 내용 : \n"+ex+"');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
    		}
   		return null;
 	}  	

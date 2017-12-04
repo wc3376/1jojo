@@ -71,7 +71,7 @@ public class CrawlDAOImpl {
 //			private int No;//사용자번호
 //			private String com_qual;//업체지원자격
 //			private String com_preex;//업체우대사항
-//			private int com_frequncy;//빈도수
+//			private int com_frequency;//빈도수
 			
 			result=session.insert("crawl.crawl_search_qual_insert", search_qual);
 			System.out.println("result="+result);
@@ -81,26 +81,33 @@ public class CrawlDAOImpl {
 		}		
 	}	
 	
-	/* 검색결과 데이터 목록 */
+	/* 검색결과 데이터 목록 열람*/
 	public ArrayList<search_list_Bean> getSearch_list(String search_com_No)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		ArrayList<search_list_Bean>  list = (ArrayList<search_list_Bean>) session.selectList("crawl.crawl_list", search_com_No);
+		ArrayList<search_list_Bean>  list = (ArrayList<search_list_Bean>) session.selectList("crawl.crawl_search_list_select", search_com_No);
 	    return list;
 	}	
-	
-	/* 게시판 글내용보기 */
-	public search_list_Bean getsearch_listCont(int search_list_num) throws SQLException {
+	/* 분석결과 데이터 목록 열람*/
+	public ArrayList<search_qual_Bean> getSearch_qual(String search_com_No)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		return (search_list_Bean) session.selectOne("search_list.search_list_cont", search_list_num);
-	}	
+		ArrayList<search_qual_Bean>  list = (ArrayList<search_qual_Bean>) session.selectList("crawl.crawl_search_qual_select", search_com_No);
+	    return list;
+	}		
 
 	/* 게시물 삭제 */
 	public void search_listDelete(int search_list_num) throws SQLException {
 		SqlSession session=null;
 		session = getSession();
 		session.delete("search_list.search_list_del", search_list_num);
+	}
+	
+	/* 회원별 No로 search_No를 얻어오기. */
+	public String getSearch_com_No(String No) {
+		SqlSession session=null;
+		session = getSession();
+		return (String) session.selectOne("crawl.crawl_com_No_select", No);		
 	}
 
 	/* 게시판 조회수 증가 */

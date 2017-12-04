@@ -125,13 +125,13 @@ public class CrawlAnalysisAction implements Action {
 			String search_com_No = listOfsearch_list.get(0).getSearch_com_No();
 		    Iterator<String> iterator1 = countPerWord_Qual.keySet().iterator();
 			ArrayList<search_qual_Bean> listOfsearch_qual_Bean= new ArrayList<search_qual_Bean>();
-//			int no=(int) session.getAttribute("No");
+			int no=(int) session.getAttribute("no");
 			System.out.println(countPerWord_Qual);
 		    while (iterator1.hasNext()) {
 		    	String key = (String) iterator1.next();
 		    	search_qual_Bean qual = new search_qual_Bean();
 				qual.setSearch_com_No(search_com_No);
-//				qual.setNo(no);
+				qual.setNo(no);
 				qual.setCom_preex("");
 				qual.setCom_qual(key);
 				qual.setCom_frequency(countPerWord_Qual.get(key));
@@ -143,7 +143,7 @@ public class CrawlAnalysisAction implements Action {
 		    	String key = (String) iterator2.next();
 		    	search_qual_Bean preex = new search_qual_Bean();
 		    	preex.setSearch_com_No(search_com_No);
-//		    	preex.setNo(no);
+		    	preex.setNo(no);
 		    	preex.setCom_preex(key);
 		    	preex.setCom_qual("");
 		    	preex.setCom_frequency(countPerWord_Preex.get(key));

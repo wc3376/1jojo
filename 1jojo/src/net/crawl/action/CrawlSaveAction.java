@@ -1,5 +1,6 @@
 package net.crawl.action;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,12 +44,19 @@ public class CrawlSaveAction implements Action {
 	   		}
 	   		System.out.println("게시판 등록 완료");*/
 	   		
-	   		forward.setRedirect(false);
-	   		forward.setPath("./member/main.jsp");
+	   		forward.setRedirect(true);
+	   		forward.setPath("./member/myPage.jsp");
 	   		return forward;
 	   		
   		}catch(Exception ex){
    			ex.printStackTrace();
+			System.out.println("문제가 생겼다. alert!");
+			PrintWriter out =response.getWriter();
+			out.println("<script>");
+			out.println("alert('저장 과정에서 문제가 생겼습니다. 에러 내용 : \n"+ex+"');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
    		}
   		return null;
 	}  	

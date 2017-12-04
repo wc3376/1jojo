@@ -46,8 +46,8 @@ document.onfocus = RestoreSubmitButton;
 			<div class="text-left">
 <h2>ID및 비밀번호</h2>
 <form action="/1jojo/CrawlAddAction.cr" method="post"  name="boardform" ><%-- ${세션 데이터 SET된 것 가져와야함.} --%>
-		아이디 : <input type="text" name="id" required="required" disabled="disabled" value="chlgudrbdn"><p> <%-- ${email} --%>
-		암   호 : <input type="password" name="password" required="required" disabled="disabled" value="m6529194!"><p><%-- ${pass} --%>
+		아이디 : <input type="text" name="id" required="required" disabled="disabled" value="${id}"><p> <%-- ${email} --%>
+		암   호 : <input type="password" name="pass" required="required" disabled="disabled" value="${pass}"><p><%-- ${pass} --%>
 	<p>해당 id가 실제로 사람인에서 사용하는 id와 비밀번호 입니까?</p>
 	<p>(아니라면 사람인 회원가입 이후 다시 해당 ID와 비밀번호로 해당 서비스에 가입한 뒤 이 페이지로 접속이 요구됩니다.)</p>
 	<p>회원정보 변경은 상단의 탭에 위치해 있습니다.</p>
