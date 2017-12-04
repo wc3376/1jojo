@@ -95,47 +95,25 @@ public class CrawlDAOImpl {
 		ArrayList<search_qual_Bean>  list = (ArrayList<search_qual_Bean>) session.selectList("crawl.crawl_search_qual_select", search_com_No);
 	    return list;
 	}		
-
-	/* 게시물 삭제 */
-	public void search_listDelete(int search_list_num) throws SQLException {
-		SqlSession session=null;
-		session = getSession();
-		session.delete("search_list.search_list_del", search_list_num);
-	}
-	
 	/* 회원별 No로 search_No를 얻어오기. */
 	public String getSearch_com_No(String No) {
 		SqlSession session=null;
 		session = getSession();
 		return (String) session.selectOne("crawl.crawl_com_No_select", No);		
 	}
-
-	/* 게시판 조회수 증가 */
-//	public void search_listHit(int search_list_num) throws SQLException {
-//		SqlSession session=null;
-//		session = getSession();
-//		session.update("search_list.search_list_hit", search_list_num);
-//	}
 	
-	/* 게시물 수정 */
-//	public void search_listEdit(search_list_Bean search_list) throws SQLException {
-//		SqlSession session=null;
-//		session = getSession();
-//		session.update("search_list.search_list_edit", search_list);
-//	}
-
-	/* 답변글 레벨 증가 */
-//	public void refEdit(search_list_Bean search_list) throws SQLException {
-//		SqlSession session=null;
-//		session = getSession();
-//		session.update("search_list.search_list_Level", search_list);
-//	}
-
-	/* 답변글 저장 */
-//	public void search_listReplyOk(search_list_Bean search_list) throws SQLException {
-//		SqlSession session=null;
-//		session = getSession();
-//		session.insert("search_list_reply", search_list);
-//	}
+	/* 검색결과 삭제 */
+	public int search_listDelete(String search_com_No) throws SQLException {
+		SqlSession session=null;
+		session = getSession();
+		return session.delete("crawl.search_list_del", search_com_No);
+	}
 	
+	/* 분석결과 삭제 */
+	public int search_qualDelete(String search_com_No) throws SQLException {
+		SqlSession session=null;
+		session = getSession();
+		return session.delete("crawl.search_qual_del", search_com_No);
+	}
+
 }

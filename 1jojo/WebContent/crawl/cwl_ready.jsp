@@ -69,7 +69,7 @@ document.onfocus = RestoreSubmitButton;
 </div>
 </div>
 <div id="buttonreplacement" style="margin-left:30px; display:none;" align=center>
-	<img src="loading_logofinal_by_zegerdon-d60eb1v.gif" alt="loading...">
+	<img src="/crawl/loading_logofinal_by_zegerdon-d60eb1v.gif" alt="loading...">
 </div>
 
 

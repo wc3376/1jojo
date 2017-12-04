@@ -39,6 +39,7 @@
 		]]>
 	</select>
 	
+<!-- 	search_com_No 추출 -->
 	<select id="crawl_com_No_select"  parameterType="String"  resultType="String">
 	    <![CDATA[
 		select search_com_No from search_qual
@@ -46,6 +47,14 @@
 		]]>
 	</select>
 	
+	
+	<delete id="search_list_del" parameterType="String">
+		delete from search_list where search_com_No=#{search_com_No}
+	</delete>
+	
+		<delete id="search_qual_del" parameterType="String">
+		delete from search_qual where search_com_No=#{search_com_No}
+	</delete>
 </mapper>
 
 

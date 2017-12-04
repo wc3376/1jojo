@@ -12,6 +12,7 @@ encoding//src/net/board/action/BoardListAction.java=UTF-8
 encoding//src/net/board/action/BoardModifyAction.java=UTF-8
 encoding//src/net/board/action/BoardModifyView.java=UTF-8
 encoding//src/net/crawl/action/CrawlAddAction.java=UTF-8
+encoding//src/net/crawl/action/CrawlDeleteSavedDataAction.java=UTF-8
 encoding//src/net/crawl/action/CrawlGetSavedDataAction.java=UTF-8
 encoding//src/net/forumboard/action/ForumBoardAddAction.java=UTF-8
 encoding//src/net/forumboard/action/ForumBoardDeleteAction.java=UTF-8
