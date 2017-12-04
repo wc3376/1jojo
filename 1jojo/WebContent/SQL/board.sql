@@ -36,10 +36,10 @@ delete from board222;
 
 
 
-insert into	qna_board values(	qna_board_seq.nextval, NULL, NULL, NULL,'ев╫╨ф╝',
+insert into	qna_board values(	qna_board_seq.nextval, NULL, NULL, NULL,'О©╫в╫О©╫ф╝',
 		'1234',
-		'а╕╦Я',
-		'гого',
+		'О©╫О©╫О©╫О©╫',
+		'О©╫О©╫О©╫О©╫',
 		NULL,
 		qna_board_seq.nextval,
 		0,

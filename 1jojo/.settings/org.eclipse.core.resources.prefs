@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/test.jsp=UTF-8
 encoding//src/m2Action/Controller.java=UTF-8
 encoding//src/m2Action/Login.java=UTF-8
 encoding//src/m2Action/Update.java=UTF-8
@@ -11,6 +12,7 @@ encoding//src/net/board/action/BoardListAction.java=UTF-8
 encoding//src/net/board/action/BoardModifyAction.java=UTF-8
 encoding//src/net/board/action/BoardModifyView.java=UTF-8
 encoding//src/net/crawl/action/CrawlAddAction.java=UTF-8
+encoding//src/net/crawl/action/CrawlGetSavedDataAction.java=UTF-8
 encoding//src/net/forumboard/action/ForumBoardAddAction.java=UTF-8
 encoding//src/net/forumboard/action/ForumBoardDeleteAction.java=UTF-8
 encoding//src/net/forumboard/action/ForumBoardDetailAction.java=UTF-8

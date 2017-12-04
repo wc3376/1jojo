@@ -15,22 +15,20 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import m2member.m2memberDAO;
 import m2member.m2memberDTO;
 
-public class Crawlready implements Action {
+public class Crawlready implements Action {//딱히 필요는 없어보인다. 그냥 해당 페이지에 id, password가 제대로 되어만 있으면 된다.
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		 System.out.println("Crawlready");
 	   	try{
 			request.setCharacterEncoding("utf-8");
 
 			HttpSession session = request.getSession();
-			String id =(String) session.getAttribute("id");
+			String email =(String) session.getAttribute("email");
 	
 			m2memberDAO dao = m2memberDAO.getInstance();
-			m2memberDTO member = dao.select(id);
+			m2memberDTO member = dao.select(email);
 			
-			String identify=member.getId();
 			String password=member.getPass();
 			
-			request.setAttribute("id", identify);//EL로 구해와서 출력해야됨.
 			request.setAttribute("password", password);
 	
 			ActionForward forward = new ActionForward();

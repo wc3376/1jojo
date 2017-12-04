@@ -3,6 +3,7 @@ package net.crawl.db;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -26,7 +27,7 @@ public class CrawlDAOImpl {
 	}	
 	
 	
-	/* 검색결과 일단 저장 */
+	/* search list 검색결과 일단 저장 */
 	public void search_list_Insert(search_list_Bean search_list) {
 		SqlSession session=null;
 		int result = 0;		
@@ -34,7 +35,7 @@ public class CrawlDAOImpl {
 			session = getSession(); 
 			System.out.println("insert 1");
 			
-			System.out.println("search_com_No="+search_list.getSearch_com_No());//나올리가 없다.
+			System.out.println("search_com_No="+search_list.getSearch_com_No());
 			System.out.println("com_qual="+search_list.getCom_qual());
 			System.out.println("com_preex="+search_list.getCom_preex());
 			System.out.println("com_name="+search_list.getCom_name());
@@ -45,7 +46,7 @@ public class CrawlDAOImpl {
 //			private String com_name;//지원자격포함 기업명
 //			private String com_link;//지원자격포함 기업링크
 			
-			result=session.insert("crawl.crawl_insert", search_list);
+			result=session.insert("crawl.crawl_search_list_insert", search_list);
 			System.out.println("result="+result);
 		}catch(Exception e){
 			System.out.println("result="+result);
@@ -53,31 +54,40 @@ public class CrawlDAOImpl {
 		}		
 	}	
 	
-	/* 게시판 총 게시물 수 */
-	public int getListCount() throws SQLException {
-		int count = 0;
+	/* search qual 검색결과 일단 저장 */
+	public void search_qual_Insert(search_qual_Bean search_qual) {
 		SqlSession session=null;
-		session = getSession();
-		count = ((Integer) session.selectOne("board.search_list_count")).intValue();	
-		 
-		return count;
-	}
+		int result = 0;		
+		try{
+			session = getSession(); 
+			System.out.println("insert 1");
+			
+			System.out.println("search_com_No="+search_qual.getSearch_com_No());
+			System.out.println("com_No="+search_qual.getNo());
+			System.out.println("com_qual="+search_qual.getCom_qual());
+			System.out.println("com_preex="+search_qual.getCom_preex());
+			System.out.println("com_frequncy="+search_qual.getCom_frequency());			
+//			private String search_com_No;//번호
+//			private int No;//사용자번호
+//			private String com_qual;//업체지원자격
+//			private String com_preex;//업체우대사항
+//			private int com_frequncy;//빈도수
+			
+			result=session.insert("crawl.crawl_search_qual_insert", search_qual);
+			System.out.println("result="+result);
+		}catch(Exception e){
+			System.out.println("result="+result);
+			System.out.println(e.getMessage());
+		}		
+	}	
 	
-	/* 검색된 데이터 목록 */
-	public List<search_list_Bean> getSearch_list(String search_com_No)	throws SQLException {
+	/* 검색결과 데이터 목록 */
+	public ArrayList<search_list_Bean> getSearch_list(String search_com_No)	throws SQLException {
 		SqlSession session=null;
 		session = getSession();
-		List<search_list_Bean>  list = session.selectList("crawl.crawl_list", search_com_No);
+		ArrayList<search_list_Bean>  list = (ArrayList<search_list_Bean>) session.selectList("crawl.crawl_list", search_com_No);
 	    return list;
 	}	
-
-	/* 게시판 조회수 증가 */
-	public void search_listHit(int search_list_num) throws SQLException {
-		SqlSession session=null;
-		session = getSession();
-		session.update("search_list.search_list_hit", search_list_num);
-	}
-	
 	
 	/* 게시판 글내용보기 */
 	public search_list_Bean getsearch_listCont(int search_list_num) throws SQLException {
@@ -86,13 +96,6 @@ public class CrawlDAOImpl {
 		return (search_list_Bean) session.selectOne("search_list.search_list_cont", search_list_num);
 	}	
 
-	/* 게시물 수정 */
-	public void search_listEdit(search_list_Bean search_list) throws SQLException {
-		SqlSession session=null;
-		session = getSession();
-		session.update("search_list.search_list_edit", search_list);
-	}
-
 	/* 게시물 삭제 */
 	public void search_listDelete(int search_list_num) throws SQLException {
 		SqlSession session=null;
@@ -100,18 +103,32 @@ public class CrawlDAOImpl {
 		session.delete("search_list.search_list_del", search_list_num);
 	}
 
+	/* 게시판 조회수 증가 */
+//	public void search_listHit(int search_list_num) throws SQLException {
+//		SqlSession session=null;
+//		session = getSession();
+//		session.update("search_list.search_list_hit", search_list_num);
+//	}
+	
+	/* 게시물 수정 */
+//	public void search_listEdit(search_list_Bean search_list) throws SQLException {
+//		SqlSession session=null;
+//		session = getSession();
+//		session.update("search_list.search_list_edit", search_list);
+//	}
+
 	/* 답변글 레벨 증가 */
-	public void refEdit(search_list_Bean search_list) throws SQLException {
-		SqlSession session=null;
-		session = getSession();
-		session.update("search_list.search_list_Level", search_list);
-	}
+//	public void refEdit(search_list_Bean search_list) throws SQLException {
+//		SqlSession session=null;
+//		session = getSession();
+//		session.update("search_list.search_list_Level", search_list);
+//	}
 
 	/* 답변글 저장 */
-	public void search_listReplyOk(search_list_Bean search_list) throws SQLException {
-		SqlSession session=null;
-		session = getSession();
-		session.insert("search_list_reply", search_list);
-	}
+//	public void search_listReplyOk(search_list_Bean search_list) throws SQLException {
+//		SqlSession session=null;
+//		session = getSession();
+//		session.insert("search_list_reply", search_list);
+//	}
 	
 }

@@ -61,43 +61,51 @@ public class CrawlFrontController extends javax.servlet.http.HttpServlet
 			forward.setRedirect(false);
 			forward.setPath("./crawl/cwl_result.jsp");			
 		}
-		else if (command.equals("/CrawlSaveAction.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
-			System.out.println("Stop!");
-//			action = new CrawlSaveAction();//미완.
+		else if (command.equals("/CrawlAnalysisAction.cr")) {// 크롤링 한 데이터를 분석에 들어가는 과정.
+			action = new CrawlAnalysisAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		else if (command.equals("/cwl_qualAndpreex_analysis_result.cr")) {// 분석결과 출력하는 페이지로 연결. 최초 크롤링 할 때와 따로 개인마다 저장된 크롤링 데이터 재 출력시 사용.
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./crawl/cwl_qualAndpreex_analysis_result.jsp");			
+		}
+		else if (command.equals("/CrawlPreexAndqualFilterAction.cr")) {// 특정 단어(들)에 대한 공고가 포함된 업체 리스트 연산. 최초 크롤링 할 때와 따로 개인마다 저장된 크롤링 데이터 재 출력시 사용.
+			action = new CrawlPreexAndqualFilterAction();//미완.
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if (command.equals("/cwl_filtered_qualAndpreex_list.cr")) { // 특정 단어(들)에 대한 공고가 포함된 업체 리스트 출력
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./crawl/cwl_filtered_qualAndpreex_list.jsp");		
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		else if (command.equals("/CrawlSaveAction.cr")) {// 크롤링 한 데이터를 DB에 저장하는 과정.
+			System.out.println("Stop!");
+			action = new CrawlSaveAction();//미완.
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if (command.equals("/CrawlGetSavedDataAction.cr")) {// 크롤링 한 데이터를 DB에 꺼내오는 과정. 이때 필요한 것은 session의 No.
+			System.out.println("Stop!");
+			action = new CrawlGetSavedDataAction();//미완.
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		
 		if (forward != null) {

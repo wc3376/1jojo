@@ -25,14 +25,12 @@ select * from search_list;
 select * from tab;
 
 CREATE TABLE search_qual(
-	search_com_No NUMBER,
+	search_com_No VARCHAR2(12),
 	No NUMBER,
 	com_qual VARCHAR2(1000),
 	com_preex VARCHAR2(1000),
-	com_frequency NUMBER,
-	PRIMARY KEY(search_com_No)
+	com_frequency NUMBER
 );
-
 
 drop table search_qual purge;
 select * from tab;
