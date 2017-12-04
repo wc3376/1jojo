@@ -26,6 +26,7 @@ $(document).ready(function(){
 			 window.open(ref,"idcheck","width=200,height=100");
 		 } 	
 	 });
+
 	 });
 	 </script>
 </head>
@@ -48,6 +49,7 @@ $(document).ready(function(){
       <label for="id">사람인 ID:</label>
       <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">
       <input type="button" id="idcheck" value="ID Check">
+    
     </div>
     <div class="form-group">
       <label for="pass">Password:</label>

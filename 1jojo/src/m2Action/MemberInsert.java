@@ -1,5 +1,7 @@
 package m2Action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,8 +14,11 @@ public class MemberInsert implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		System.out.println("MemberInsert");
-
+		
+		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");		
+		
+		PrintWriter out = response.getWriter();
 		
 		System.out.println("id="+request.getParameter("id"));
 		System.out.println("pass="+request.getParameter("pass"));
@@ -27,6 +32,17 @@ public class MemberInsert implements Action {
 		m2memberDAO dao = m2memberDAO.getInstance();
 		int result = dao.insert(member);
 		System.out.println("result="+result);
+		
+		if(result != 1) {
+			out.println("<script>");
+			out.println("alert('가입할 수 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			
+			return null;
+		}	
+		
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(true);
