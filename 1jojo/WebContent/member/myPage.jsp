@@ -28,7 +28,7 @@
   <div class="row content">
     <div class="col-sm-2 sidenav">
       <p><a href="/1jojo/UpdateForm.do">정보 수정</a></p>
-      <p><a href="./searchRecord.jsp">검색 기록</a></p>
+      <p><a href="/1jojo/CrawlGetSavedDataAction.cr">검색 기록</a></p>
       <p><a href="/1jojo/DeleteMember.do">회원 탈퇴</a></p>
     </div>
     <div class="col-sm-8 text-left"> 

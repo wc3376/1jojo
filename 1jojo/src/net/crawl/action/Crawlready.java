@@ -22,14 +22,14 @@ public class Crawlready implements Action {//딱히 필요는 없어보인다. �
 			request.setCharacterEncoding("utf-8");
 
 			HttpSession session = request.getSession();
-			String email =(String) session.getAttribute("email");
+			String id =(String) session.getAttribute("id");
 	
 			m2memberDAO dao = m2memberDAO.getInstance();
-			m2memberDTO member = dao.select(email);
+			m2memberDTO member = dao.select(id);
 			
-			String password=member.getPass();
+			String pass=member.getPass();
 			
-			request.setAttribute("password", password);
+			session.setAttribute("pass", pass);
 	
 			ActionForward forward = new ActionForward();
 			forward.setRedirect(false);//request로 구해야하므로 dispatcher방식 가능.

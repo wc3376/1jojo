@@ -89,8 +89,7 @@ public class CrawlFrontController extends javax.servlet.http.HttpServlet
 		}
 		
 		else if (command.equals("/CrawlSaveAction.cr")) {// 크롤링 한 데이터를 DB에 저장하는 과정.
-			System.out.println("Stop!");
-			action = new CrawlSaveAction();//미완.
+			action = new CrawlSaveAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -98,7 +97,6 @@ public class CrawlFrontController extends javax.servlet.http.HttpServlet
 			}
 		}
 		else if (command.equals("/CrawlGetSavedDataAction.cr")) {// 크롤링 한 데이터를 DB에 꺼내오는 과정. 이때 필요한 것은 session의 No.
-			System.out.println("Stop!");
 			action = new CrawlGetSavedDataAction();//미완.
 			try {
 				forward = action.execute(request, response);
