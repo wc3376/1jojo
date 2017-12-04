@@ -25,8 +25,11 @@
 	<br>
 	<br>
 	<!-- 게시판 리스트 -->
+	
+	
 	<div class="container">
 		<div class="row content">
+
 			<div class="text-left">
 							검색 결과 개수 : ${search_list_count }
 							<button type="button" class="btn btn-default" onclick="location.href='./CrawlAnalysisAction.cr'">검색결과 분석</button>

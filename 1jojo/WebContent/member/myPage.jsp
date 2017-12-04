@@ -3,7 +3,7 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>홈페이지 이름</title>
+<title>마이 페이지</title>
 <script src = "http://code.jquery.com/jquery-latest.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,11 +26,13 @@
 </div>
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="/1jojo/UpdateForm.do">정보 수정</a></p>
-      <p><a href="/1jojo/CrawlGetSavedDataAction.cr">검색 기록</a></p>
-      <p><a href="/1jojo/CrawlDeleteSavedDataAction.cr">검색 기록 삭제</a></p>
-      <p><a href="/1jojo/DeleteMember.do">회원 탈퇴</a></p>
+   <div class="col-sm-2 sidenav list-group">
+<!--     	<ul class = "text-success"> -->
+      	<!-- <li class ="list-group-item active" > --><a class ="list-group-item" href="/1jojo/UpdateForm.do">정보 수정</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/CrawlGetSavedDataAction.cr">검색 기록</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/CrawlDeleteSavedDataAction.cr">검색 기록 삭제</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/DeleteMember.do">회원 탈퇴</a><!-- </li> -->
+<!--     	</ul> -->
     </div>
     <div class="container col-sm-8 text-left">
 

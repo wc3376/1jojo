@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>회원 탈퇴</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,12 +38,13 @@
 </div>
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-    	<ul class = "list-group">
-      	<li class ="list-group-item" ><a href="/1jojo/UpdateForm.do">정보 수정</a></li>
-      	<li class ="list-group-item"><a href="./searchRecord.jsp">검색 기록</a></li>
-      	<li class ="list-group-item active"><a href="/1jojo/DeleteMember.do">회원 탈퇴</a></li>
-    	</ul>
+    <div class="col-sm-2 sidenav list-group">
+<!--     	<ul class = "text-success"> -->
+      	<!-- <li class ="list-group-item active" > --><a class ="list-group-item " href="/1jojo/UpdateForm.do">정보 수정</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/CrawlGetSavedDataAction.cr">검색 기록</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/CrawlDeleteSavedDataAction.cr">검색 기록 삭제</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item active" href="/1jojo/DeleteMember.do">회원 탈퇴</a><!-- </li> -->
+<!--     	</ul> -->
     </div>
     <div class="col-sm-8 text-left"> 
       
@@ -64,8 +65,8 @@
         <td><input type=password id="pass" name="pass"></td>
       </tr>
       <tr><td colspan = 2 align=center>
-      <input type=submit value="회원탈퇴">
-      <input type=reset value="취소">    
+      <input type=submit class="btn btn-default" value="회원탈퇴">
+      <input type=reset class="btn btn-default" value="취소">    
     </tbody>
   </table>
 			

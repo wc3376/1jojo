@@ -23,11 +23,14 @@
 
 
 </header>
+<br>
+<br>
+<br>
 </div>
 
 <div class="container-fluid">
 <div class="row content">
-  <h2>Vertical (basic) form</h2>
+  
   <form method=post action="/1jojo/Login.do">
     <div class="form-group">
       <label for="id">사람인 ID:</label>

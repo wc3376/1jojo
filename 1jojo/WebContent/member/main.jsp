@@ -3,7 +3,7 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>크롤링 예습 프로젝트</title>
+<title>크롤링 프로젝트</title>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">

@@ -3,7 +3,7 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<title>홈페이지 이름</title>
+<title>회원 정보 수정</title>
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,12 +106,13 @@
 
     <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-    	<ul class = "list-group">
-      	<li class ="list-group-item active" ><a href="/1jojo/UpdateForm.do">정보 수정</a></li>
-      	<li class ="list-group-item"><a href="/1jojo/CrawlGetSavedDataAction.cr">검색 기록</a></li>
-      	<li class ="list-group-item"><a href="/1jojo/DeleteMember.do">회원 탈퇴</a></li>
-    	</ul>
+    <div class="col-sm-2 sidenav list-group">
+<!--     	<ul class = "text-success"> -->
+      	<!-- <li class ="list-group-item active" > --><a class ="list-group-item active" href="/1jojo/UpdateForm.do">정보 수정</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/CrawlGetSavedDataAction.cr">검색 기록</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/CrawlDeleteSavedDataAction.cr">검색 기록 삭제</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/DeleteMember.do">회원 탈퇴</a><!-- </li> -->
+<!--     	</ul> -->
     </div>
     <div class="col-sm-8 text-left"> 
       
@@ -135,8 +136,8 @@
 	 				<td><input type="password" id="chpass" ></td>
 		    </tr>
 		    <tr><td colspan=2 align=center>
-					<input type=submit value="수정">
-					<input type=reset value="취소">
+					<input type=submit class="btn btn-default" value="수정">
+					<input type=reset class="btn btn-default" value="취소">
 		    </td>
 			</tr>
 			</tbody>
