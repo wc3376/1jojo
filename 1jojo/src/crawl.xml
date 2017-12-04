@@ -42,7 +42,7 @@
 	<select id="crawl_com_No_select"  parameterType="String"  resultType="String">
 	    <![CDATA[
 		select search_com_No from search_qual
-	   	where No = #{No}
+	   	where No = #{No} AND rownum =1
 		]]>
 	</select>
 	
