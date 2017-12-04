@@ -30,7 +30,7 @@
   <h2>Vertical (basic) form</h2>
   <form method=post action="/1jojo/Login.do">
     <div class="form-group">
-      <label for="id">Email:</label>
+      <label for="id">사람인 ID:</label>
       <input type="text" class="form-control"  id="id" placeholder="Enter ID" name="id">
     </div>
     <div class="form-group">

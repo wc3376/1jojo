@@ -39,6 +39,7 @@ delete from board222;
 
 
 
+
 insert into	qna_board values(	qna_board_seq.nextval, NULL, NULL, NULL,'�׽�Ʈ',
 		'1234',
 		'����',
