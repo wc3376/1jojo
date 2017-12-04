@@ -157,7 +157,7 @@
 									<td height="23" style="font-family: Tahoma;"><c:out
 											value="${b.com_preex}" /></td>
 									<td style="font-family: Tahoma; font-size: 10pt;">
-										${b.com_frequncy}</td>
+										${b.com_frequency}</td>
 								</tr>
 							</c:if>
 						</c:forEach>
@@ -217,7 +217,7 @@
 									<td height="23" style="font-family: Tahoma;"><c:out
 											value="${b.com_qual}" /></td>
 									<td style="font-family: Tahoma; font-size: 10pt;">
-										${b.com_frequncy}</td>
+										${b.com_frequency}</td>
 								</tr>
 							</c:if>
 						</c:forEach>

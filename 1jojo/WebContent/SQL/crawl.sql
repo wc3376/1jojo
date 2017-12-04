@@ -29,8 +29,7 @@ CREATE TABLE search_qual(
 	No NUMBER,
 	com_qual VARCHAR2(1000),
 	com_preex VARCHAR2(1000),
-	com_frequency NUMBER,
-	PRIMARY KEY(search_com_No)
+	com_frequency NUMBER
 );
 
 drop table search_qual purge;
