@@ -40,8 +40,8 @@
 <c:if test="${listcount > 0 }">
 
 	<tr align="center" valign="middle">
-		<td colspan="4">QnA 게시판</td>
-		<td align=right>
+		<td colspan="3">QnA 게시판</td>
+		<td align=right colspan="2">
 			<font size=2>글 개수 : ${listcount }</font>
 		</td>
 	</tr>
@@ -190,8 +190,8 @@
 	<!-- 레코드가 없으면 -->
 	<c:if test="${listcount == 0 }">
 	<tr align="center" valign="middle">
-		<td colspan="4">QnA게시판</td>
-		<td align=right>
+		<td colspan="3">QnA게시판</td>
+		<td align=right colspan="2">
 			<font size=2>등록된 글이 없습니다.</font>
 		</td>
 	</tr>
@@ -203,7 +203,7 @@
 	
 	<tr align="right">
 		<td colspan="5">
-		<c:if test="${sessionScope.email }">
+		<c:if test="${sessionScope.id != null}">
 	   		<a href="./QnaBoardWrite.qo">[글쓰기]</a>
 	   		</c:if>
 		</td>

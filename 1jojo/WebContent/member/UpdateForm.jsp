@@ -39,32 +39,32 @@
 				$("#pass").focus();
 				return false;
 			}
-			if($("#pass").val().length<4 ||
-			   $("#pass").val().length >20){
-						alert("4~20자까지 입력가능 합니다.");
+			if($("#pass").val().length<8 ||
+			   $("#pass").val().length >32){
+						alert("8~32자까지 입력가능 합니다.");
 						$("#pass").val("").focus();
 				        return false;
 			}	
-			
+		/* 	
 			if(isNaN($("#pass").val())){
 				alert("숫자만 입력 가능합니다.");
 				$("#pass").val("").focus();			
 				return false;
 			}		
-			
+			 */
 			if($("#npass").val()==""){
 				alert("새 비밀번호를 입력하세요");
 				$("#npass").focus();
 				return false;
 			}
-			if(isNaN($("#npass").val())){
+	/* 		if(isNaN($("#npass").val())){
 				alert("숫자만 입력 가능합니다.");
 				$("#npass").val("").focus();
 				return false;
-			}
-			if($("#npass").val().length<4 ||
-					$("#npass").val().length >20){
-					alert("4~20자까지 입력가능 합니다.");
+			} */
+			if($("#npass").val().length<8 ||
+					$("#npass").val().length >32){
+					alert("8~32자까지 입력가능 합니다.");
 					$("#npass").val("").focus();
 					return false;
 			}
@@ -73,16 +73,16 @@
 				$("#chpass").focus();
 				return false;
 			}
-			if(isNaN($("#chpass").val())){
+		/* 	if(isNaN($("#chpass").val())){
 				alert("숫자만 입력 가능합니다.");
 				$("#chpass").val("").focus();
 				return false;
 			}
-			
+			 */
 
-			if($("#chpass").val().length<4 ||
-					$("#chpass").val().length >20){
-					alert("4~20자까지 입력가능 합니다.");
+			if($("#chpass").val().length<8 ||
+					$("#chpass").val().length >32){
+					alert("8~32자까지 입력가능 합니다.");
 					$("#chpass").val("").focus();
 					return false;
 			}		

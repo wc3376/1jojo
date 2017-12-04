@@ -10,7 +10,7 @@
 			window.close();
 		});
 		$("#close2").click(function(){		// 사용 가능한 ID
-			opener.$("#passwd").focus();
+			opener.$("#pass").focus();
 			window.close();
 		});
 	});

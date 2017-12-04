@@ -12,7 +12,7 @@ public class IdCheck implements Action{
 		// TODO Auto-generated method stub
 		System.out.println("IdCheck");
 		
-		String id = request.getParameter("email");
+		String id = request.getParameter("id");
 		System.out.println("id"+id);
 		
 		m2memberDAO dao = m2memberDAO.getInstance();

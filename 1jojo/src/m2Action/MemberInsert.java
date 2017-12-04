@@ -15,12 +15,12 @@ public class MemberInsert implements Action {
 
 		request.setCharacterEncoding("utf-8");		
 		
-		System.out.println("id="+request.getParameter("email"));
+		System.out.println("id="+request.getParameter("id"));
 		System.out.println("pass="+request.getParameter("pass"));
 		
 		
 		m2memberDTO member = new m2memberDTO();
-		member.setId(request.getParameter("email"));
+		member.setId(request.getParameter("id"));
 		member.setPass(request.getParameter("pass"));		
 		
 				

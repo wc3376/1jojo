@@ -43,7 +43,8 @@ public class ForumBoardReplyAction implements ForumAction {
 	   		System.out.println("댓글부대!");
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./ForumBoardDetailAction.fo?num="+boarddata.getBoard_num()+"&page="+page);
+	   		forward.setPath("./ForumBoardListAction.fo");
+//	   		forward.setPath("./ForumBoardDetailAction.fo?num="+boarddata.getBoard_num()+"&page="+page);
 //	   		forward.setPath("./BoardDetailAction.bo?num="+result+"&page="+page);
 	   		return forward;
 	}  	

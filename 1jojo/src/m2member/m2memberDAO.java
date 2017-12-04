@@ -143,7 +143,7 @@ private static m2memberDAO instance = new m2memberDAO();
 			if(member != null) {
 				if(member.getPass().equals(mem.getPass())) {		// 鍮꾨쾲 �씪移�
 					Map m = new HashMap();
-					m.put("email", mem.getId() );
+					m.put("id", mem.getId() );
 					m.put("npass", npass);
 					
 					result = session.update("update", m);

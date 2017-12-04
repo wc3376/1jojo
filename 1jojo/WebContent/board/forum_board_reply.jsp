@@ -64,7 +64,15 @@
 			<div align="center">글쓴이</div>
 		</td>
 		<td>
-			<input name="BOARD_NAME" id="board_name" type="text"/>
+			<input name="BOARD_NAME" id="board_name" type="text" value="${email}"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12">
+			<div align="center">비밀번호</div>
+		</td>
+		<td>
+			<input name="BOARD_PASS" id="board_pass" type="password">
 		</td>
 	</tr>
 	<tr>
@@ -84,14 +92,7 @@
 			<textarea name="BOARD_CONTENT" id="board_content" cols="67" rows="15"></textarea>
 		</td>
 	</tr>
-	<tr>
-		<td style="font-family:돋음; font-size:12">
-			<div align="center">비밀번호</div>
-		</td>
-		<td>
-			<input name="BOARD_PASS" id="board_pass" type="password">
-		</td>
-	</tr>
+	
 	
 	<tr bgcolor="cccccc">
 		<td colspan="2" style="height:1px;">

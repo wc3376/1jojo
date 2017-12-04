@@ -37,8 +37,18 @@
 		<td style="font-family:돋음; font-size:12" height="16">
 			<div align="center">작성자</div>
 		</td>
+		<td>			
+			<input name="BOARD_NAME" id="board_name" type="text" size="50" maxlength="100" 
+				value="${id}"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">비밀번호</div>
+		</td>
 		<td>
-			${boarddata.Id}
+			<input name="BOARD_PASS" id="board_pass" type="password" size="10" maxlength="10" 
+				value=""/>
 		</td>
 	</tr>
 	<tr>

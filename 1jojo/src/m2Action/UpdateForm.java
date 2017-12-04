@@ -16,7 +16,7 @@ public class UpdateForm implements Action{
 		System.out.println("updateForm");
 
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("email");
+		String id = (String)session.getAttribute("id");
 		
 		m2memberDAO dao = m2memberDAO.getInstance();
 		m2memberDTO member = dao.select(id);

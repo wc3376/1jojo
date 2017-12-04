@@ -15,7 +15,7 @@ $(document).ready(function(){
 	$("form").submit(function(){	
 		if($("#email").val()==""){
 			alert("ID를 입력하세요");
-			$("#email").focus();
+			$("#id").focus();
 			return false;
 		}
 		if($("#pass").val()==""){
@@ -23,18 +23,18 @@ $(document).ready(function(){
 			$("#pass").focus();
 			return false;
 		}
-		if($("#pass").val().length<4 ||
-				   $("#pass").val().length >20){
-						alert("4~20자까지 입력가능 합니다.");
+		if($("#pass").val().length<8 ||
+				   $("#pass").val().length >32){
+						alert("8~32자까지 입력가능 합니다.");
 						$("#pass").val("").focus();
 						return false;
 		}	
 		
-		if(isNaN($("#pass").val())){
+	/*	if(isNaN($("#pass").val())){
 			alert("숫자만 입력 가능합니다.");
 			$("#pass").val("").focus();			
 			return false;
-		}		
+		}		*/
 		
 		
 		/*

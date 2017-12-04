@@ -18,11 +18,11 @@ $(document).ready(function(){
 	
 	 // ID중복검사
 	 $("#idcheck").click(function(){
-		 if($("#email").val()==""){
+		 if($("#id").val()==""){
 			 alert("ID를 입력하세요");
-			 $("#email").focus();
+			 $("#id").focus();
 		 }else{
-			 var ref="/1jojo/IdCheck.do?email="+$("#email").val();
+			 var ref="/1jojo/IdCheck.do?id="+$("#id").val();
 			 window.open(ref,"idcheck","width=200,height=100");
 		 } 	
 	 });
@@ -45,8 +45,8 @@ $(document).ready(function(){
   <h2>Vertical (basic) form</h2>
   <form method=post action="/1jojo/MemberInsert.do">
     <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <label for="id">Email:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">
       <input type="button" id="idcheck" value="ID Check">
     </div>
     <div class="form-group">

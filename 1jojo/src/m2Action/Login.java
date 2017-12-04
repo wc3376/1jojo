@@ -23,7 +23,7 @@ public class Login implements Action{
 		HttpSession session = request.getSession();		
 		
 		m2memberDTO member = new m2memberDTO();
-		member.setId(request.getParameter("email"));
+		member.setId(request.getParameter("id"));
 		member.setPass(request.getParameter("pass"));
 		
 		m2memberDAO dao = m2memberDAO.getInstance();
@@ -31,7 +31,7 @@ public class Login implements Action{
 		
 		if(result == 1) {
 			session.setAttribute("no", member.getNo());
-			session.setAttribute("email", member.getId());
+			session.setAttribute("id", member.getId());
 			
 		}else {
 			out.println("<script>");

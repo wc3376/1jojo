@@ -18,7 +18,7 @@
 	</insert>
 	
 	<update id="update" parameterType="Map">
-		update useraccount set pass = #{npass} where id = #{email} 
+		update useraccount set pass = #{npass} where id = #{id} 
 	</update>
 	
 	<delete id="delete" parameterType="String">

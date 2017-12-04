@@ -22,7 +22,7 @@ public class Update implements Action{
 		PrintWriter out = response.getWriter();	
 		
 		m2memberDTO member = new m2memberDTO();
-		member.setId(request.getParameter("email"));
+		member.setId(request.getParameter("id"));
 		member.setPass(request.getParameter("pass"));
 		String npass = request.getParameter("npass");
 		
@@ -32,7 +32,7 @@ public class Update implements Action{
 		
 		if(result != 1) {
 			out.println("<script>");
-			out.println("alert('	비밀번호가 틀립니다.');");
+			out.println("alert('	鍮꾨�踰덊샇媛� ��由쎈땲�떎.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();

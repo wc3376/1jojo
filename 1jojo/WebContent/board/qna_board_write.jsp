@@ -51,7 +51,7 @@
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">글쓴이</div>
+			<div align="center">작성자</div>
 		</td>
 		<td>
 			<input name="BOARD_NAME" id="board_name" type="text" size="10" maxlength="10" 

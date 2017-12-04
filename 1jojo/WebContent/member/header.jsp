@@ -21,7 +21,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
+      <c:if test="${sessionScope.id == null }">
       <a class="navbar-brand" href="/1jojo/member/main.jsp">Logo</a>
+      </c:if>
+      <c:if test="${sessionScope.id != null }">
+      <a class="navbar-brand" href="/1jojo/cwl_ready.cr">Logo</a>
+      </c:if>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -37,12 +42,12 @@
 			</c:choose>
         </li>  --%>
        
-        	<c:if test="${sessionScope.email == null}">
+        	<c:if test="${sessionScope.id == null}">
         		 <li> <a href="/1jojo/member/loginForm.jsp">Log-in</a></li>
         		  <li><a href="/1jojo/member/regForm.jsp">Sign up</a></li>
     		</c:if>
     		
-			<c:if test="${sessionScope.email != null}">
+			<c:if test="${sessionScope.id != null}">
 				<li><a href="/1jojo/Logout.do">Log-out</a></li>
 				<li><a href="/1jo	jo/member/myPage.jsp">MyPage</a></li>
 			</c:if>
