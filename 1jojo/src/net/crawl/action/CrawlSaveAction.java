@@ -18,7 +18,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class CrawlSaveAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		CrawlDAOImpl crawldao=new CrawlDAOImpl();
+		System.out.println("CrawlSaveAction");
+		 CrawlDAOImpl crawldao=new CrawlDAOImpl();
 		search_list_Bean crawldata=new search_list_Bean();
 		
 	   	ActionForward forward=new ActionForward();

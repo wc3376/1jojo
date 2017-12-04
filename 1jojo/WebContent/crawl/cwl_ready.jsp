@@ -13,7 +13,7 @@
 <script type="text/javascript">
 function ButtonClicked()
 {
-   document.getElementsByClassName("container")[0].style.display = "none"; // to undisplay
+   document.getElementById("Content").style.display = "none"; // to undisplay
    document.getElementById("buttonreplacement").style.display = "block"; // to display
    return true;
 }
@@ -26,7 +26,7 @@ function RestoreSubmitButton()
       FirstLoading = false;
       return;
    }
-   document.getElementsByClassName("container")[0].style.display = "block"; // to display
+   document.getElementsById("Content")[0].style.display = "block"; // to display
    document.getElementById("buttonreplacement").style.display = "none"; // to undisplay
 }
 // To disable restoring submit button, disable or delete next line.
@@ -41,7 +41,9 @@ document.onfocus = RestoreSubmitButton;
 </div>
 <br>
 <br>
-	<div class="container-fluid container">
+<br>
+<br>
+	<div class="container-fluid container" id="Content">
 		<div class="row content">
 			<div class="text-left">
 <h2>ID및 비밀번호</h2>
@@ -61,7 +63,7 @@ document.onfocus = RestoreSubmitButton;
 		<li>SNS 계정 접속, 네이버 계정, 구글 계정 접속과 같은 SSO 기능은 제공하지 않습니다. 해당 계정으로 가입하셨다면, 사람인 회원 가입을 다시 한 뒤에 이 서비스에 다시 접속하셔서 아이디와 비밀번호를 변경후에 다시 시도 바랍니다.
 		<li>해당 스크래핑은 페이지 구조가 일정한 형식을 따르지 않나, 검색 결과의 수가 많아지면 상당한 시간이 소요됩니다.
 	</ol>
-	<input type="submit"  class="btn btn-default" value="예(스크래핑 시작)" onclick="ButtonClicked()">
+	<input type="submit" id="scrapeButton"  class="btn btn-default" value="예(스크래핑 시작)" onclick="ButtonClicked()">
 	<button type="button" class="btn btn-default" onclick="window.open('https://www.saramin.co.kr/zf_user/member/registration/join')">아니오(사람인 회원가입)</button>
 
 </form>
@@ -69,7 +71,7 @@ document.onfocus = RestoreSubmitButton;
 </div>
 </div>
 <div id="buttonreplacement" style="margin-left:30px; display:none;" align=center>
-	<img src="/crawl/loading_logofinal_by_zegerdon-d60eb1v.gif" alt="loading...">
+	<img src="/1jojo/crawl/loading_logofinal_by_zegerdon-d60eb1v.gif" alt="loading...">
 </div>
 
 

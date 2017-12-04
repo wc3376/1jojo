@@ -184,7 +184,7 @@
 									id="collectWordButton" onclick="collectWord();">체크한
 									단어가 우대사항에 포함된 업체 링크 모음</button>
 								<button type="button" class="btn btn-default"
-									onclick="location.href='/CrawlSaveAction.cr'">분석
+									onclick="location.href='/1jojo/CrawlSaveAction.cr'">분석
 									결과 및 관련 업체 링크 저장</button>
 							</td>
 						</tr>
@@ -242,7 +242,7 @@
 								<button type="button" class="btn btn-default"
 									id="collectWordButton" onclick="collectWord();">체크한 단어가 우대사항에 포함된 업체 링크 모음</button>
 								<button type="button" class="btn btn-default"
-									onclick="location.href='/CrawlSaveAction.cr'">분석 결과 및 관련 업체 링크 저장</button>
+									onclick="location.href='/1jojo/CrawlSaveAction.cr'">분석 결과 및 관련 업체 링크 저장</button>
 							</td>
 						</tr>
 					</table>

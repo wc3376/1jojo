@@ -107,7 +107,7 @@ public class CrawlFrontController extends javax.servlet.http.HttpServlet
 				e.printStackTrace();
 			}
 		}
-		else if (command.equals("/CrawlDeeleteSavedDataAction.cr")) {// 크롤링 한 데이터를 DB에 꺼내오는 과정. 이때 필요한 것은 session의 No.
+		else if (command.equals("/CrawlDeleteSavedDataAction.cr")) {// 크롤링 한 데이터를 DB에 꺼내오는 과정. 이때 필요한 것은 session의 No.
 			action = new CrawlDeleteSavedDataAction();//미완.
 			try {
 				forward = action.execute(request, response);

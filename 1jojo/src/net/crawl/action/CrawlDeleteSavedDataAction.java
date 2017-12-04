@@ -21,7 +21,8 @@ import net.crawl.db.search_qual_Bean;
 		System.out.println("CrawlDeleteSavedDataAction");
 //		ArrayList<search_list_Bean> listOfResult= new ArrayList<search_list_Bean>();
 //		ArrayList<search_qual_Bean> listOfsearch_qual_Bean= new ArrayList<search_qual_Bean>();
-		
+		response.setContentType("text/html; charset=utf-8");//출
+		request.setCharacterEncoding("utf-8");//입
 		try {
 		CrawlDAOImpl crawldao=new CrawlDAOImpl();
 		System.out.println("no="+session.getAttribute("no"));
@@ -30,20 +31,29 @@ import net.crawl.db.search_qual_Bean;
 		String search_com_No=crawldao.getSearch_com_No(No);
 		int delete_list_result=0;
 		int delete_qual_result=0;
-		delete_list_result=crawldao.search_listDelete(search_com_No);
-		delete_qual_result=crawldao.search_qualDelete(search_com_No);
-		System.out.println("delete done?"+delete_list_result+","+delete_qual_result);
 		
+		delete_list_result=crawldao.search_listDelete(search_com_No);
+		System.out.println("delete_list_result="+delete_list_result);
+		delete_qual_result=crawldao.search_qualDelete(search_com_No);
+		System.out.println("delete_qual_result="+delete_qual_result);
+		
+		System.out.println("delete done?"+delete_list_result+","+delete_qual_result);
 		ActionForward forward= new ActionForward();
-	 	forward.setRedirect(true);
-   		forward.setPath("./member/myPage.jsp");
- 		return forward;
+		if(delete_qual_result>0 || delete_list_result>0) {
+			forward.setRedirect(false);
+			forward.setPath("./member/myPage.jsp");
+			System.out.println("지워짐. search_com_No="+search_com_No);
+			return forward;
+		}else {
+			throw new Exception("DB에 지워야할 당신의 데이터가 없습니다.");
+		}
+		
 		}catch(Exception ex){
    			ex.printStackTrace();
 			System.out.println("문제가 생겼다. alert!");
 			PrintWriter out =response.getWriter();
 			out.println("<script>");
-			out.println("alert('삭제 과정에서 문제가 생겼습니다. 에러 내용 : \n"+ex+"');");
+			out.println("alert('삭제 과정에서 문제가 생겼습니다. 에러 내용 : "+ex.getMessage()+"');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();

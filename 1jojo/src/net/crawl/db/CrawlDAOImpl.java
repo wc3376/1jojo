@@ -104,16 +104,30 @@ public class CrawlDAOImpl {
 	
 	/* 검색결과 삭제 */
 	public int search_listDelete(String search_com_No) throws SQLException {
-		SqlSession session=null;
-		session = getSession();
-		return session.delete("crawl.search_list_del", search_com_No);
+		int result=0;
+		try{
+			SqlSession session=null;
+			session = getSession();
+			result=session.delete("crawl.search_list_del", search_com_No);
+		}catch(Exception e){
+			System.out.println("result="+result);
+			System.out.println(e.getMessage());
+		}		
+		return result;
 	}
 	
 	/* 분석결과 삭제 */
 	public int search_qualDelete(String search_com_No) throws SQLException {
-		SqlSession session=null;
-		session = getSession();
-		return session.delete("crawl.search_qual_del", search_com_No);
+		int result=0;
+		try{
+			SqlSession session=null;
+			session = getSession();
+			result=session.delete("crawl.search_qual_del", search_com_No);
+		}catch(Exception e){
+			System.out.println("result="+result);
+			System.out.println(e.getMessage());
+		}	
+		return result;
 	}
 
 }
