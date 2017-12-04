@@ -48,21 +48,26 @@ public class CrawlAnalysisAction implements Action {
 		ArrayList<String> listOfToken= new ArrayList<String>();
 		for (int i = 0; i < tempText.length; i++) {
 			String s = tempText[i];
-			// System.out.println("itme : " + s);
+			 System.out.println("itme : " + s);
 //			if(s.contains(":")) {
 //				listOfToken.add(s.substring(s.indexOf(":")+1).trim());
 //				continue;
 //			}
+			 if(s.equals("")) {//빈 것이 가끔 들어온다. -로 나눴을 때 앞부분의 공백을 의미하는 것 같다.
+				 continue;
+			 }
 			String tokens[]=null;
 			if(s.contains(",")) {
 				tokens = s.split(",");
 				for(String token: tokens) {
-					listOfToken.add(s.substring(0, s.indexOf(": "))+token.trim());
+					System.out.println(token);
+					if(s.contains(":")) {
+						listOfToken.add(s.substring(0, s.indexOf(": "))+token.trim());
+					}else {
+						listOfToken.add(token.trim());
+					}
 					continue;
 				}
-			}
-			if(s.equals("")) {//빈 것이 가끔 들어온다. -로 나눴을 때 앞부분의 공백을 의미하는 것 같다.
-				continue;
 			}
 			listOfToken.add(s.trim());
 		}
