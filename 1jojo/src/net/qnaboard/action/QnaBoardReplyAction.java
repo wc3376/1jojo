@@ -43,7 +43,8 @@ public class QnaBoardReplyAction implements QnaAction {
 	   		System.out.println("댓글부대!");
 	   		
 	   		forward.setRedirect(true);
-	   		forward.setPath("./QnaBoardDetailAction.qo?num="+boarddata.getBoard_num()+"&page="+page);
+	   		forward.setPath("./QnaBoardListAction.qo");
+//	   		forward.setPath("./QnaBoardDetailAction.qo?num="+boarddata.getBoard_num()+"&page="+page);
 //	   		forward.setPath("./BoardDetailAction.bo?num="+result+"&page="+page);
 	   		return forward;
 	}  	

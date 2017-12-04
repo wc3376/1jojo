@@ -86,7 +86,7 @@
 	<tr><td colspan="2">&nbsp;</td></tr>
 	
 	<tr align="center" valign="middle">
-		<td colspan="5">
+		<td colspan="5"><c:if test="${sessionScope.id != null}">
 			<font size=2>
 			<a href="./QnaBoardReplyView.qo?num=${boarddata.board_num}&page=${page}">
 			[답변]</a>&nbsp;&nbsp;
@@ -100,6 +100,7 @@
 			<a href="./QnaBoardListAction.qo?page=${page}">
 			[목록]</a>&nbsp;&nbsp;			
 			</font>
+			</c:if>
 		</td>
 	</tr>
 </table>
