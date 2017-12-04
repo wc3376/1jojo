@@ -116,7 +116,7 @@
     <div class="col-sm-8 text-left"> 
       
       <form id="myform"  method=post action="/1jojo/Update.do">
-		<input type=hidden name="email" value="${member.id}">
+		<input type=hidden name="id" value="${member.id}">
 		
 		
 		<table class="table table-bordered" align=center  >

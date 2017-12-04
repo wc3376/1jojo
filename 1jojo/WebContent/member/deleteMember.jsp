@@ -46,22 +46,29 @@
     	</ul>
     </div>
     <div class="col-sm-8 text-left"> 
-      <center><h1>회원 탈퇴</h1></center>
+      
 
 		<form method=post action="./Delete.do">
 			<input type=hidden name="id" value="${sessionScope.id}">
-				<table border=1 align=center width=300>
-					<tr><td>ID</td>
-					<td>${sessionScope.id}</td>
-					<tr><td>비밀번호</td>
-					<td><input type=password id="pass" name="pass"></td>
-					</tr>
-					<tr><td colspan=2 align=center>
-					<input type=submit value="회원탈퇴">
-					<input type=reset value="취소">
-			        </td>
-		            </tr>		
-				</table>
+				<table class="table table-striped">
+    <caption><h3>회원 정보</h3></caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>${sessionScope.id}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>비밀번호</td>
+        <td><input type=password id="pass" name="pass"></td>
+      </tr>
+      <tr><td colspan = 2 align=center>
+      <input type=submit value="회원탈퇴">
+      <input type=reset value="취소">    
+    </tbody>
+  </table>
+			
  		</form>
     </div>
  

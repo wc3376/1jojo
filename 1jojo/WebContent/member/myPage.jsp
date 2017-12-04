@@ -31,13 +31,31 @@
       <p><a href="/1jojo/CrawlGetSavedDataAction.cr">검색 기록</a></p>
       <p><a href="/1jojo/DeleteMember.do">회원 탈퇴</a></p>
     </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
-    </div>
+    <div class="container col-sm-8 text-left">
+
+  
+  <form>      
+  <input type=hidden name="id" value="${sessionScope.id}">
+  <input type=hidden name="pass" value="${sessionScope.pass}"> 
+  <table class="table table-striped">
+    <caption><h3>회원 정보</h3></caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>${sessionScope.id}</td>
+        <td>${sessionScope.pass}</td>
+      </tr>
+    
+    </tbody>
+  </table>
+  </form>
+</div>
+
  
   </div>
 </div>
