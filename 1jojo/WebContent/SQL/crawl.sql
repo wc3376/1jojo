@@ -5,8 +5,7 @@ CREATE TABLE search_list(
 	com_qual VARCHAR2(1000),
 	com_preex VARCHAR2(1000),
 	com_name VARCHAR2(100),
-	com_link VARCHAR2(500),
-	PRIMARY KEY(com_link)
+	com_link VARCHAR2(500)
 );
 
 create sequence search_list_seq

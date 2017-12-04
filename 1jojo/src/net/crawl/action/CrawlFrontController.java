@@ -44,9 +44,12 @@ public class CrawlFrontController extends javax.servlet.http.HttpServlet
 //		cwl_preex_list.jsp(해당 업체 리스트. get 방식으로 우대사항 넘긴다.) - 서로 다른 결과 탭
 		
 		if (command.equals("/cwl_ready.cr")) { // 맨 처음 크롤링 할 때 들어갈 페이지로 들어가도록 유도하는 command
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("./crawl/cwl_ready.jsp");			
+			action = new Crawlready();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		else if (command.equals("/CrawlAddAction.cr")) {// 크롤링 하기 위해 데이터를 추가시키는 과정.
 			action = new CrawlAddAction();

@@ -325,9 +325,9 @@ public class CrawlAddAction implements Action {
 	}
 
 	@Test
-	public void Step_01_login_Test() throws Exception {
-		driver.findElement(By.name("id")).sendKeys("chlgudrbdn"); // ID
-		driver.findElement(By.name("password")).sendKeys("m6529194!"); // ���
+	public void Step_01_login_Test(String id, String pass) throws Exception {
+		driver.findElement(By.name("id")).sendKeys(id); // ID
+		driver.findElement(By.name("password")).sendKeys(pass); // ���
 		driver.findElement(By.className("btn-login")).click(); // �α��� ��ư Ŭ��
 	}
 
@@ -336,9 +336,9 @@ public class CrawlAddAction implements Action {
 		driver.get("http://www.saramin.co.kr/zf_user/member/suited-recruit-mail/list"); // ������ ����Ʈ
 		WebElement tempList = driver.findElement(By.id("list_detail"));
 		List<WebElement> list = tempList.findElements(By.className("inner")); // 채용공고 element 리스트팅.
-		List<String> listOfRecruitLink = new ArrayList(); // 채용공고 링크 리스트 모음.
-		ArrayList<String> listOfRecruitcom = new ArrayList(); // 채용공고 링크 회사명모음.
-		ArrayList<search_list_Bean> listOfResult= new ArrayList(); // 채용공고 링크 리스트 모음.
+		List<String> listOfRecruitLink = new ArrayList<String>(); // 채용공고 링크 리스트 모음.
+		ArrayList<String> listOfRecruitcom = new ArrayList<String>(); // 채용공고 링크 회사명모음.
+		ArrayList<search_list_Bean> listOfResult= new ArrayList<search_list_Bean>(); // 채용공고 링크 리스트 모음.
 		
 		for (WebElement inner : list) {
 			List<WebElement> companyInfo = inner.findElements(By.className("company_name"));
@@ -428,15 +428,17 @@ public class CrawlAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("CrawlAddAction");
 		ActionForward forward = new ActionForward();
-		CrawlDAOImpl crawldao=new CrawlDAOImpl();
 		response.setContentType("text/html; charset=utf-8");//출
 		request.setCharacterEncoding("utf-8");//입
 		try {
 			HttpSession session = request.getSession();
 			path = session.getServletContext().getRealPath("/");
 			System.out.println("■getRealPath:::" + path + "crawl\\chromedriver.exe");
+			String id = (String) session.getAttribute("id");
+			String pass = (String) session.getAttribute("pass");
+//			System.out.println(id+pass);
 			setUp();
-			Step_01_login_Test();
+			Step_01_login_Test(id, pass);
 			
 			ArrayList<search_list_Bean> listOfResult= new ArrayList<search_list_Bean>();
 //			List<search_list_Bean> listOfResult_at_DB= new ArrayList(); //DB에 보내는건 나중에.

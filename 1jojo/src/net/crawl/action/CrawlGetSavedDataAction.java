@@ -17,12 +17,14 @@ import net.crawl.db.search_qual_Bean;
  public class CrawlGetSavedDataAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
-		
+		System.out.println("CrawlGetSavedDataAction");
 		ArrayList<search_list_Bean> listOfResult= new ArrayList<search_list_Bean>();
 		ArrayList<search_qual_Bean> listOfsearch_qual_Bean= new ArrayList<search_qual_Bean>();
 
 		CrawlDAOImpl crawldao=new CrawlDAOImpl();
-		String No=(String)session.getAttribute("No");
+		System.out.println(session.getAttribute("no"));
+		int no=(int)session.getAttribute("no");
+		String No = Integer.toString(no);
 		String search_com_No=crawldao.getSearch_com_No(No);
 		listOfResult=crawldao.getSearch_list(search_com_No);
 		listOfsearch_qual_Bean=crawldao.getSearch_qual(search_com_No);
