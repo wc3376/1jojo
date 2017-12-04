@@ -26,7 +26,16 @@
 	
 </head>
 <body>
-
+<div>
+<header>
+<c:import url="../member/header.jsp"></c:import>
+</header>
+<br>
+<br>
+<br>
+<br>
+</div>
+<div>
 <form action="/1jojo/ForumBoardAddAction.fo" method="post" 
 	enctype="multipart/form-data" name="boardform">
 <table cellpadding="0" cellspacing="0" align=center border=1>
@@ -37,10 +46,10 @@
 		<td style="font-family:돋음; font-size:12" height="16">
 			<div align="center">작성자</div>
 		</td>
-		<td>			
-			<input name="BOARD_NAME" id="board_name" type="text" size="50" maxlength="100" 
-				value="${id}"/>
-		</td>
+		<td>${id}			
+			<input name="BOARD_NAME" id="board_name" type="hidden" size="50"
+						maxlength="100" value="${id}" />
+					</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
@@ -84,11 +93,11 @@
 	<tr align="center" valign="middle">
 		<td colspan="5">			
 			<input type=submit value="등록">
-			<input type=reset value="취소">
+			<input type=reset value="취소" onClick="history.go(-1)">
 		</td>
 	</tr>
 </table>
 </form>
-
+</div>
 </body>
 </html>

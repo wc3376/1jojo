@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"%>
 <%@ page import="net.forumboard.db.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 //	BoardBean board=(BoardBean)request.getAttribute("boarddata");
 //	String nowpage = (String)request.getAttribute("page");
@@ -63,8 +64,8 @@
 		<td style="font-family:돋음; font-size:12" height="16">
 			<div align="center">글쓴이</div>
 		</td>
-		<td>
-			<input name="BOARD_NAME" id="board_name" type="text" value="${email}"/>
+		<td>${id}
+			<input name="BOARD_NAME" id="board_name" type="hidden" value="${id}"/>
 		</td>
 	</tr>
 	<tr>

@@ -92,7 +92,7 @@
 	<tr align="center" valign="middle">
 		<td colspan="5">			
 			<input type=submit value="등록">
-			<input type=reset value="취소">
+			<input type=reset value="취소" onClick="history.go(-1)">
 		</td>
 	</tr>
 </table>
