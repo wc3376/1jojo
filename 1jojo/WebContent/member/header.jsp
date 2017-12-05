@@ -22,10 +22,10 @@
         <span class="icon-bar"></span>                        
       </button>
       <c:if test="${sessionScope.id == null }">
-      <a class="navbar-brand" href="/1jojo/member/main.jsp">Logo</a>
+      <a class="navbar-brand" href="/1jojo/member/main.jsp">Main</a>
       </c:if>
       <c:if test="${sessionScope.id != null }">
-      <a class="navbar-brand" href="/1jojo/cwl_ready.cr">Logo</a>
+      <a class="navbar-brand" href="/1jojo/cwl_ready.cr">Let's Crawl!</a>
       </c:if>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">

@@ -1,5 +1,3 @@
-select * from tab;
-
 CREATE TABLE search_list(
 	search_com_No VARCHAR2(12),
 	com_qual VARCHAR2(1000),
@@ -8,20 +6,9 @@ CREATE TABLE search_list(
 	com_link VARCHAR2(500)
 );
 
-create sequence search_list_seq
-start with 1
-increment by 1
-nocache;
-
 drop table search_list purge;
 select * from tab;
 select * from search_list;
-
-
-
-
-
-select * from tab;
 
 CREATE TABLE search_qual(
 	search_com_No VARCHAR2(12),
