@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/1jojo/member/member.js"></script>
+<script src="<%=request.getContextPath() %>/member/member.js"></script>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
 <div class="container-fluid">
 <div class="row content">
   
-  <form method=post action="/1jojo/Login.do">
+  <form method=post action="<%=request.getContextPath() %>/Login.do">
     <div class="form-group">
       <label for="id">사람인 ID:</label>
       <input type="text" class="form-control"  id="id" placeholder="Enter ID" name="id">

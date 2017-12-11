@@ -69,12 +69,16 @@
 // 			}
 			str=str.replace( /word=/gi, "");
 			str=str.replace( /&/gi, "-");
-			var ref="/1jojo/CrawlPreexAndqualFilterAction.cr?word="+str;
+			var ref= "/CrawlPreexAndqualFilterAction.cr?word="+str;
 			window.location.href=ref;
 		}
 		//alert로 확인해보면 javascript에선 인터넷 특유의 값으로 인식해버리는것 같다
 	}
-
+	 function getContextPath() {
+			var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+			return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+		};
+		
 	function sortTable() {
 		  var table, rows, switching, i, x, y, shouldSwitch;
 		  table = document.getElementById("preexTable");
@@ -184,7 +188,7 @@
 									id="collectWordButton" onclick="collectWord();">체크한
 									단어가 우대사항에 포함된 업체 링크 모음</button>
 								<button type="button" class="btn btn-default"
-									onclick="location.href='/1jojo/CrawlSaveAction.cr'">분석
+									onclick="location.href='<%=request.getContextPath() %>/CrawlSaveAction.cr'">분석
 									결과 및 관련 업체 링크 저장</button>
 							</td>
 						</tr>
@@ -242,7 +246,7 @@
 								<button type="button" class="btn btn-default"
 									id="collectWordButton" onclick="collectWord();">체크한 단어가 우대사항에 포함된 업체 링크 모음</button>
 								<button type="button" class="btn btn-default"
-									onclick="location.href='/1jojo/CrawlSaveAction.cr'">분석 결과 및 관련 업체 링크 저장</button>
+									onclick="location.href='<%=request.getContextPath() %>/CrawlSaveAction.cr'">분석 결과 및 관련 업체 링크 저장</button>
 							</td>
 						</tr>
 					</table>

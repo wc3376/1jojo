@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="/1jojo/member/member.js"></script>
+<script src="<%=request.getContextPath() %>/member/member.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -22,11 +22,17 @@ $(document).ready(function(){
 			 alert("ID를 입력하세요");
 			 $("#id").focus();
 		 }else{
-			 var ref="/1jojo/IdCheck.do?id="+$("#id").val();
+			 var ref="/IdCheck.do?id="+$("#id").val();
 			 window.open(ref,"idcheck","width=200,height=100");
 		 } 	
 	 });
 
+	 function getContextPath() {
+			var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+			return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
+		};
+		
+		
 	 });
 	 </script>
 </head>
@@ -47,7 +53,7 @@ $(document).ready(function(){
 <div class="container-fluid">
 <div class="row content">
 
-  <form method=post action="/1jojo/MemberInsert.do">
+  <form method=post action="<%=request.getContextPath() %>/MemberInsert.do">
     <div class="form-group">
       <label for="id">사람인 ID:</label>
       <input type="text" class="form-control" id="id" placeholder="Enter ID" name="id">

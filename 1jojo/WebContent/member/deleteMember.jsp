@@ -40,10 +40,10 @@
   <div class="row content">
     <div class="col-sm-2 sidenav list-group">
 <!--     	<ul class = "text-success"> -->
-      	<!-- <li class ="list-group-item active" > --><a class ="list-group-item " href="/1jojo/UpdateForm.do">정보 수정</a><!-- </li> -->
-      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/CrawlGetSavedDataAction.cr">검색 기록</a><!-- </li> -->
-      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="/1jojo/CrawlDeleteSavedDataAction.cr">검색 기록 삭제</a><!-- </li> -->
-      	<!-- <li class ="list-group-item"> --><a class ="list-group-item active" href="/1jojo/DeleteMember.do">회원 탈퇴</a><!-- </li> -->
+      	<!-- <li class ="list-group-item active" > --><a class ="list-group-item " href="<%=request.getContextPath() %>/UpdateForm.do">정보 수정</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="<%=request.getContextPath() %>/CrawlGetSavedDataAction.cr">검색 기록</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item" href="<%=request.getContextPath() %>/CrawlDeleteSavedDataAction.cr">검색 기록 삭제</a><!-- </li> -->
+      	<!-- <li class ="list-group-item"> --><a class ="list-group-item active" href="<%=request.getContextPath() %>/DeleteMember.do">회원 탈퇴</a><!-- </li> -->
 <!--     	</ul> -->
     </div>
     <div class="col-sm-8 text-left"> 

@@ -73,7 +73,7 @@
 		
 		<!-- 첨부 파일이 있으면 출력하는 부분 -->		
 		<c:if test="${!empty boarddata.board_file}">
-			<a href="/1jojo/board/file_down.jsp?file_name=${boarddata.board_file}">
+			<a href="<%=request.getContextPath() %>/board/file_down.jsp?file_name=${boarddata.board_file}">
 				${boarddata.board_file}</a>
 		</c:if>		
 		

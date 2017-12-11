@@ -32,7 +32,7 @@
 
 			<div class="text-left">
 							검색 결과 개수 : ${search_list_count }
-							<button type="button" class="btn btn-default" onclick="location.href='./CrawlAnalysisAction.cr'">검색결과 분석</button>
+							<button type="button" class="btn btn-default" onclick="location.href='/CrawlAnalysisAction.cr'">검색결과 분석</button>
 				<table class="table table-striped">
 
 					<!-- 레코드가 있으면 -->
@@ -97,7 +97,7 @@
 					<tr align="right">
 						<td colspan="4">
 <%-- 						검색 결과 식별 번호 : ${search_com_No} 검색 갯수 : ${search_list_count} --%>
-							<button type="button" class="btn btn-default" onclick="location.href='./CrawlAnalysisAction.cr'">검색결과 분석</button></td>
+							<button type="button" class="btn btn-default" onclick="location.href='/CrawlAnalysisAction.cr'">검색결과 분석</button></td>
 					</tr>
 				</table>
 			</div>

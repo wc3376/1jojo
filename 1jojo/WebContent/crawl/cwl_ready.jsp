@@ -47,7 +47,7 @@ document.onfocus = RestoreSubmitButton;
 		<div class="row content">
 			<div class="text-left">
 <h2>ID및 비밀번호</h2>
-<form action="/1jojo/CrawlAddAction.cr" method="post"  name="boardform" ><%-- ${세션 데이터 SET된 것 가져와야함.} --%>
+<form action="<%=request.getContextPath() %>/CrawlAddAction.cr" method="post"  name="boardform" ><%-- ${세션 데이터 SET된 것 가져와야함.} --%>
 		<label><b>아이디 :</b></label>
 		<input type="text" name="uname" required="required" disabled="disabled" value="${id}">
 		<label><b>비밀번호 : </b></label><input type="text" name="psw" required="required" disabled="disabled" value="${pass}">
@@ -71,7 +71,7 @@ document.onfocus = RestoreSubmitButton;
 </div>
 </div>
 <div id="buttonreplacement" style="margin-left:30px; display:none;" align=center>
-	<img src="/1jojo/crawl/loading_logofinal_by_zegerdon-d60eb1v.gif" alt="loading...">
+	<img src="<%=request.getContextPath() %>/crawl/loading_logofinal_by_zegerdon-d60eb1v.gif" alt="loading...">
 <pre>시간이 오래 걸릴 경우(30분 이상) 세션이 만료되어 로그아웃 되므로, 적절한 수준까지 공고를 좁혀서 검색하시기 바랍니다.
 개인 맞춤채용은 최대 50건까지 크롤링 하도록 코딩해두었습니다.(더보기를 클릭하게 해두지 않았습니다.)
 너무  많은 페이지를 보면 사람인 측에서 봇으로 볼 가능성이 있기 때문입니다.

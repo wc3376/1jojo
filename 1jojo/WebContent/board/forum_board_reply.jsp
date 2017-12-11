@@ -49,7 +49,7 @@
 <br>
 </div>
 
-<form action="/1jojo/ForumBoardReplyAction.fo" method="post" name="boardform">
+<form action="<%=request.getContextPath() %>/ForumBoardReplyAction.fo" method="post" name="boardform">
 <input type="hidden" name="BOARD_NUM" value="${boarddata.board_num}">
 <input type="hidden" name="BOARD_RE_REF" value="${boarddata.board_re_ref}">
 <input type="hidden" name="BOARD_RE_LEV" value="${boarddata.board_re_lev}">

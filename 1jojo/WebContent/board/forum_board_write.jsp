@@ -36,7 +36,7 @@
 <br>
 </div>
 <div>
-<form action="/1jojo/ForumBoardAddAction.fo" method="post" 
+<form action="<%=request.getContextPath() %>/ForumBoardAddAction.fo" method="post" 
 	enctype="multipart/form-data" name="boardform">
 <table cellpadding="0" cellspacing="0" align=center border=1>
 	<tr align="center" valign="middle">

@@ -46,7 +46,7 @@
 <br>
 </div>
 <!-- 게시판 수정 -->
-<form action="/1jojo/ForumBoardModifyAction.fo" method="post" name="modifyform">
+<form action="<%=request.getContextPath() %>/ForumBoardModifyAction.fo" method="post" name="modifyform">
 <input type="hidden" name="BOARD_NUM" value="${boarddata.board_num}">
 <input type="hidden" name=page value="${page}">
 <table cellpadding="0" cellspacing="0" align=center border=1>

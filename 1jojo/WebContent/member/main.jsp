@@ -25,7 +25,7 @@
   <h1>Company</h1> 
   <p>We specialize in blablabla</p> 
   
-  <form method=post action="/1jojo/Login.do">
+  <form method=post action="<%=request.getContextPath() %>/Login.do">
  
     <div class="form-group ">
       <label for="id">사람인 ID:</label>

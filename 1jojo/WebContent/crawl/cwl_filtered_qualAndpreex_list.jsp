@@ -61,7 +61,7 @@
 			<div class="text-left">
 				<p>검색한 단어 목록 : ${words}</p>
 				<p>공고에 포함된 있는 단어 수/검색 단어 수 : 자신이 가진 역량과 얼마나 채용공고에서 요구하는 바와 얼마나 유사한지 알 수 있습니다.</p>
-				<button type="button" class="btn btn-default" onclick="location.href='./CrawlSaveAction.cr'">분석 결과 및 관련 업체 링크 저장(계정당 1개뿐)</button>
+				<button type="button" class="btn btn-default" onclick="location.href='/CrawlSaveAction.cr'">분석 결과 및 관련 업체 링크 저장(계정당 1개뿐)</button>
 				<table class="table table-striped" id="resultTable">
 
 					<!-- 레코드가 있으면 -->
@@ -126,7 +126,7 @@
 
 					<tr align="right">
 						<td colspan="5">
-							<button type="button" class="btn btn-default" onclick="location.href='./CrawlSaveAction.cr'">분석 결과 및 관련 업체 링크 저장(계정당 1개뿐)</button>
+							<button type="button" class="btn btn-default" onclick="location.href='/CrawlSaveAction.cr'">분석 결과 및 관련 업체 링크 저장(계정당 1개뿐)</button>
 						</td>
 					</tr>
 				</table>

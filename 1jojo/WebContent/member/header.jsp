@@ -22,10 +22,10 @@
         <span class="icon-bar"></span>                        
       </button>
       <c:if test="${sessionScope.id == null }">
-      <a class="navbar-brand" href="/1jojo/member/main.jsp">Main</a>
+      <a class="navbar-brand" href="<%=request.getContextPath() %>/member/main.jsp">Main</a>
       </c:if>
       <c:if test="${sessionScope.id != null }">
-      <a class="navbar-brand" href="/1jojo/cwl_ready.cr">Let's Crawl!</a>
+      <a class="navbar-brand" href="<%=request.getContextPath() %>/cwl_ready.cr">Let's Crawl!</a>
       </c:if>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -43,17 +43,17 @@
         </li>  --%>
        
         	<c:if test="${sessionScope.id == null}">
-        		 <li> <a href="/1jojo/member/loginForm.jsp">Log-in</a></li>
-        		  <li><a href="/1jojo/member/regForm.jsp">Sign up</a></li>
+        		 <li> <a href="<%=request.getContextPath() %>/member/loginForm.jsp">Log-in</a></li>
+        		  <li><a href="<%=request.getContextPath() %>/member/regForm.jsp">Sign up</a></li>
     		</c:if>
     		
 			<c:if test="${sessionScope.id != null}">
-				<li><a href="/1jojo/Logout.do">Log-out</a></li>
-				<li><a href="/1jo	jo/member/myPage.jsp">MyPage</a></li>
+				<li><a href="<%=request.getContextPath() %>/Logout.do">Log-out</a></li>
+				<li><a href="<%=request.getContextPath() %>/member/myPage.jsp">MyPage</a></li>
 			</c:if>
 		
-        <li><a href="/1jojo/ForumBoardListAction.fo">Forum</a></li>
-        <li><a href="/1jojo/QnaBoardListAction.qo">Q & A</a></li>
+        <li><a href="<%=request.getContextPath() %>/ForumBoardListAction.fo">Forum</a></li>
+        <li><a href="<%=request.getContextPath() %>/QnaBoardListAction.qo">Q & A</a></li>
         
       </ul>
     </div>

@@ -24,9 +24,8 @@ public class Delete implements Action{
 		HttpSession session = request.getSession();
 		
 		m2memberDTO member = new m2memberDTO();
-		member.setId(request.getParameter("email"));
+		member.setId(request.getParameter("id"));
 		member.setPass(request.getParameter("pass"));
-		
 		m2memberDAO dao = m2memberDAO.getInstance();
 		int result = dao.delete(member.getId());
 		
